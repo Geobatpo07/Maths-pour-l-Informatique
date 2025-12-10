@@ -1,0 +1,642 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Encodage, langue, math ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem} % pour [label=\arabic*.] dans enumerate
+\usepackage{microtype} % meilleures césures/justifications
+
+% --- Ensembles usuels ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% --- Mise en page & logos ---
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{./}} % Assure-toi d'avoir logo.png et logo2.png ici
+\usepackage{xcolor}
+\usepackage{array} % pour colonnes p{...} dans tabular
+
+% --- Couleur d'accent (FSGA) ---
+\definecolor{fsgaBlue}{RGB}{0,91,171}
+
+% --- Méta (modifie ces 6 lignes) ---
+\newcommand{\Titre}{TD - Logique \& Raisonnement}
+\newcommand{\SousTitre}{Mathématiques pour Informaticiens}
+\newcommand{\Enseignant}{Geovany Batista Polo LAGUERRE \textbar{} Data Scientist}
+\newcommand{\Institution}{FSGA - Université Quisqueya}
+\newcommand{\Semestre}{Semestre 1}
+\newcommand{\Annee}{2025-2026}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+
+  % Ligne logos
+  \makebox[\textwidth]{%
+    \includegraphics[height=1.6cm]{logo.png}\hfill
+    \includegraphics[height=1.6cm]{logo2.png}%
+  }
+
+  \vspace{1.8cm}
+
+  % Titre
+  {\LARGE\bfseries \Titre\par}
+  \vspace{0.35cm}
+  {\large\itshape \SousTitre\par}
+
+  \vspace{1.2cm}
+  % Barre d'accent
+  {\color{fsgaBlue}\rule{\textwidth}{1.4pt}}
+
+  \vspace{1.2cm}
+  % Informations (2e colonne large pour éviter les débordements)
+  \begin{tabular}{@{}l p{0.72\textwidth}}
+    \textbf{Enseignant :} & \Enseignant \\
+    \textbf{Institution :} & \Institution \\
+    \textbf{Semestre :} & \Semestre \\
+    \textbf{Année académique :} & \Annee \\
+    \textbf{Version :} & \today \\
+  \end{tabular}
+
+  \vfill
+  % Note de bas de page (facultatif)
+  {\small Ce document de Travaux Dirigés regroupe des exercices de logique (propositions, tables de vérité, équivalences, quantificateurs, méthodes de preuve).}
+
+\end{titlepage}
+
+\newpage
+
+\section*{Exercice 1 - Écrire la négation des propositions suivantes}
+\begin{enumerate}[label=\arabic*.]
+  \item \emph{Toutes les voitures rapides sont rouges.}
+  \item \emph{Il existe un mouton écossais dont au moins un côté est noir.}
+  \item \emph{Pour tout $\varepsilon>0$, il existe $q\in\Q_{>0}$ tel que $0<q<\varepsilon$.}
+  \item \emph{Pour tout $x\in\R$, on a $x^{2}<0$.}
+\end{enumerate}
+
+\section*{Exercice 2 - Énoncer la négation des assertions suivantes}
+\begin{enumerate}[label=\arabic*.]
+  \item \emph{Tout triangle rectangle possède un angle droit.}
+  \item \emph{Dans toutes les prisons, tous les détenus détestent tous les gardiens.}
+  \item \emph{Pour tout entier $x$ il existe un entier $y$ tel que, pour tout entier $z$, la relation $z<y$ implique la relation $z<x+1$.}
+\end{enumerate}
+
+\section*{Exercice 3 - Propositions et négations}
+Soient $P,Q,R$ des propositions. Dans chacun des cas suivants, les propositions citées sont-elles la négation l'une de l'autre ?
+\begin{enumerate}[label=\arabic*.]
+  \item $(P \land Q)$ ;\quad $(\neg P \land \neg Q)$
+  \item $(P \Rightarrow Q)$ ;\quad $(\neg Q \Rightarrow \neg P)$
+  \item $(P \lor Q)$ ;\quad $(P \land Q)$
+\end{enumerate}
+
+\section*{Exercice 4 - Écrire la négation des propositions suivantes}
+Soient $a,b,c\in\R$.
+\begin{enumerate}[label=\arabic*.]
+  \item $a \le -2 \;\text{ou}\; a \ge 3$.
+  \item $a \le 5 \;\text{et}\; a>-1$.
+  \item $a \le 5 \;\text{ou}\; 3>c$.
+\end{enumerate}
+
+\section*{Exercice 5 - Traduction en langage propositionnel}
+On suppose vraies les propositions suivantes : \quad
+$p$ :  les chiens aboient  \quad et \quad $q$ :  la caravane passe .
+\begin{enumerate}[label=\alph*)]
+  \item Si la caravane passe, alors les chiens aboient.
+  \item Les chiens n'aboient pas.
+  \item La caravane ne passe pas ou les chiens aboient.
+  \item Les chiens n'aboient pas et la caravane ne passe pas.
+\end{enumerate}
+
+\section*{Exercice 6 - Équivalence entre A et B ? Donner l'implication vraie s'il y en a une.}
+\paragraph{Exemple 1.}
+\textbf{Proposition A} : Pour toute porte, il existe une clé qui ouvre la porte.\\
+\textbf{Proposition B} : Il existe une clé telle que, pour toute porte, cette clé ouvre la porte.
+
+\medskip
+\paragraph{Exemple 2.}
+\textbf{Proposition A} : Pour tout $x\in\mathbb{R}$, il existe $y\in\mathbb{R}$ tel que $y<x$.\\
+\textbf{Proposition B} : Il existe $y\in\mathbb{R}$ tel que, pour tout $x\in\mathbb{R}$, $y<x$.
+
+\section*{Exercice 7 - Relations logiques entre assertions}
+Soit l'univers  les hommes . Examiner les relations logiques (compatibilité, contradiction, contraires,
+subalternes, etc.) entre :
+\begin{enumerate}[label=\Alph*)]
+  \item Tous les hommes sont mortels.
+  \item Tous les hommes sont immortels.
+  \item Aucun homme n'est mortel.
+  \item Aucun homme n'est immortel.
+  \item Il existe des hommes immortels.
+  \item Il existe des hommes mortels.
+\end{enumerate}
+
+\section*{Exercice 8 - Ou exclusif (XOR)}
+On dit que  $P$ ou exclusif $Q$  est vrai si $P$ ou $Q$ est vrai, mais pas simultanément $P$ et $Q$.\\
+\textit{Écrire la table de vérité de $P\oplus Q$.}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{c c | c}
+$P$ & $Q$ & $P\oplus Q$ \\ \hline
+  &   &   \\
+  &   &   \\
+  &   &   \\
+  &   &   \\
+\end{tabular}
+\end{center}
+
+\section*{Exercice 9 - Traduction en langage naturel}
+En interprétant $p$ par  je pars , $q$ par  tu restes , et $r$ par  il n'y a personne ,
+traduire chacune des formules suivantes en phrases du langage courant :
+\begin{enumerate}[label=\arabic*.]
+  \item $(p \land \neg q)\Rightarrow r$
+  \item $(\neg p \lor \neg q)\Rightarrow \neg r$
+\end{enumerate}
+
+\section*{Exercice 10 - Évaluer les formules (en ne tenant compte que des valeurs données)}
+Évaluer les expressions suivantes en utilisant uniquement les valeurs indiquées (les autres variables restent indéterminées).
+\begin{enumerate}[label=\arabic*)]
+  \item $q \Rightarrow (p \Rightarrow r)$, \quad avec $q=\mathrm{0}$.
+  \item $p \land (p \lor q)$, \quad avec $q=\mathrm{1}$.
+  \item $p \lor (q \Rightarrow r)$, \quad avec $q=\mathrm{0}$.
+\end{enumerate}
+% Indication : utiliser que $(\mathrm{F}\Rightarrow X)=\mathrm{V}$ et que $(\mathrm{F}\Rightarrow r)=\mathrm{V}$.
+
+\section*{Exercice 11 - Démontrer par tables de vérité}
+Montrer, à l'aide des tables de vérité, que les tautologies suivantes sont vraies :
+\[
+\bigl((P\Rightarrow Q)\land(Q\Rightarrow R)\bigr)\Rightarrow(P\Rightarrow R),
+\qquad
+\neg(P\lor Q)\ \Leftrightarrow\ (\neg P\land \neg Q),
+\qquad
+\neg(P\land Q)\ \Leftrightarrow\ (\neg P\lor \neg Q).
+\]
+% (Vous pouvez construire la table sur 8 lignes pour P,Q,R dans la première formule.)
+
+\section*{Exercice 12 - Tables de vérité \& classification}
+Évaluer les formules suivantes par tables de vérité, puis indiquer pour chacune si elle est \emph{satisfaisable}, \emph{réfutable}, \emph{tautologie} ou \emph{contradiction}.
+\begin{enumerate}[label=\arabic*)]
+  \item $(p\Rightarrow q)\ \lor\ (q\Rightarrow p)$.
+  \item $(p \Leftrightarrow q)\ \land\ \bigl(p \Leftrightarrow (\neg q)\bigr)$.
+\end{enumerate}
+% (Précisez la/les ligne(s) rendant la formule vraie/fausse pour justifier la classification.)
+
+\section*{Exercice 13 - Tautologies ? (méthode des tables de vérité)}
+Dire si chacune des formules suivantes est une tautologie (justifier par table de vérité) :
+\begin{enumerate}[label=\arabic*)]
+  \item $p \lor \neg p$ \hfill (principe du tiers exclu)
+  \item $\neg(p \land \neg p)$ \hfill (principe de non-contradiction)
+  \item $(p \lor q) \Rightarrow (q \lor p)$ \hfill (commutativité de $\lor$)
+  \item $p \Rightarrow (\,q \Rightarrow p\,)$ \hfill (le vrai est impliqué par tout)
+  \item $\neg p \Rightarrow (\,p \Rightarrow q\,)$ \hfill (le faux implique tout)
+  \item $(\,\neg p \Rightarrow p\,) \Rightarrow p$ \hfill (preuve par l'absurde)
+  \item $\bigl((\neg p \Rightarrow q)\ \land\ (\neg p \Rightarrow \neg q)\bigr)\Rightarrow p$ \hfill (preuve par l'absurde)
+  \item $\bigl((p \Rightarrow q)\ \land\ (q \Rightarrow r)\bigr)\Rightarrow(p \Rightarrow r)$ \hfill (transitivité de $\Rightarrow$)
+\end{enumerate}
+
+\section*{Exercice 14 - Raisonnement par l'absurde}
+Démontrer, \textbf{par l'absurde} :
+\begin{enumerate}[label=\arabic*.]
+  \item La somme d'un rationnel et d'un irrationnel est irrationnelle, et le \textbf{produit d'un rationnel non nul} par un irrationnel est irrationnel.
+  \item La racine carrée d'un nombre irrationnel positif est irrationnelle.
+  \item Un rectangle a pour aire $170\,\mathrm{m}^2$. Montrer que sa longueur est $>13\,\mathrm{m}$.
+  \item \textit{Si $n$ est le carré d'un entier non nul, alors $2n$ n'est pas le carré d'un entier.}
+  \item \textit{$\sqrt{2}$ est irrationnel} (supposer $\sqrt{2}=\dfrac{p}{q}$ sous forme irréductible, puis discuter la parité de $p$ et $q$).
+\end{enumerate}
+
+\section*{Exercice 15 - Démonstrations par contraposée}
+Démontrer, \textbf{par contraposée} :
+\begin{enumerate}[label=\arabic*.]
+  \item Si $n^2$ (avec $n\in\mathbb{N}$) est impair, alors $n$ est impair.
+  \item Si \emph{pour tout} $\varepsilon>0$, on a $a\le \varepsilon$, alors $a\le 0$ \ (avec $a\in\mathbb{R}$).
+  \item Soit $a$ un réel. Si $a^2$ n'est pas un multiple entier de $16$, alors $a/2$ n'est pas un entier pair.
+\end{enumerate}
+
+\section*{Exercice 16 - Contraposition : un cas arithmétique}
+On veut montrer, pour $n\ge 2$, $n\in\mathbb{N}$, la propriété
+\[
+\mathbf{P}:\quad \text{Si } (n^2-1) \text{ n'est pas divisible par } 8,\ \text{alors } n \text{ est pair.}
+\]
+\begin{enumerate}[label=\arabic*.]
+  \item Rappeler la \textbf{contraposée} de $A\Rightarrow B$ (avec $A,B$ des assertions) et \textbf{démontrer l'équivalence} $(A\Rightarrow B)\ \Leftrightarrow\ (\neg B\Rightarrow \neg A)$ à l'aide d'une table de vérité.
+  \item Écrire la \textbf{contraposée} de la proposition $\mathbf{P}$.
+  \item Montrer qu'un entier impair $n$ s'écrit sous la forme $n=4k+r$ avec $k\in\mathbb{N}$ et $r\in\{1,3\}$.
+  \item \textbf{Prouver la contraposée} obtenue en (2) à l'aide de (3).
+  \item Conclure : a-t-on bien démontré la propriété de l'énoncé ?
+\end{enumerate}
+
+\section*{Exercice 17 - Distance $<\tfrac{1}{n}$ (raisonnement par l'absurde)}
+Soit $n\in\mathbb{N}$. On se donne $n+1$ réels $x_0,x_1,\dots,x_n\in[0,1]$ vérifiant
+\[
+0 \le x_0 \le x_1 \le \cdots \le x_n \le 1.
+\]
+On veut démontrer par l'absurde la propriété $\mathbf{P}$ suivante :
+\[
+\mathbf{P}:\ \ \text{Il existe deux de ces réels qui sont distants de moins de } \frac{1}{n}.
+\]
+\begin{enumerate}[label=\arabic*.]
+  \item Écrire, à l'aide de \textbf{quantificateurs} et des différences $x_i - x_{i-1}$, une \textbf{formule logique} équivalente à $\mathbf{P}$.
+  \item Écrire la \textbf{négation} de cette formule logique.
+  \item Rédiger une \textbf{démonstration par l'absurde} de $\mathbf{P}$.
+\end{enumerate}
+
+\section*{Exercice 18 - Validité logique de raisonnements}
+Déterminer, pour chacun des raisonnements suivants, s'il est \textbf{logiquement valide} (valide / non valide). 
+\begin{enumerate}[label=\alph*)]
+  \item \textit{Tous les élèves sont charmants.\\
+  Or Édouard est charmant.\\
+  Donc Édouard est un élève.}
+
+  \item \textit{Édouard est un élève.\\
+  Or tous les élèves sont charmants.\\
+  Donc Édouard est charmant.}
+
+  \item \textit{Aucun élève n'est charmant.\\
+  Or Édouard n'est pas charmant.\\
+  Donc Édouard est un élève.}
+
+  \item \textit{Aucun élève n'est charmant.\\
+  Or Édouard est un élève.\\
+  Donc il n'est pas charmant.}
+
+  \item \textit{La plupart des élèves s'appellent Édouard.\\
+  Or tous les Édouard sont charmants.\\
+  Donc certains élèves sont charmants.}
+
+  \item \textit{Tous les élèves s'appellent Édouard.\\
+  Or certains Édouard ne sont pas charmants.\\
+  Donc certains élèves sont charmants.}
+\end{enumerate}
+
+\section*{Exercice 19 - Trois frères et trois crayons (déduction logique)}
+Trois frères, Alfred (A), Bernard (B) et Claude (C), ont chacun un crayon d'une couleur différente parmi
+\textbf{bleu}, \textbf{rouge} et \textbf{vert}. On sait que :
+\begin{enumerate}[label=\arabic*.]
+  \item Si le crayon d'Alfred est vert, alors le crayon de Bernard est bleu.
+  \item Si le crayon d'Alfred est bleu, alors le crayon de Bernard est rouge.
+  \item Si le crayon de Bernard n'est pas vert, alors le crayon de Claude est bleu.
+  \item Si le crayon de Claude est rouge, alors le crayon d'Alfred est bleu.
+\end{enumerate}
+\textbf{Question.} Déterminer la couleur de chacun des crayons (A, B, C). \\
+Y a-t-il plusieurs solutions possibles ? Justifier votre réponse.
+
+\section*{Exercice 20 - Variante corsée : trois frères, deux attributs, un menteur}
+Trois frères, Alfred (A), Bernard (B) et Claude (C), ont chacun \textbf{un stylo} et \textbf{un tee-shirt}, chacun
+coloré en \{bleu (B), rouge (R), vert (V)\}. Les couleurs de \textbf{stylos} forment une permutation de \{B,R,V\}; idem pour les \textbf{tee-shirts}. 
+De plus, \textbf{aucun frère n'a la même couleur pour son stylo et son tee-shirt}.
+
+On sait que les \textbf{quatre implications sur les \underline{stylos}} ci-dessous sont vraies :
+\begin{enumerate}[label=(S\arabic*)]
+  \item Si le stylo d'Alfred est vert, alors le stylo de Bernard est bleu.
+  \item Si le stylo d'Alfred est bleu, alors le stylo de Bernard est rouge.
+  \item Si le stylo de Bernard n'est pas vert, alors le stylo de Claude est bleu.
+  \item Si le stylo de Claude est rouge, alors le stylo d'Alfred est bleu.
+\end{enumerate}
+
+Chaque frère énonce ensuite une phrase \textbf{sur les \underline{tee-shirts}} (et croisements stylo/tee-shirt) :
+\begin{enumerate}[label=(T\arabic*)]
+  \item[\textnormal{(T1)}] (Alfred)  Mon tee-shirt n'est ni bleu, ni de la couleur du stylo de Bernard. 
+  \item[\textnormal{(T2)}] (Bernard)  Le tee-shirt de Claude a la couleur du stylo d'Alfred. 
+  \item[\textnormal{(T3)}] (Claude)  Le tee-shirt de Bernard a la même couleur que son propre stylo. 
+\end{enumerate}
+
+Enfin, on sait que \textbf{parmi (T1), (T2), (T3), exactement une est fausse} (un seul frère ment sur sa phrase de tee-shirt).
+
+\medskip
+\noindent\textbf{Travail demandé.}
+\begin{enumerate}[label=\alph*)]
+  \item \textbf{Formalisation.} Introduire des variables propositionnelles du type 
+  $A^p_B$ (le \emph{stylo} d'Alfred est bleu), $B^t_R$ (le \emph{tee-shirt} de Bernard est rouge), etc., 
+  et traduire formellement (S1)–(S4), (T1)–(T3), ainsi que les contraintes  permutations  et 
+   stylo $\neq$ tee-shirt pour chaque frère .
+  \item \textbf{Déduction.} À partir de cette formalisation, déterminer la couleur \emph{unique} de chaque stylo et de chaque tee-shirt, et identifier \emph{qui ment}.
+  \item \textbf{Unicité.} Montrer qu'il n'existe \emph{aucune} autre affectation satisfaisant toutes les contraintes; préciser brièvement où portent les bifurcations éliminées.
+  \item \textbf{Minimalité (piège).} Parmi (S1)–(S4), déterminer si l'une est \emph{redondante} au regard du système enrichi par (T1)–(T3) et la contrainte  un seul mensonge . Justifier.
+  \item \textbf{Bonus.} Remplacer l'énoncé  exactement une (T\*) est fausse  par  exactement deux (T\*) sont fausses . 
+  Discuter l'existence de solutions et, le cas échéant, leur (non-)unicité.
+\end{enumerate}
+
+\medskip
+\emph{Conseils.} Vous pouvez raisonner par cas, utiliser des équivalences (contraposée, $\Rightarrow \Leftrightarrow \neg P \lor Q$), 
+ou modéliser en SAT léger (tableaux de vérité restreints / propagation d'implications).
+
+\paragraph{SAT (très bref) - à titre indicatif}
+\textsc{SAT} = \textbf{Satisfiability} (satisfiabilité booléenne) : avec des \emph{variables booléennes} (Vrai/Faux) et des \emph{contraintes logiques}, on demande s'il existe une affectation qui rend \emph{toutes} les contraintes vraies.
+On encode souvent en \textbf{CNF} (forme normale conjonctive) : conjonction ($\land$) de \emph{clauses}, chaque clause étant une disjonction ($\lor$) de \emph{littéraux} (variable ou sa négation).
+
+\smallskip
+\textbf{Dictionnaire utile.}
+\[
+P\Rightarrow Q \equiv (\neg P \lor Q)
+\qquad
+P\Leftrightarrow Q \equiv (\neg P \lor Q)\land(\neg Q \lor P)
+\]
+\[
+\text{ au moins un  }x_1,\dots,x_k :\ (x_1\lor\cdots\lor x_k)
+\quad
+\text{ au plus un  }x_1,\dots,x_k :\ \bigwedge_{i<j}(\neg x_i\lor \neg x_j)
+\]
+\[
+\text{ exactement un  }x_1,\dots,x_k :\ (\text{au moins un})\land(\text{au plus un})
+\]
+
+\smallskip
+\textbf{Mini-exemples.}
+\begin{itemize}
+  \item \emph{Propagation d'unités :}  Si j'ai un badge alors la porte s'ouvre; or j'ai un badge  
+  \quad $\Rightarrow$ \quad $(\neg B\lor O)\land B\ \vdash\ O$.
+  \item \emph{XOR :} $P\oplus Q$ (exactement un vrai) \quad $\equiv$ \quad $(P\lor Q)\land(\neg P\lor \neg Q)$.
+  \item \emph{Exactement un parmi trois :} 
+  $(x_1\lor x_2\lor x_3)\land(\neg x_1\lor \neg x_2)\land(\neg x_1\lor \neg x_3)\land(\neg x_2\lor \neg x_3)$.
+\end{itemize}
+
+\noindent\emph{Remarque.} L'énigme se résout aussi \emph{sans} SAT (raisonnement par cas/implications). SAT n'est ici qu'un \emph{outil de modélisation} compact.
+
+\section*{Exercice 21 - Choisir la bonne méthode (direct / cas / contraposée / absurde)}
+Pour chaque énoncé, \textbf{indiquer une méthode adaptée} puis démontrer.
+\begin{enumerate}[label=\arabic*.]
+  \item Si $m,n\in\mathbb{Z}$ sont impairs, alors $m^2+n^2$ est pair.
+  \item Pour tout $n\in\mathbb{Z}$, $n^3-n$ est divisible par $6$.
+  \item Si $x\le y$ et $x,y\in\mathbb{R}_{\ge 0}$, alors $\sqrt{x}\le \sqrt{y}$.
+  \item Si $a\mid b$ et $b\mid a$ (avec $a,b\in\mathbb{Z}\setminus\{0\}$), alors $|a|=|b|$.
+\end{enumerate}
+
+\section*{Exercice 22 - Contraposée : écrire puis prouver}
+\begin{enumerate}[label=\arabic*.]
+  \item  Si $ab$ est pair alors $a$ est pair ou $b$ est pair  ($a,b\in\mathbb{Z}$). \\
+        \emph{(i) Écrire la contraposée. (ii) Prouver l'énoncé en passant par la contraposée.}
+  \item Soit $x\in\mathbb{R}$.  Si $x^2=0$ alors $x=0$ . \\
+        \emph{(i) Écrire la contraposée. (ii) Démontrer.}
+  \item Soit $A\subseteq B$ deux ensembles. Montrer:  $x\notin B \Rightarrow x\notin A$ . \\
+        \emph{(i) Relier à la contraposée de  $x\in A \Rightarrow x\in B$ .}
+\end{enumerate}
+
+\section*{Exercice 23 - Absurde : il ne peut pas en être autrement}
+\begin{enumerate}[label=\arabic*.]
+  \item Il n'existe \textbf{pas} de plus petit rationnel strictement positif.
+  \item Il existe une infinité de nombres premiers.
+\end{enumerate}
+
+\section*{Exercice 24 - Récurrence (classique)}
+\begin{enumerate}[label=\arabic*.]
+  \item Pour tout $n\ge 1$, $1+3+5+\cdots+(2n-1)=n^2$.
+  \item Pour tout $n\ge 1$, $3\mid(7^n-4^n)$.
+\end{enumerate}
+
+\section*{Exercice 25 - Récurrence forte}
+\begin{enumerate}[label=\arabic*.]
+  \item Tout entier $n\ge 2$ s'écrit comme produit de nombres premiers.
+  \item Avec des timbres de valeurs $3$ et $5$, tout montant $m\ge 8$ peut être obtenu.
+\end{enumerate}
+
+\section*{Exercice 26 - Invariant (raisonnement "info-friendly" )}
+On dispose de jetons \textbf{Rouges} (R) et \textbf{Bleus} (B). À chaque coup, on choisit deux jetons:
+\[
+\text{même couleur } \Rightarrow \text{ on les remplace par \textbf{un} jeton \textbf{Rouge}};\qquad
+\text{couleurs différentes } \Rightarrow \text{ on les remplace par \textbf{un} jeton \textbf{Bleu}}.
+\]
+On part d'une configuration contenant $R_0$ jetons rouges et $B_0$ bleus.
+\begin{enumerate}[label=\arabic*.]
+  \item Montrer que le nombre total de jetons diminue d'une unité à chaque coup (le jeu termine).
+  \item Montrer que la \textbf{parité} du nombre de jetons \emph{rouges} est \textbf{invariante}.
+  \item En déduire la couleur du jeton final en fonction de la parité de $R_0$.
+\end{enumerate}
+\medskip
+\textit{Indication.} Travailler \emph{modulo 2} sur le nombre de jetons rouges, et examiner les trois cas (RR), (BB), (RB).
+
+\section*{Exercice 27 - Récurrence et identités classiques}
+\begin{enumerate}[label=\arabic*.]
+  \item Par récurrence sur $n$, montrer $\displaystyle \sum_{k=0}^n \binom{n}{k} = 2^n$.
+  \item Montrer $\displaystyle \sum_{k=0}^n k\binom{n}{k} = n\,2^{\,n-1}$ (indice : dériver $(1+x)^n$).
+  \item Pour $n\ge 1$, prouver $1+\frac12+\cdots+\frac{1}{2^n} < 2$ (récurrence ou majoration télescopique).
+\end{enumerate}
+
+\section*{Exercice 28 - Tiroirs et divisibilité}
+\begin{enumerate}[label=\arabic*.]
+  \item (Restes modulo 7) Montrer que parmi $8$ entiers, deux ont le même reste modulo $7$.
+  \item (Chaîne de divisibilité) Soient $51$ entiers distincts dans $\{1,\dots,100\}$. Prouver qu'il en existe deux tels que l'un divise l'autre.
+  \item (Différences multiples) Dans tout sous-ensemble de $\{1,\dots,2n\}$ à $n+1$ éléments, prouver qu'il existe deux éléments dont la différence est $\le n$.
+\end{enumerate}
+
+\section*{Exercice 29 - Preuve de terminaison et d'exactitude (algorithme d'Euclide)}
+On considère l'algorithme : \quad \textbf{tant que} $b\ne 0$ \textbf{faire} $(a,b)\leftarrow (b,\ a\bmod b)$.
+\begin{enumerate}[label=\arabic*.]
+  \item (\emph{Invariant}) Montrer $\gcd(a,b)=\gcd(b,\ a\bmod b)$ à chaque itération.
+  \item (\emph{Variant}) Justifier que la suite des secondes composantes $b$ décroît strictement et reste $\ge 0$ (terminaison).
+  \item (\emph{Correction}) Conclure que l'algorithme renvoie $\gcd(a_0,b_0)$.
+\end{enumerate}
+
+%\section*{Exercice 30 - Pour aller plus loin : mini-Sudoku 4$\times$4 (option SAT)}
+%On remplit une grille $4\times 4$ avec les chiffres $\{1,2,3,4\}$ de sorte que chaque \textbf{ligne}, chaque \textbf{colonne} et chaque \textbf{bloc $2\times 2$} contiennent chacun \emph{exactement une fois} chaque chiffre.
+%
+%\medskip
+%\noindent\textbf{Grille.}
+%\[
+%\begin{array}{|c|c||c|c|}
+%\hline
+%\phantom{0} & 2 & \phantom{0} & \phantom{0} \\\hline
+%\phantom{0} & \phantom{0} & 3 & \phantom{0} \\\hline\hline
+%3 & \phantom{0} & \phantom{0} & 2 \\\hline
+%\phantom{0} & \phantom{0} & 1 & \phantom{0} \\\hline
+%\end{array}
+%\]
+%
+%\medskip
+%\noindent\textbf{Travail demandé.}
+%\begin{enumerate}[label=\alph*)]
+%  \item (\emph{Raisonnement pur}) Résoudre la grille par déductions logiques (lignes/colonnes/blocs).
+%  \item (\emph{Modélisation}) Introduire des booléennes $X_{r,c}^{(d)}$ :  la case $(r,c)$ vaut $d$ . Écrire les contraintes “\textbf{exactement un}” :
+%  \begin{itemize}
+%    \item par \textbf{case} : pour chaque $(r,c)$, exactement un $d\in\{1,2,3,4\}$ est vrai ;
+%    \item par \textbf{ligne} : pour chaque $r$ et chaque $d$, exactement une colonne $c$ vérifie $X_{r,c}^{(d)}$ ;
+%    \item par \textbf{colonne} : pour chaque $c$ et chaque $d$, exactement une ligne $r$ vérifie $X_{r,c}^{(d)}$ ;
+%    \item par \textbf{bloc} : même principe pour chaque bloc $2\times 2$ et chaque $d$.
+%  \end{itemize}
+%  \item (\emph{Option SAT courte}) En CNF (forme conjonctive), “exactement un parmi $x_1,\dots,x_k$” s'écrit :
+%  \[
+%    (x_1\lor\cdots\lor x_k)\ \land\ \bigwedge_{i<j}(\neg x_i\lor \neg x_j).
+%  \]
+%  Encoder deux familles de contraintes au choix (par case + par ligne, ou par case + par bloc).
+%  \item (\emph{Unicité}) La solution est-elle unique ? Justifier brièvement.
+%\end{enumerate}
+%
+%\medskip
+%\noindent\textit{Remarque.} L'option SAT est \emph{facultative}. Elle illustre comment traduire un problème combinatoire en contraintes logiques compactes.
+
+\section*{Exercice 30 - Pour aller plus loin : synthèse des méthodes de raisonnement}
+On veut relier et mettre en pratique quatre techniques : \textbf{induction simple}, \textbf{induction forte},
+\textbf{principe du bon ordre} (tout sous-ensemble non vide de $\mathbb{N}$ possède un plus petit élément), 
+et \textbf{méthode du plus petit contre-exemple / descente infinie}.
+
+\begin{enumerate}[label=\alph*)]
+  \item (\textbf{Équivalences de principes})  
+  Montrer que, sur $\mathbb{N}$, les principes suivants sont \emph{équivalents} :
+  \begin{enumerate}[label=\roman*)]
+    \item Induction simple : $P(0)$ et $\forall n\,(P(n)\Rightarrow P(n{+}1)) \Rightarrow \forall n\,P(n)$.
+    \item Induction forte : $P(0)$ et $\forall n\,\big((\forall k\le n\,P(k))\Rightarrow P(n{+}1)\big)\Rightarrow \forall n\,P(n)$.
+    \item Bon ordre : tout $S\subseteq\mathbb{N}$ non vide admet un \emph{minimum}.
+  \end{enumerate}
+  \emph{Indication :} (iii)$\Rightarrow$(i) par l'ensemble des contre-exemples; (i)$\Rightarrow$(ii) en  empilant  l'hérédité; (ii)$\Rightarrow$(iii) par contraposée.
+
+  \item (\textbf{Plus petit contre-exemple})  
+  Prouver par la méthode du \emph{plus petit contre-exemple} que pour tout $n\ge 2$, 
+  $n$ admet un \textbf{diviseur premier} $\le \sqrt{n}$.  
+  \emph{Indication :} supposer faux, prendre le plus petit $n$ sans tel diviseur, factoriser $n=ab$ avec $2\le a\le b$, 
+  et utiliser la minimalité.
+
+  \item (\textbf{Descente infinie})  
+  Montrer qu'il n'existe \textbf{aucuns} entiers positifs $(x,y)$ tels que $x^2=3y^2$.  
+  \emph{Indication :} raisonner par l'absurde; à partir d'une solution minimale pour $x$, construire une solution plus petite.
+
+  \item (\textbf{Induction forte - existence/unicité})  
+  \begin{enumerate}[label=\roman*)]
+    \item (\emph{Existence}) Par \textbf{induction forte}, démontrer que tout entier $n\ge 2$ se factorise en produit de nombres premiers.
+    \item (\emph{Unicité}) Par \textbf{plus petit contre-exemple}, montrer que cette factorisation est \emph{unique} à l'ordre près.
+  \end{enumerate}
+
+  \item (\textbf{Comparaison des preuves})  
+  Choisir l'un des énoncés (b), (c) ou (d.i) et en donner \textbf{deux} démonstrations distinctes 
+  parmi : induction simple, induction forte, bon ordre / plus petit contre-exemple, absurde.
+  Discuter en quelques lignes les avantages de chaque stratégie.
+\end{enumerate}
+
+% ===================== ANNEXE : CORRIGÉS =====================
+\clearpage
+\appendix
+\section{Corrigés}
+
+\section*{Corrigé - Exercice 20 (variante corsée)}
+
+\paragraph{1) Stylos (S1–S4) \;:\; déduction et unicité.}
+On note les couleurs $B$ (bleu), $R$ (rouge), $V$ (vert). Les stylos forment une permutation de $\{B,R,V\}$.
+\begin{itemize}
+  \item \textbf{Cas $A^p=B$.} Par (S2) \;$A^p=B \Rightarrow B^p=R$. Alors $B^p\ne V$ donc (S3) impose $C^p=B$, ce qui violerait la permutation ($B$ déjà chez $A$). \textit{Impossible}.
+  \item \textbf{Cas $A^p=V$.} Par (S1) \;$A^p=V \Rightarrow B^p=B$. Alors $B^p\ne V$ donc (S3) impose $C^p=B$, encore une duplication. \textit{Impossible}.
+  \item \textbf{Donc $A^p=R$.} Alors (S4) impose $C^p\ne R$ (car $C^p=R \Rightarrow A^p=B$ serait faux). 
+        Par (S3), si $B^p\ne V$ alors $C^p=B$; cela duplique $B$ si on mettait $B^p=B$. On en déduit \;$B^p=V$ et \;$C^p=B$.
+\end{itemize}
+\[
+\boxed{\,A^p=R,\quad B^p=V,\quad C^p=B\,}\quad\text{(unique).}
+\]
+
+\paragraph{2) Tee-shirts et phrases (T1–T3) avec les contraintes du sujet.}
+Contraintes tee-shirts : permutation de $\{B,R,V\}$ \textbf{et} pour chaque frère, \emph{tee-shirt $\neq$ stylo}.
+
+\smallskip
+\noindent Avec $A^p=R,\,B^p=V,\,C^p=B$ :
+\begin{align*}
+&\text{T1 (Alfred) : } A^t\not= B \ \text{et}\ A^t\not= B^p(=V) \ \Longrightarrow\ A^t=R,\\
+&\text{T2 (Bernard) : } C^t = A^p = R,\\
+&\text{T3 (Claude) : } B^t = B^p = V.
+\end{align*}
+Or les contraintes imposent \emph{aussi} $A^t\not= A^p(=R)$, $B^t\not= B^p(=V)$, $C^t\not= C^p(=B)$. 
+Ainsi, \textbf{T1 vraie} forcerait $A^t=R$ \emph{interdit}; \textbf{T3 vraie} forcerait $B^t=V$ \emph{interdit}. 
+Donc sous les contraintes données, on doit avoir \emph{au moins} T1 et T3 fausses. \\
+\[
+\Rightarrow\ \textbf{Il est impossible d'avoir  exactement une  des (T1–T3) fausse : \emph{énoncé insatisfaisable}.}
+\]
+
+\paragraph{3) Correction A (minimale) - remplacer  exactement une  par  exactement deux  fausses.}
+On conserve toutes les contraintes (\emph{tee-shirt $\neq$ stylo} + permutation) et on suppose \emph{exactement deux} des (T1–T3) fausses.
+On peut réaliser :
+\[
+C^t=R\ \ (\text{T2 vraie}),\qquad B^t=B,\qquad A^t=V.
+\]
+Vérifications : $A^t\not=A^p$, $B^t\not=B^p$, $C^t\not=C^p$ et $\{A^t,B^t,C^t\}=\{B,R,V\}$.
+\[
+\text{T1: }A^t=V\ \Rightarrow\ \text{ ni bleu ni vert  est \emph{fausse}};\qquad
+\text{T2: }C^t=R\ \Rightarrow\ \text{vraie};\qquad
+\text{T3: }B^t=B\not=V\ \Rightarrow\ \text{fausse}.
+\]
+On a bien \textbf{exactement deux} fausses (T1 et T3). Cette affectation est \emph{unique} sous ces contraintes.
+
+\paragraph{4) Correction B (alternative) - garder  exactement une  fausse, mais supprimer  tee-shirt $\neq$ stylo .}
+Si l'on retire la contrainte $($tee-shirt différent du stylo pour chaque frère$)$ et qu'on garde la permutation des tee-shirts, 
+on peut prendre
+\[
+C^t=R\ (\text{T2 vraie}),\quad B^t=V\ (\text{T3 vraie}),\quad A^t=B.
+\]
+Alors T1 ( A$^t$ n'est ni bleu ni couleur de $B^p=V$ ) est \textbf{fausse} (car $A^t=B$) et c'est la \textbf{seule} fausse. 
+Toutes les autres contraintes sont satisfaites.
+
+\paragraph{Conclusion.}
+\begin{itemize}
+  \item Dans la version initiale (avec  tee-shirt $\neq$ stylo  \emph{et}  exactement une est fausse ), l'énigme est \textbf{incohérente}.
+  \item Deux réparations naturelles :
+  \begin{itemize}
+    \item \textbf{A} :  exactement deux sont fausses  $\Rightarrow$ solution unique \;$A^t=V,\ B^t=B,\ C^t=R$.
+    \item \textbf{B} : retirer  tee-shirt $\neq$ stylo  $\Rightarrow$  exactement une fausse  réalisable et unique \;$A^t=B,\ B^t=V,\ C^t=R$.
+  \end{itemize}
+\end{itemize}
+
+% -------------------------------------------------------------
+
+\section*{Corrigé - Exercice 30}
+
+\begin{enumerate}[label=\alph*)]
+
+\item \textbf{(Équivalences de principes)}
+
+\emph{(iii) $\Rightarrow$ (i).} Supposons le \emph{bon ordre} vrai. Soit $S=\{n\in\mathbb{N}\mid \neg P(n)\}$ l'ensemble des contre-exemples. 
+Si $S\neq\varnothing$, il admet un minimum $m$. On ne peut avoir $m=0$ puisque $P(0)$ est vraie. 
+Donc $m>0$ et $P(m-1)$ est vraie; par hérédité $P(m)$ est vraie, contradiction. Ainsi $S=\varnothing$ et $\forall n\,P(n)$.
+
+\emph{(i) $\Rightarrow$ (ii).} Posons $Q(n):\;(\forall k\le n,\ P(k))$. On a $Q(0)$ par $P(0)$. 
+Si $Q(n)$ est vraie, l'hypothèse d'induction \emph{forte} donne $P(n+1)$, donc $Q(n+1)$ est vraie. 
+Par \emph{induction simple} sur $Q$, on obtient $\forall n,\ Q(n)$, donc $\forall n,\ P(n)$.
+
+\emph{(ii) $\Rightarrow$ (iii) (par contraposée).} Supposons qu'il existe $S\subseteq\mathbb{N}$ non vide \emph{sans} minimum. 
+Posons $P(n):\; n\notin S$. Alors $P(0)$ est vraie (sinon $0$ serait le minimum de $S$). 
+Si $\forall k\le n,\ P(k)$ et si $n+1\in S$, alors $n+1$ serait le plus petit élément de $S$, contradiction; donc $P(n+1)$. 
+Par \emph{induction forte}, $\forall n,\ P(n)$; ainsi $S=\varnothing$, contradiction. Donc le \emph{bon ordre} est vrai.
+
+\item \textbf{(Plus petit contre-exemple)}
+\smallskip
+
+\emph{Forme correcte.} Pour $n\ge 2$ \textbf{composé}, il existe un \textbf{diviseur premier} $p$ de $n$ tel que $p\le \sqrt{n}$.
+(En effet, si $n$ est premier et $n>\sqrt{n}$, la version  $p\le \sqrt{n}$  est fausse.)
+
+\emph{Preuve (plus petit contre-exemple).} Supposons qu'il existe un $n\ge 2$ composé \emph{sans} diviseur premier $\le \sqrt{n}$, 
+et choisissons-le \emph{minimal}. Comme $n$ est composé, $n=ab$ avec $2\le a\le b<n$. Alors $a\le \sqrt{n}$ (sinon $ab> \sqrt{n}\cdot \sqrt{n}=n$).
+Si $a$ est premier, on a trouvé $p=a\le \sqrt{n}$ (contradiction). 
+Si $a$ est composé, par minimalité de $n$, $a$ admet un \emph{diviseur premier} $p\le \sqrt{a}\le \sqrt{n}$; alors $p\mid n$, contradiction. 
+Donc l'assertion corrigée est démontrée.
+
+\item \textbf{(Descente infinie)}
+\smallskip
+
+Supposons qu'il existe des entiers positifs $(x,y)$ tels que $x^2=3y^2$, et choisissons-en un avec $x$ minimal. 
+Alors $3\mid x$, donc $x=3x_1$; en substituant: $9x_1^2=3y^2\Rightarrow y^2=3x_1^2$, donc $3\mid y$ et $y=3y_1$. 
+On obtient $(x_1,y_1)$ \emph{plus petit} vérifiant la même équation, contradiction avec la minimalité de $x$. 
+Donc aucune solution entière positive n'existe.
+
+\item \textbf{(Induction forte - existence / unicité)}
+
+\emph{(i) Existence (induction forte).} Pour $n=2$, c'est premier. Soit $n\ge 2$ tel que tout $m$ avec $2\le m\le n$ 
+se factorise en produit de nombres premiers. Pour $n+1$, soit $n+1$ est premier, soit $n+1=ab$ avec $2\le a\le b\le n$. 
+Par l'hypothèse d'induction forte, $a$ et $b$ sont produits de nombres premiers; donc $n+1$ l'est aussi.
+
+\emph{(ii) Unicité (plus petit contre-exemple + lemme d'Euclide).} 
+Supposons l'existence d'un $n\ge 2$ admettant \emph{deux} factorisations en nombres premiers distinctes et prenons le plus petit. 
+Écrivons $n=p_1\cdots p_r=q_1\cdots q_s$ avec $p_1\le\cdots\le p_r$ et $q_1\le\cdots\le q_s$. 
+Le \textbf{lemme d'Euclide} dit: si $p$ est premier et $p\mid ab$, alors $p\mid a$ ou $p\mid b$. 
+Comme $p_1\mid n$, on a $p_1\mid q_j$ pour un certain $j$, donc $p_1=q_j$. En supprimant ce facteur commun, 
+on obtient une factorisation double d'un entier $<n$, contredisant la minimalité. 
+Donc la factorisation en nombres premiers est \emph{unique} à l'ordre près.
+
+\item \textbf{(Deux preuves pour un même énoncé) - choix : partie (c)}
+\smallskip
+
+\emph{Preuve 1 (descente, ci-dessus).} Donne immédiatement l'impossibilité d'une solution entière positive.
+
+\emph{Preuve 2 (arithmétique modulaire).} Modulo $3$, un carré est $\equiv 0$ ou $\equiv 1$. 
+De $x^2=3y^2$, on déduit $x^2\equiv 0\pmod 3$, donc $3\mid x$ et $x=3x_1$. 
+En remplaçant, $9x_1^2=3y^2$ donc $y^2\equiv 0\pmod 3$ et $3\mid y$. 
+En itérant, on obtient une infinité de divisibilités par $3$, impossible pour des entiers non nuls. 
+Donc il n'existe pas de solution.
+
+\end{enumerate}
+
+\end{document}

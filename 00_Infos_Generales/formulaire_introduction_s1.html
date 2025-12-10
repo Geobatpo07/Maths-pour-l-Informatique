@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulaire d’introduction — S1</title>
+<style>
+  :root{--bg:#f7f7fb;--fg:#111;--muted:#666;--card:#fff;--pri:#2e6bff}
+  body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:var(--bg);color:var(--fg);margin:0}
+  .container{max-width:900px;margin:32px auto;padding:0 16px}
+  .card{background:var(--card);border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.06);padding:24px;margin-bottom:20px}
+  h1{margin:0 0 8px 0} h2{margin:18px 0 10px 0;font-size:1.1rem}
+  .muted{color:var(--muted);font-size:.95rem}
+  label{display:block;margin:10px 0 6px}
+  input[type=text], input[type=email], textarea, select{
+    width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:10px;font-size:1rem;background:#fff
+  }
+  textarea{min-height:110px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #ddd;padding:8px 10px;border-radius:999px}
+  .likert{display:flex;align-items:center;gap:14px;margin:6px 0 12px}
+  .likert input{margin:0 2px}
+  .actions{display:flex;gap:10px;margin-top:16px}
+  button{background:var(--pri);color:#fff;border:none;border-radius:12px;padding:10px 16px;font-size:1rem;cursor:pointer}
+  .note{font-size:.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Formulaire d’introduction (Séance 1)</h1>
+      <div class="muted">But : mieux vous connaître pour adapter le cours. Vos réponses sont confidentielles.</div>
+    </div>
+
+    <form class="card" onsubmit="alert('Merci ! (Cette maquette ne soumet pas encore les réponses)'); return false;">
+      <h2>1) À propos de vous (optionnel)</h2>
+      <div class="row">
+        <div>
+          <label>Prénom / Nom</label>
+          <input type="text" name="name">
+        </div>
+        <div>
+          <label>Adresse e-mail</label>
+          <input type="email" name="email">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Pseudo à utiliser en classe</label>
+          <input type="text" name="alias">
+        </div>
+        <div>
+          <label>Pronoms</label>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="pronoms" value="elle"> elle</label>
+            <label class="chip"><input type="checkbox" name="pronoms" value="il"> il</label>
+            <label class="chip"><input type="checkbox" name="pronoms" value="iel"> iel</label>
+            <label class="chip"><input type="checkbox" name="pronoms" value="np"> préfère ne pas répondre</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Filière / Niveau</label>
+          <input type="text" name="track">
+        </div>
+        <div>
+          <label>Expérience en programmation</label>
+          <select name="xp">
+            <option>Aucune</option><option>Débutant</option><option>Intermédiaire</option><option>Avancé</option>
+          </select>
+        </div>
+      </div>
+      <label>Langages déjà utilisés</label>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="langs" value="Python"> Python</label>
+        <label class="chip"><input type="checkbox" name="langs" value="Java"> Java</label>
+        <label class="chip"><input type="checkbox" name="langs" value="C/C++"> C/C++</label>
+        <label class="chip"><input type="checkbox" name="langs" value="JavaScript"> JavaScript</label>
+        <label class="chip"><input type="checkbox" name="langs" value="R"> R</label>
+        <label class="chip"><input type="checkbox" name="langs" value="Autre"> Autre</label>
+      </div>
+      <div class="row">
+        <div>
+          <label>Accès ordinateur personnel</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="ordi" value="oui"> Oui</label>
+            <label class="chip"><input type="radio" name="ordi" value="non"> Non</label>
+          </div>
+        </div>
+        <div>
+          <label>Connexion Internet régulière</label>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="internet" value="oui"> Oui</label>
+            <label class="chip"><input type="radio" name="internet" value="non"> Non</label>
+          </div>
+        </div>
+      </div>
+      <label>Besoins d’accessibilité / aménagements</label>
+      <textarea name="access"></textarea>
+
+      <h2>2) Vos objectifs et motivations</h2>
+      <label>Pourquoi suivez-vous ce cours ?</label>
+      <textarea name="motivation"></textarea>
+      <label>Importance (1 = faible, 5 = très important)</label>
+      <div class="likert">
+        <span>1</span>
+        <input type="radio" name="importance" value="1">
+        <input type="radio" name="importance" value="2">
+        <input type="radio" name="importance" value="3">
+        <input type="radio" name="importance" value="4">
+        <input type="radio" name="importance" value="5">
+        <span>5</span>
+      </div>
+      <label>Thèmes qui vous motivent</label>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="themes" value="Logique"> Logique</label>
+        <label class="chip"><input type="checkbox" name="themes" value="Graphes"> Graphes</label>
+        <label class="chip"><input type="checkbox" name="themes" value="Combinatoire"> Combinatoire</label>
+        <label class="chip"><input type="checkbox" name="themes" value="Probabilités"> Probabilités</label>
+        <label class="chip"><input type="checkbox" name="themes" value="Complexité"> Complexité</label>
+        <label class="chip"><input type="checkbox" name="themes" value="Arithmétique modulaire"> Arithmétique modulaire</label>
+        <label class="chip"><input type="checkbox" name="themes" value="Autre"> Autre</label>
+      </div>
+
+      <h2>3) Auto-évaluation (1 = pas à l’aise … 5 = très à l’aise)</h2>
+      <div class="likert"><span>Formaliser un énoncé logique</span>
+        <input type="radio" name="ae1" value="1"><input type="radio" name="ae1" value="2"><input type="radio" name="ae1" value="3"><input type="radio" name="ae1" value="4"><input type="radio" name="ae1" value="5">
+      </div>
+      <div class="likert"><span>Lire une table de vérité</span>
+        <input type="radio" name="ae2" value="1"><input type="radio" name="ae2" value="2"><input type="radio" name="ae2" value="3"><input type="radio" name="ae2" value="4"><input type="radio" name="ae2" value="5">
+      </div>
+      <div class="likert"><span>Prouver par contraposée</span>
+        <input type="radio" name="ae3" value="1"><input type="radio" name="ae3" value="2"><input type="radio" name="ae3" value="3"><input type="radio" name="ae3" value="4"><input type="radio" name="ae3" value="5">
+      </div>
+      <div class="likert"><span>Utiliser des ensembles en Python (set)</span>
+        <input type="radio" name="ae4" value="1"><input type="radio" name="ae4" value="2"><input type="radio" name="ae4" value="3"><input type="radio" name="ae4" value="4"><input type="radio" name="ae4" value="5">
+      </div>
+      <div class="likert"><span>Tracer un graphe / BFS-DFS</span>
+        <input type="radio" name="ae5" value="1"><input type="radio" name="ae5" value="2"><input type="radio" name="ae5" value="3"><input type="radio" name="ae5" value="4"><input type="radio" name="ae5" value="5">
+      </div>
+      <div class="likert"><span>Complexité (O, Ω, Θ)</span>
+        <input type="radio" name="ae6" value="1"><input type="radio" name="ae6" value="2"><input type="radio" name="ae6" value="3"><input type="radio" name="ae6" value="4"><input type="radio" name="ae6" value="5">
+      </div>
+
+      <h2>4) Préférences d’apprentissage</h2>
+      <label>Je préfère</label>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="prefs" value="magistral"> mini-cours magistral</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="guides"> exercices guidés</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="binome"> travail en binôme</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="quiz"> quiz rapides</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="projets"> projets courts</label>
+        <label class="chip"><input type="checkbox" name="prefs" value="code"> explications par le code</label>
+      </div>
+      <label>Rythme souhaité</label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="rythme" value="lent"> plus lent</label>
+        <label class="chip"><input type="radio" name="rythme" value="ok"> correct</label>
+        <label class="chip"><input type="radio" name="rythme" value="rapide"> plus rapide</label>
+      </div>
+      <label>Disponibilités hors cours (soutien/mentorat)</label>
+      <textarea name="dispos"></textarea>
+      <label>Autorisez-vous l’enseignant à vous recontacter par e-mail pour du soutien ?</label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="contact" value="oui"> Oui</label>
+        <label class="chip"><input type="radio" name="contact" value="non"> Non</label>
+      </div>
+
+      <h2>5) Contrat pédagogique (facultatif)</h2>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="contrat" value="respect"> respecter le cadre</label>
+        <label class="chip"><input type="checkbox" name="contrat" value="participer"> participer régulièrement</label>
+        <label class="chip"><input type="checkbox" name="contrat" value="aide"> demander de l’aide</label>
+        <label class="chip"><input type="checkbox" name="contrat" value="feedback"> donner un feedback honnête</label>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Envoyer</button>
+        <div class="note">Cette maquette est locale. Pour collecter les réponses : connectez les champs à Google Forms / Formspree / backend.</div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

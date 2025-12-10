@@ -1,0 +1,284 @@
+\documentclass[aspectratio=169]{beamer}
+
+% ---------- Theme & language ----------
+\usetheme{Madrid}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usefonttheme{professionalfonts}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+\usepackage{xcolor,graphicx}
+\usepackage{tikz}
+\usepackage{booktabs}
+
+% --- Map common Unicode punctuation for pdfLaTeX ---
+\usepackage{textcomp}
+%\DeclareUnicodeCharacter{2019}{\textquotesingle} % '
+%\DeclareUnicodeCharacter{2013}{--}               % –
+%\DeclareUnicodeCharacter{2014}{\textemdash}      % -
+
+% ---------- Colors / style ----------
+\definecolor{fsgaBlue}{RGB}{0,91,171}
+\setbeamercolor{structure}{fg=fsgaBlue}
+\setbeamercolor{title}{fg=white,bg=fsgaBlue}
+\setbeamercolor{frametitle}{fg=fsgaBlue}
+\setbeamercolor{block title}{bg=fsgaBlue!10,fg=fsgaBlue}
+\setbeamercolor{block body}{bg=fsgaBlue!3}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% ---------- Shortcuts ----------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+% ---------- Meta ----------
+\title[Logique - Séance riche]{Logique \& méthodes de raisonnement}
+\subtitle{Mathématiques pour Informaticiens}
+\author[Geovany B. P. Laguerre]{Geovany Batista Polo LAGUERRE \textbar{} Data Scientist}
+\institute[FSGA \& UniQ]{FSGA - Université Quisqueya}
+\date{\today}
+
+% Place logo.png / logo2.png next to the .tex if you want them on the title
+\titlegraphic{%
+  \vspace{-0.8cm}\hspace{0.5cm}%
+  \includegraphics[height=1.1cm]{logo.png}\hfill
+  \includegraphics[height=1.1cm]{logo2.png}\hspace{0.5cm}
+}
+
+% ---------- Theorem-like ----------
+\newtheorem{theoreme}{Théorème}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollaire}{Corollaire}
+\theoremstyle{definition}
+\newtheorem{definitionenv}{Définition}
+\newtheorem{exemple}{Exemple}
+\newtheorem{exercice}{Exercice}
+
+\begin{document}
+
+% ===== Title =====
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\AtBeginSection[]{
+  \begin{frame}{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% ===== Objectifs =====
+\section{Objectifs}
+\begin{frame}{Objectifs de la séance}
+\begin{itemize}
+  \setlength\itemsep{3pt}
+  \item Lever les ambiguïtés du langage naturel par un langage formel ;
+  \item Manipuler connecteurs et tables de vérité ;
+  \item Comprendre implication et équivalence ; pratiquer les quantificateurs ;
+  \item Savoir utiliser : raisonnement direct, cas, contraposée, absurde, récurrence ;
+  \item Ancrer par des mini-exercices corrigés.
+\end{itemize}
+\end{frame}
+
+% ===== Pourquoi la logique ? Ambiguïtés & rigueur =====
+\section{Pourquoi la logique ?}
+\begin{frame}{Pourquoi la logique ? Ambiguïtés \& rigueur}
+\begin{block}{Ambiguïté typique : « ou »}
+\begin{itemize}
+  \setlength\itemsep{2pt}
+  \item \textbf{Ou inclusif} : $P \lor Q$ (vrai si au moins l'un est vrai) ;
+  \item \textbf{Ou exclusif (XOR)} : $P \oplus Q$ (vrai si exactement un des deux est vrai).
+\end{itemize}
+\end{block}
+\begin{block}{But du cours}
+Passer d'énoncés informels à des \textbf{assertions} formelles, puis à des \textbf{preuves} courtes et rigoureuses.
+\end{block}
+\end{frame}
+
+% ===== Assertions =====
+\section{Assertions}
+\begin{frame}{Assertions (propositions)}
+\begin{definitionenv}
+Une \textbf{assertion} est une phrase qui a une valeur de vérité (vraie ou fausse, pas les deux).
+\end{definitionenv}
+Exemples : « Il pleut », « $2+2=4$ », « $\forall x\in\R,\ x^2\ge 0$ ».
+\end{frame}
+
+% ===== Connecteurs =====
+\section{Connecteurs}
+\begin{frame}{Connecteurs logiques - définitions}
+\begin{columns}[T]
+\column{0.52\textwidth}
+\begin{itemize}
+  \setlength\itemsep{2pt}
+  \item NON : $\neg P$ ;
+  \item ET : $P\land Q$ ;
+  \item OU : $P\lor Q$ ;
+  \item Implication : $P\Rightarrow Q \equiv \neg P \lor Q$ ;
+  \item Équivalence : $P\Leftrightarrow Q \equiv (P\Rightarrow Q)\land(Q\Rightarrow P)$.
+\end{itemize}
+\column{0.48\textwidth}
+\begin{block}{Équivalences utiles}
+\begin{itemize}
+  \setlength\itemsep{2pt}
+  \item $\neg(P\land Q) \equiv (\neg P)\lor(\neg Q)$ ;
+  \item $\neg(P\lor Q) \equiv (\neg P)\land(\neg Q)$ ;
+  \item $(P\land(Q\lor R)) \equiv (P\land Q)\lor(P\land R)$ ;
+  \item $(P\Rightarrow Q) \equiv (\neg Q \Rightarrow \neg P)$ (contraposée).
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+% ===== Tables de vérité =====
+\section{Tables de vérité}
+\begin{frame}{Tables de vérité - ET, OU, NON}
+\begin{columns}[T]
+\column{0.33\textwidth}
+\begin{tabular}{c c c}
+\toprule
+$P$ & $Q$ & $P\land Q$\\\midrule
+1&1&1\\
+1&0&0\\
+0&1&0\\
+0&0&0\\\bottomrule
+\end{tabular}
+\column{0.33\textwidth}
+\begin{tabular}{c c c}
+\toprule
+$P$ & $Q$ & $P\lor Q$\\\midrule
+1&1&1\\
+1&0&1\\
+0&1&1\\
+0&0&0\\\bottomrule
+\end{tabular}
+\column{0.33\textwidth}
+\begin{tabular}{c c}
+\toprule
+$P$ & $\neg P$\\\midrule
+1&0\\
+0&1\\\bottomrule
+\end{tabular}
+\end{columns}
+\end{frame}
+
+% ===== XOR =====
+\section{XOR}
+\begin{frame}{OU exclusif (XOR)}
+\begin{tabular}{c c c}
+\toprule
+$P$ & $Q$ & $P\oplus Q$\\\midrule
+1&1&0\\
+1&0&1\\
+0&1&1\\
+0&0&0\\\bottomrule
+\end{tabular}
+\end{frame}
+
+% ===== Implication =====
+\section{Implication}
+\begin{frame}{Implication (P ⇒ Q)}
+\begin{itemize}
+  \setlength\itemsep{3pt}
+  \item $P\Rightarrow Q \equiv \neg P \lor Q$ ;
+  \item Fausse seulement si $P$ vraie et $Q$ fausse ;
+  \item Contraposée : $(\neg Q \Rightarrow \neg P)$.
+\end{itemize}
+\end{frame}
+
+% ===== Biconditionnel =====
+\section{Biconditionnel}
+\begin{frame}{Biconditionnel (P ⇔ Q)}
+\begin{tabular}{c c c c}
+\toprule
+$P$ & $Q$ & $P\Rightarrow Q$ & $P\Leftrightarrow Q$\\\midrule
+1&1&1&1\\
+1&0&0&0\\
+0&1&1&0\\
+0&0&1&1\\\bottomrule
+\end{tabular}
+\end{frame}
+
+% ===== Quantificateurs =====
+\section{Quantificateurs}
+\begin{frame}{Quantificateurs - \(\forall\) et \(\exists\)}
+\begin{itemize}
+  \setlength\itemsep{3pt}
+  \item $\forall x\in E\, P(x)$ : vrai si $P$ vaut pour tout $x$ ;
+  \item $\exists x\in E\, P(x)$ : vrai si $P$ vaut pour au moins un $x$ ;
+  \item Négations : $\neg(\forall x\,P)\equiv \exists x\,\neg P$ ; $\neg(\exists x\,P)\equiv \forall x\,\neg P$ ;
+  \item Attention à l'ordre : $\forall x\exists y \neq \exists y\forall x$ en général.
+\end{itemize}
+\end{frame}
+
+% ===== Méthodes de raisonnement =====
+\section{Méthodes de raisonnement}
+\begin{frame}{Méthodes de raisonnement - panorama}
+\begin{itemize}
+  \setlength\itemsep{3pt}
+  \item Direct ; par cas ; par contraposée ; par l'absurde ;
+  \item Par récurrence (simple/forte) ; bon ordre / plus petit contre-exemple ;
+  \item Invariants (jeux/processus).
+\end{itemize}
+\end{frame}
+
+% ===== Exemples de preuves courtes =====
+\section{Exemples de preuves courtes}
+\begin{frame}{Exemples de preuves courtes}
+\begin{block}{Direct - somme de rationnels}
+Si $a,b\in\Q$, écrire $a=\frac{p}{q}$, $b=\frac{r}{s}$, alors $a+b=\frac{ps+rq}{qs}\in\Q$.
+\end{block}
+\begin{block}{Cas par cas - \(|x-1|\le x^2-x+1\)}
+Étudier $x\ge 1$ (alors $|x-1|=x-1$) et $x<1$ ($|x-1|=1-x$) : dans les deux cas l'inégalité se vérifie.
+\end{block}
+\end{frame}
+
+\begin{frame}{Contraposée \& Absurde}
+\begin{block}{Contraposée - si \(n^2\) pair alors \(n\) pair}
+Supposer $n$ impair $\Rightarrow n=2k+1 \Rightarrow n^2=4k(k+1)+1$ impair. Donc contraposée prouvée.
+\end{block}
+\begin{block}{Absurde - \(\frac{a}{1+b}=\frac{b}{1+a}\Rightarrow a=b\) (a,b>0)}
+Supposer $a\ne b$. Par croisement : $a(1+a)=b(1+b)\Rightarrow a-a^2=b-b^2\Rightarrow (a-b)(1-a-b)=0$.  
+Or $a\ne b$ et $a,b>0\Rightarrow 1-a-b<0$ impossible avec égalité. Contradiction $\Rightarrow a=b$.
+\end{block}
+\end{frame}
+
+% ===== Contre-exemple / Récurrence =====
+\section{Contre-exemple / Récurrence}
+\begin{frame}{Contre-exemple \& Récurrence}
+\begin{block}{Contre-exemple}
+Tous les entiers >0 sont somme de deux carrés est faux : $3$ ne convient pas (et $7$ non plus).
+\end{block}
+\begin{block}{Récurrence - exemple}
+Montrer $\sum_{k=1}^n k = \frac{n(n+1)}{2}$ : initialisation $n=1$, hérédité $n\rightarrow n+1$ par ajout de $(n+1)$.
+\end{block}
+\end{frame}
+
+% ===== Mini-exercices =====
+\section{Mini-exercices}
+\begin{frame}{Mini-quiz (rapide)}
+\begin{enumerate}
+  \setlength\itemsep{3pt}
+  \item V/F : $P\Rightarrow Q \equiv \neg P \lor Q$ ;
+  \item Donner la table de vérité de XOR ;
+  \item Écrire la négation de $\forall x\in\R,\ \exists y\in\R,\ y>x$.
+\end{enumerate}
+\end{frame}
+
+% ===== Wrap-up =====
+\section{Wrap-up}
+\begin{frame}{Wrap-up \& suite}
+\begin{itemize}
+  \setlength\itemsep{3pt}
+  \item Outils : connecteurs, équivalences, quantificateurs ;
+  \item Méthodes : direct, cas, contraposée, absurde, récurrence, invariants ;
+  \item Prochaine étape : mise en pratique sur ensembles/relations/fonctions.
+\end{itemize}
+\end{frame}
+
+\end{document}

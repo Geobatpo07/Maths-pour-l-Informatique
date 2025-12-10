@@ -1,0 +1,23 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{Quelques motivations}{2}{section*.2}%
+\contentsline {section}{\numberline {1}Logique}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Assertions}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Connecteurs et tables de vérité}{2}{subsection.1.2}%
+\contentsline {paragraph}{NON, ET, OU (inclusif).}{2}{section*.3}%
+\contentsline {paragraph}{Implication et biconditionnel.}{2}{section*.4}%
+\contentsline {paragraph}{Équivalences classiques.}{2}{section*.5}%
+\contentsline {subsection}{\numberline {1.3}Quantificateurs}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Raisonnements}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Raisonnement direct}{3}{subsection.2.1}%
+\contentsline {paragraph}{Exemple.}{3}{section*.6}%
+\contentsline {subsection}{\numberline {2.2}Cas par cas}{3}{subsection.2.2}%
+\contentsline {paragraph}{Exemple.}{3}{section*.7}%
+\contentsline {subsection}{\numberline {2.3}Contraposée}{3}{subsection.2.3}%
+\contentsline {paragraph}{Exemple.}{3}{section*.8}%
+\contentsline {subsection}{\numberline {2.4}Absurde}{3}{subsection.2.4}%
+\contentsline {paragraph}{Exemple.}{3}{section*.9}%
+\contentsline {subsection}{\numberline {2.5}Contre-exemple}{3}{subsection.2.5}%
+\contentsline {paragraph}{Exemple.}{3}{section*.10}%
+\contentsline {subsection}{\numberline {2.6}Récurrence (aperçu)}{3}{subsection.2.6}%
+\contentsline {paragraph}{Exemples.}{3}{section*.11}%
+\contentsline {section}{Mini-exercices}{3}{section*.12}%

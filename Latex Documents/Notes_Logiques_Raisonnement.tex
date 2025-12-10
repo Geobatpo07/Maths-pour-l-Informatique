@@ -1,0 +1,191 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Encodage, langue, math ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem} % pour [label=\arabic*.] dans enumerate
+\usepackage{microtype} % meilleures césures/justifications
+\usepackage{hyperref}
+
+% --- Ensembles usuels & opérateurs logiques ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\impl}{\Rightarrow}
+\newcommand{\equi}{\Leftrightarrow}
+
+% --- Mise en page & logos ---
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{./}} % Assure-toi d'avoir logo.png et logo2.png ici
+\usepackage{xcolor}
+\usepackage{array} % pour colonnes p{...} dans tabular
+
+% --- Couleur d'accent (FSGA) ---
+\definecolor{fsgaBlue}{RGB}{0,91,171}
+
+% --- Méta (modifie ces 6 lignes) ---
+\newcommand{\Titre}{TD - Logique \& Raisonnement}
+\newcommand{\SousTitre}{Mathématiques pour Informaticiens}
+\newcommand{\Enseignant}{Geovany Batista Polo LAGUERRE \textbar{} Data Scientist}
+\newcommand{\Institution}{FSGA \& Université Quisqueya}
+\newcommand{\Semestre}{Semestre 1}
+\newcommand{\Annee}{2025--2026}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+
+  % Ligne logos
+  \makebox[\textwidth]{%
+    \includegraphics[height=1.6cm]{logo.png}\hfill
+    \includegraphics[height=1.6cm]{logo2.png}%
+  }
+
+  \vspace{1.8cm}
+
+  % Titre
+  {\LARGE\bfseries \Titre\par}
+  \vspace{0.35cm}
+  {\large\itshape \SousTitre\par}
+
+  \vspace{1.2cm}
+  % Barre d'accent
+  {\color{fsgaBlue}\rule{\textwidth}{1.4pt}}
+
+  \vspace{1.2cm}
+  % Informations (2e colonne large pour éviter les débordements)
+  \begin{tabular}{@{}l p{0.72\textwidth}}
+    \textbf{Enseignant :} & \Enseignant \\
+    \textbf{Institution :} & \Institution \\
+    \textbf{Semestre :} & \Semestre \\
+    \textbf{Année académique :} & \Annee \\
+    \textbf{Version :} & \today \\
+  \end{tabular}
+
+  \vfill
+  % Note de bas de page (facultatif)
+  {\small Ce document de Travaux Dirigés regroupe des exercices de logique (propositions, tables de vérité, équivalences, quantificateurs, méthodes de preuve).}
+
+\end{titlepage}
+
+% --- Table des matières en dehors de la page de garde ---
+\tableofcontents
+\clearpage
+
+% ===================== INTRO =====================
+\section*{Quelques motivations}
+\addcontentsline{toc}{section}{Quelques motivations}
+Les mathématiques fournissent un \emph{langage rigoureux} pour lever les ambiguïtés du langage naturel et une méthode pour décider du \emph{vrai} et du \emph{faux}.
+Exemples classiques : le mot « ou » peut être \emph{exclusif} (restaurant « fromage ou dessert ») ou \emph{inclusif} (jeu de cartes « as ou c\oe{}urs »).
+Les notions complexes (ex. continuité) se formalisent mieux avec des quantificateurs :
+\[
+\forall \varepsilon>0\, \exists \delta>0\, \forall x \in I \ (|x-x_0|<\delta \impl |f(x)-f(x_0)|<\varepsilon).
+\]
+
+\section{Logique}
+\subsection{Assertions}
+Une \textbf{assertion} est une phrase \emph{vraie ou fausse}, mais pas les deux. Exemples : « Il pleut. »,
+« $2+2=4$ », « $\forall x\in\R,\ x^2\ge 0$ ». À partir de deux assertions $P$ et $Q$, on fabrique de nouvelles assertions à l'aide de \textbf{connecteurs}.
+
+\subsection{Connecteurs et tables de vérité}
+\paragraph{NON, ET, OU (inclusif).}
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{2.2cm}}
+\multicolumn{3}{c}{\textbf{ET} $P\wedge Q$}\\\hline
+$P$ & $Q$ & $P\wedge Q$\\\hline
+1 & 1 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0\\\hline
+\end{tabular}\hspace{0.6cm}
+\begin{tabular}{>{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{2.2cm}}
+\multicolumn{3}{c}{\textbf{OU} $P\vee Q$}\\\hline
+$P$ & $Q$ & $P\vee Q$\\\hline
+1 & 1 & 1\\
+1 & 0 & 1\\
+0 & 1 & 1\\
+0 & 0 & 0\\\hline
+\end{tabular}\hspace{0.6cm}
+\begin{tabular}{>{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{2.2cm}}
+\multicolumn{2}{c}{\textbf{NON} $\neg P$}\\\hline
+$P$ & $\neg P$\\\hline
+1 & 0\\
+0 & 1\\\hline
+\end{tabular}
+\end{center}
+
+\paragraph{Implication et biconditionnel.}
+Par définition, $P\impl Q \ \equi\ \neg P \vee Q$ ; elle est \emph{fausse seulement} pour $(P,Q)=(1,0)$.
+Le \textbf{biconditionnel} est $P\equi Q \ \equi\ (P\impl Q)\wedge(Q\impl P)$.
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{1.2cm} >{\centering\arraybackslash}m{2.2cm} >{\centering\arraybackslash}m{2.2cm}}
+$P$ & $Q$ & $P\impl Q$ & $P\equi Q$\\\hline
+1 & 1 & 1 & 1\\
+1 & 0 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & 0 & 1 & 1\\\hline
+\end{tabular}
+\end{center}
+
+\paragraph{Équivalences classiques.}
+\begin{itemize}
+  \item Double négation : $P \equi \neg\neg P$.
+  \item De Morgan : $\neg(P\wedge Q)\equi (\neg P)\vee(\neg Q)$ ; $\neg(P\vee Q)\equi (\neg P)\wedge(\neg Q)$.
+  \item Distributivité : $P\wedge(Q\vee R)\equi (P\wedge Q)\vee(P\wedge R)$ et $P\vee(Q\wedge R)\equi (P\vee Q)\wedge(P\vee R)$.
+  \item Contraposée : $(P\impl Q)\equi (\neg Q\impl \neg P)$.
+\end{itemize}
+
+\subsection{Quantificateurs}
+Pour une propriété $P(x)$ et un ensemble $E$ :
+\begin{itemize}
+  \item $\forall x\in E\ P(x)$ : vrai si $P(x)$ est vraie pour \emph{tous} les $x\in E$ ;
+  \item $\exists x\in E\ P(x)$ : vrai s'il existe \emph{au moins un} $x\in E$ tel que $P(x)$.
+\end{itemize}
+\textbf{Négations :} $\neg(\forall x\, P)\equi \exists x\, \neg P$ ; \ $\neg(\exists x\, P)\equi \forall x\, \neg P$.\\
+\textbf{Attention à l'ordre :} en général $\forall x\, \exists y\, P(x,y)\ne \exists y\, \forall x\, P(x,y)$.
+
+\section{Raisonnements}
+\subsection{Raisonnement direct}
+Pour montrer $P\impl Q$, on suppose $P$ vraie et on déduit $Q$ par calculs/arguments.
+\paragraph{Exemple.} Si $a,b\in\Q$ alors $a+b\in\Q$ (écrire $a=\frac{p}{q}$, $b=\frac{p'}{q'}$ et sommer).
+
+\subsection{Cas par cas}
+On partitionne les possibilités et on traite chaque cas.
+\paragraph{Exemple.} Pour $x\in\R$, $|x-1|\le x^2-x+1$ selon $x\ge 1$ ou $x<1$.
+
+\subsection{Contraposée}
+Utiliser $(P\impl Q)\equi (\neg Q\impl \neg P)$.
+\paragraph{Exemple.} Si $n^2$ est pair alors $n$ est pair $\ \equi\ $ si $n$ est impair alors $n^2$ est impair.
+
+\subsection{Absurde}
+Supposer $P$ et $\neg Q$ et obtenir une contradiction.
+\paragraph{Exemple.} Si $\dfrac{a}{1+b}=\dfrac{b}{1+a}$ avec $a,b>0$ alors $a=b$.
+
+\subsection{Contre-exemple}
+Pour réfuter $\forall x\in E\, P(x)$, exhiber $x\in E$ tel que $\neg P(x)$.
+\paragraph{Exemple.} « Tout entier positif est somme de trois carrés » est fausse : $7$ ne convient pas.
+
+\subsection{Récurrence (aperçu)}
+Pour $P(n)$, $n\in\N$ : \textbf{initialisation} $P(n_0)$ ; \textbf{hérédité} $P(n)\impl P(n+1)$ ; \textbf{conclusion}.
+\paragraph{Exemples.} $2^n>n$ pour $n\ge 0$ ; $\sum_{k=1}^n k=\frac{n(n+1)}{2}$.
+
+\section*{Mini-exercices}
+\addcontentsline{toc}{section}{Mini-exercices}
+\begin{enumerate}
+  \item Écrire la table de vérité du \textbf{ou exclusif} (XOR).
+  \item Vérifier $\neg(P\wedge Q)\equi (\neg P)\vee(\neg Q)$ par la table.
+  \item Écrire la négation de « $P\impl Q$ ».
+  \item Rédiger les démonstrations des équivalences ci-dessus.
+  \item Donner la négation de « $P\wedge(Q\vee R)$ ».
+  \item Traduire avec quantificateurs : « Tout réel a un carré positif » et écrire la négation.
+  \item Récurrence : montrer $\sum_{k=1}^n k=\frac{n(n+1)}{2}$ ; montrer $(1+x)^n>1+nx$ pour $x>0$.
+\end{enumerate}
+
+\vfill
+\noindent\textit{Auteurs du chapitre d'origine : Arnaud Bodin, Benjamin Boutin, Pascal Romon.}
+
+\end{document}

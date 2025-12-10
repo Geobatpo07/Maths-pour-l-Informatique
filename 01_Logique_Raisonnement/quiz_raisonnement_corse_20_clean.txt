@@ -1,0 +1,168 @@
+$CATEGORY: $course$/Raisonnement (corse)
+
+// 1 Contraposée (formulation correcte)
+::Contraposée - continuité/dérivabilité::Quelle est la contraposée correcte de l'implication
+"Si f est dérivable en a alors f est continue en a" ? {
+= Si f n'est pas continue en a alors f n'est pas dérivable en a.
+~ Si f est continue en a alors f est dérivable en a.
+~ Si f n'est pas dérivable en a alors f n'est pas continue en a.
+~ Si f n'est pas dérivable en a alors f est continue en a.
+}
+
+// 2 Induction - repérer l'erreur (chevaux)
+::Induction - repérer l'erreur::Le "faux théorème" des chevaux "Tous les chevaux ont la même couleur"
+échoue parce que… {
+= au passage de n=1 à n=2, les ensembles ne se recouvrent pas et l'hérédité invoquée est invalide.
+~ la base n=1 est fausse.
+~ la conclusion est vraie mais la preuve est circulaire.
+~ on utilise la contraposée au lieu de l'induction.
+}
+
+// 3 Contre-exemple (valeur absolue)
+::Contre-exemple - valeur absolue::Choisissez TOUS les contre-exemples pour l'énoncé faux :
+"pour tous réels x,y, |x+y| = |x| + |y|" {
+~ x=0 ; y=0
+=%50% x=1 ; y=-1
+=%50% x=-1 ; y=1
+~ x=1 ; y=1
+}
+
+// 4 Absurde (sqrt(2) irrationnel) - hypothèse initiale
+::Absurde - racine de 2::Pour une preuve par l’absurde de "sqrt(2) est irrationnel", on commence par supposer… {
+= sqrt(2) = p/q sous forme irréductible avec p,q entiers non nuls.
+~ sqrt(2) est rationnel et p,q sont tous deux pairs.
+~ sqrt(2) n'est pas un nombre réel.
+~ sqrt(2) = p/q avec p,q quelconques, pas nécessairement irréductibles.
+}
+
+// 5 Terminaison - choisir l'outil
+::Terminaison - variant::On veut prouver la terminaison de :
+"tant que n>0 faire n <- n-3 si n>=3 sinon n <- n-1".
+Quel énoncé justifie le mieux la terminaison ? {
+= La fonction variante n décroît strictement dans N et est minorée par 0.
+~ Le principe d'invariance garantit que n reste pair.
+~ La contraposée assure que n=0 finit.
+~ La preuve par l’absurde suffit sans autre justification.
+}
+
+// 6 Négation - phrase en langage courant
+::Négation - triangles isocèles::Quelle est la négation correcte de "Tous les triangles sont isocèles" ? {
+= Il existe au moins un triangle qui n'est pas isocèle.
+~ Tous les triangles ne sont pas isocèles. 
+~ Aucun triangle n'est isocèle.
+~ Il existe au moins un triangle isocèle.
+}
+
+// 7 Tautologie classique (chaînage d'implications)
+::Tautologie - transitivité::La formule "((p->q) et (q->r)) -> (p->r)" est… {
+= une tautologie.
+~ une contradiction.
+~ seulement satisfaisable mais réfutable.
+}
+
+// 8 Contradiction classique
+::Contradiction - double équivalence::La formule "(p<->q) et (p<-> non q)" est… {
+~ une tautologie.
+= une contradiction.
+~ satisfaisable mais non tautologie.
+}
+
+// 9 Négation avec quantificateurs
+::Négation - quantificateurs 1::La négation correcte de "Pour tout x dans R, il existe y dans R, y > x" est… {
+= Il existe x dans R tel que, pour tout y dans R, y <= x.
+~ Pour tout x dans R, pour tout y dans R, y <= x.
+~ Il existe y dans R tel que, pour tout x dans R, y > x.
+~ Pour tout y dans R, il existe x dans R, y <= x.
+}
+
+// 10 Parité — méthode adaptée (sans modulo)
+::Raisonnement par cas - parité::Pour montrer "pour tout entier n, n^2 est de la forme 4k ou 4k+1", la méthode la plus naturelle est… {
+= un raisonnement par cas sur la parité de n.
+~ une preuve par l’absurde.
+~ une preuve par contraposée.
+~ une récurrence forte.
+}
+
+// 11 Induction forte - structure
+::Induction forte - structure::Dans une preuve par induction forte, l’hypothèse d’induction s’écrit… {
+= "Si P(k) est vraie pour tous k <= n, alors P(n+1)".
+~ "Si P(n) est vraie, alors P(n+1)" (c’est l’induction simple).
+~ "P(n) est vraie pour une infinité de n".
+}
+
+// 12 Plus petit contre-exemple - principe
+::Plus petit contre-exemple - principe::La méthode du plus petit contre-exemple consiste à… {
+= supposer l'existence d’un contre-exemple et choisir le plus petit (pour un ordre bien fondé).
+~ exhiber un exemple qui satisfait la propriété.
+~ remplacer l’induction par une preuve directe.
+}
+
+// 13 Invariant — jeu de jetons (R/B)
+::Invariant - jetons R/B::On remplace deux jetons par un : (RR)->R, (BB)->R, (RB)->B.
+Quel invariant permet de déterminer la couleur finale ? {
+= la parité du nombre de jetons rouges.
+~ la somme du nombre de jetons.
+~ la parité du nombre de jetons bleus est constante.
+~ la différence (nombre de rouges - nombre de bleus) est constante.
+}
+
+// 14 Chaînage par contraposées
+::Contraposée - chaînage::Des implications A->B et B->C découle… {
+= non C -> non A.
+~ non A -> non C (faux en général).
+~ C -> A (toujours vrai).
+}
+
+// 15 Sophisme - affirmation du conséquent
+::Argument invalide - conséquent::"Tous les étudiants sont mortels. Pierre est mortel. Donc Pierre est étudiant." Cet argument est… {
+= invalide (affirmation du conséquent).
+~ valide (modus ponens).
+~ valide (modus tollens).
+}
+
+// 16 RAA (réduction à l'absurde) pour une implication
+::Absurde - implication::Pour montrer "P->Q" par contradiction, on peut partir de… {
+= P et non Q, puis dériver une contradiction.
+~ non P et Q, puis dériver une contradiction.
+~ non P et non Q, puis dériver une contradiction.
+}
+
+// 17 Choix de technique — factorisation première
+::Choix de technique - facteurs premiers::Pour prouver "tout entier n>=2 a au moins un facteur premier", la technique la plus adaptée est… {
+= l’induction forte (ou bon ordre) sur n.
+~ la contraposée.
+~ un simple contre-exemple.
+}
+
+// 18 Équivalences — bon ordre vs. induction
+::Équivalences - contre-exemples::Quel sens d’équivalence s’appuie classiquement sur l’ensemble des contre-exemples muni du bon ordre ? {
+= Bon ordre -> Induction simple.
+~ Induction simple -> Bon ordre.
+~ Induction forte -> Induction simple.
+~ Induction simple -> Contraposée.
+}
+
+// 19 Invariant - damier et dominos
+::Invariant - damier/dominos::On retire deux coins opposés d’un damier 8x8 (même couleur), puis on tente de le paver par des dominos 1x2.
+Pourquoi est-ce impossible ? {
+= Chaque domino couvre une case noire et une case blanche; le damier modifié a 30 cases d’une couleur et 32 de l’autre : l’invariant "nb_noires - nb_blanches = 0" est violé.
+~ L’aire restante est impaire.
+~ Le périmètre est trop petit.
+~ Il existe forcément un bloc 2x2 isolé.
+}
+
+// 20 Induction - seuil juste pour 2^n < n!
+::Induction - seuil minimal::On veut prouver par induction que 2^n < n!. À partir de quelle base n0 l’énoncé est-il vrai (et l’induction fonctionne) ? {
+~ 1
+~ 2
+~ 3
+= 4
+}
+
+// 21 Contraposée — divisibilité (sans modulo)
+::Contraposée - divisibilité::Pour démontrer "si 9 divise a^2 alors 3 divise a", la stratégie la plus directe est… {
+= utiliser la contraposée et le lemme d’Euclide : si 3 ne divise pas a alors aucun facteur 3 n'apparaît dans la décomposition en facteurs premiers de a, donc pas dans a^2.
+~ une récurrence sur a.
+~ un invariant sur la somme des chiffres de a.
+~ l’absurde avec a = p/q.
+}

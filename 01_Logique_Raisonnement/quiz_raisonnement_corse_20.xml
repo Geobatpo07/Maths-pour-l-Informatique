@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/Raisonnement (corse)</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name><text>Contraposée - continuité/dérivabilité</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Quelle est la contraposée correcte de l'implication&nbsp;: <br><b>Si f est dérivable en a alors f est continue en a</b> ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Si f n'est pas continue en a alors f n'est pas dérivable en a.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Si f est continue en a alors f est dérivable en a.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Si f n'est pas dérivable en a alors f n'est pas continue en a.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Si f n'est pas dérivable en a alors f est continue en a.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Induction - repérer l'erreur (chevaux)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Le "faux théorème" des chevaux &laquo; Tous les chevaux ont la même couleur &raquo; échoue parce que…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[au passage de n=1 &agrave; n=2, les ensembles ne se recouvrent pas et l'h&eacute;r&eacute;dit&eacute; invoqu&eacute;e est invalide.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[la base n=1 est fausse.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[la conclusion est vraie mais la preuve est circulaire.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[on utilise la contraposée au lieu de l'induction.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Contre-exemple - valeur absolue (multi)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Choisissez <b>TOUS</b> les contre-exemples pour l&rsquo;énoncé faux : <br><b>pour tous r&eacute;els x,y, |x+y| = |x| + |y|</b>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[x=0 ; y=0]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="50">
+      <text><![CDATA[x=1 ; y=-1]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="50">
+      <text><![CDATA[x=-1 ; y=1]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[x=1 ; y=1]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Absurde - racine de 2 (hypothèse initiale)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Pour une preuve par l&rsquo;absurde de &laquo; sqrt(2) est irrationnel &raquo;, on commence par supposer…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[sqrt(2) = p/q sous forme irr&eacute;ductible avec p,q entiers non nuls.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[sqrt(2) est rationnel et p,q sont tous deux pairs.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[sqrt(2) n'est pas un nombre r&eacute;el.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[sqrt(2) = p/q avec p,q quelconques, pas n&eacute;cessairement irr&eacute;ductibles.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Terminaison - variant</text></name>
+    <questiontext format="html">
+      <text><![CDATA[On veut prouver la terminaison de :<br><code>tant que n&gt;0 faire n &larr; n-3 si n&ge;3 sinon n &larr; n-1</code>.<br>Quel &eacute;nonc&eacute; justifie le mieux la terminaison ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[La fonction variante n d&eacute;cro&icirc;t strictement dans N et est minor&eacute;e par 0.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Le principe d'invariance garantit que n reste pair.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[La contrapos&eacute;e assure que n=0 finit.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[La preuve par l’absurde suffit sans autre justification.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Négation - triangles isocèles</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Quelle est la n&eacute;gation correcte de : <b>Tous les triangles sont isoc&egrave;les</b> ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Il existe au moins un triangle qui n'est pas isoc&egrave;le.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Tous les triangles ne sont pas isoc&egrave;les.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Aucun triangle n'est isoc&egrave;le.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Il existe au moins un triangle isoc&egrave;le.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Tautologie - transitivité</text></name>
+    <questiontext format="html">
+      <text><![CDATA[La formule <b>((p-&gt;q) et (q-&gt;r)) -&gt; (p-&gt;r)</b> est…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[une tautologie.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[une contradiction.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[seulement satisfaisable mais r&eacute;futable.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Contradiction - double équivalence</text></name>
+    <questiontext format="html">
+      <text><![CDATA[La formule <b>(p&lt;-&gt;q) et (p&lt;-&gt; non q)</b> est…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[une tautologie.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[une contradiction.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[satisfaisable mais non tautologie.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Négation - quantificateurs (ordre)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[La n&eacute;gation correcte de : <b>Pour tout x dans R, il existe y dans R tel que y &gt; x</b> est…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Il existe x dans R tel que, pour tout y dans R, y &le; x.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Pour tout x dans R, pour tout y dans R, y &le; x.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Il existe y dans R tel que, pour tout x dans R, y &gt; x.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Pour tout y dans R, il existe x dans R, y &le; x.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Raisonnement par cas - parité</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Pour montrer : <b>pour tout entier n, n<sup>2</sup> est de la forme 4k ou 4k+1</b>, la m&eacute;thode la plus naturelle est…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[un raisonnement par cas sur la parit&eacute; de n.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[une preuve par l’absurde.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[une preuve par contrapos&eacute;e.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[une r&eacute;currence forte.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Induction forte - structure</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Dans une preuve par <b>induction forte</b>, l&rsquo;hypoth&egrave;se d&rsquo;induction s&rsquo;&eacute;crit…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Si P(k) est vraie pour tous k &le; n, alors P(n+1).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Si P(n) est vraie, alors P(n+1). (induction simple)]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[P(n) est vraie pour une infinit&eacute; de n.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Plus petit contre-exemple - principe</text></name>
+    <questiontext format="html">
+      <text><![CDATA[La m&eacute;thode du <b>plus petit contre-exemple</b> consiste &agrave;…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[supposer l'existence d’un contre-exemple et choisir le plus petit (ordre bien fond&eacute;).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[exhiber un exemple qui satisfait la propri&eacute;t&eacute;.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[remplacer l’induction par une preuve directe.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Invariant - jetons R/B</text></name>
+    <questiontext format="html">
+      <text><![CDATA[On remplace deux jetons par un : (RR)&rarr;R, (BB)&rarr;R, (RB)&rarr;B. Quel invariant permet de d&eacute;terminer la couleur finale ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[la parit&eacute; du nombre de jetons rouges.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[la somme du nombre de jetons.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[la parit&eacute; du nombre de jetons bleus est constante.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[la diff&eacute;rence (rouges - bleus) est constante.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Contraposée - chaînage</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Des implications A&rarr;B et B&rarr;C d&eacute;coule…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[non C &rarr; non A.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[non A &rarr; non C (faux en g&eacute;n&eacute;ral).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[C &rarr; A (toujours vrai).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Argument invalide - affirmation du conséquent</text></name>
+    <questiontext format="html">
+      <text><![CDATA[« Tous les &eacute;tudiants sont mortels. Pierre est mortel. Donc Pierre est &eacute;tudiant. » Cet argument est…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[invalide (affirmation du cons&eacute;quent).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[valide (modus ponens).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[valide (modus tollens).]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Absurde - implication (RAA)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Pour montrer <b>P&rarr;Q</b> par contradiction (RAA), on peut partir de…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[P et non Q, puis d&eacute;river une contradiction.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[non P et Q, puis d&eacute;river une contradiction.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[non P et non Q, puis d&eacute;river une contradiction.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Choix de technique - facteurs premiers</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Pour prouver &laquo; tout entier n &ge; 2 a au moins un facteur premier &raquo;, la technique la plus adapt&eacute;e est…]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[l’induction forte (ou bon ordre) sur n.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[la contrapos&eacute;e.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[un simple contre-exemple.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Équivalences - bon ordre vs. induction</text></name>
+    <questiontext format="html">
+      <text><![CDATA[Quel sens d’&eacute;quivalence s&rsquo;appuie classiquement sur l&rsquo;ensemble des contre-exemples muni du bon ordre ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Bon ordre &rarr; Induction simple.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Induction simple &rarr; Bon ordre.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Induction forte &rarr; Induction simple.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Induction simple &rarr; Contrapos&eacute;e.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Invariant - damier/dominos</text></name>
+    <questiontext format="html">
+      <text><![CDATA[On retire deux coins oppos&eacute;s d’un damier 8&times;8 (m&ecirc;me couleur), puis on tente de le paver par des dominos 1&times;2. Pourquoi est-ce impossible ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Chaque domino couvre une case noire et une case blanche ; le damier modifi&eacute; a 30 cases d’une couleur et 32 de l’autre : l’invariant &laquo; nb_noires - nb_blanches = 0 &raquo; est viol&eacute;.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[L’aire restante est impaire.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Le p&eacute;rim&egrave;tre est trop petit.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Il existe forc&eacute;ment un bloc 2&times;2 isol&eacute;.]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Induction - seuil minimal pour 2^n &lt; n!</text></name>
+    <questiontext format="html">
+      <text><![CDATA[On veut prouver par induction que 2^n &lt; n!. &Agrave; partir de quelle base n0 l’&eacute;nonc&eacute; est-il vrai (et l’induction fonctionne) ?]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[1]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[2]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[3]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[4]]></text>
+      <feedback><text></text></feedback>
+    </answer>
+  </question>
+</quiz>

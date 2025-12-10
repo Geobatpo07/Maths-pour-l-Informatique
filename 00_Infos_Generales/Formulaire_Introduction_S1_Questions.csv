@@ -1,0 +1,25 @@
+Section,Question,Type suggéré,Options (si applicables),Obligation
+À propos de vous (optionnel),Prénom / Nom,Texte court,,Facultatif
+À propos de vous (optionnel),Adresse e-mail,Email,,Facultatif
+À propos de vous (optionnel),Pseudo à utiliser en classe,Texte court,,Facultatif
+À propos de vous (optionnel),Pronoms,Cases à cocher,elle; il; iel; préfère ne pas répondre,Facultatif
+À propos de vous (optionnel),Filière / Niveau,Texte court,,Facultatif
+À propos de vous (optionnel),Expérience en programmation,Liste (une seule réponse),Aucune; Débutant; Intermédiaire; Avancé,Obligatoire
+À propos de vous (optionnel),Langages déjà utilisés,Cases à cocher,Python; Java; C/C++; JavaScript; R; Autre,Facultatif
+À propos de vous (optionnel),Accès ordinateur personnel,Boutons radio,Oui; Non,Obligatoire
+À propos de vous (optionnel),Connexion Internet régulière,Boutons radio,Oui; Non,Obligatoire
+À propos de vous (optionnel),Besoins d’accessibilité / aménagements,Paragraphe,,Facultatif
+Objectifs et motivations,Pourquoi suivez-vous ce cours ?,Paragraphe,,Obligatoire
+Objectifs et motivations,Importance pour votre parcours,Échelle linéaire 1–5,1=faible;5=très important,Obligatoire
+Objectifs et motivations,Thèmes qui vous motivent,Cases à cocher,Logique; Graphes; Combinatoire; Probabilités; Complexité; Arithmétique modulaire; Autre,Facultatif
+Auto-évaluation,Formaliser un énoncé avec des connecteurs logiques,Échelle 1–5,1=pas du tout;5=très à l’aise,Obligatoire
+Auto-évaluation,Lire une table de vérité,Échelle 1–5,1=pas du tout;5=très à l’aise,Obligatoire
+Auto-évaluation,Prouver une implication par contraposée,Échelle 1–5,1=pas du tout;5=très à l’aise,Obligatoire
+Auto-évaluation,Utiliser des ensembles en Python (set),Échelle 1–5,1=pas du tout;5=très à l’aise,Obligatoire
+Auto-évaluation,Tracer un graphe / BFS-DFS,Échelle 1–5,1=pas du tout;5=très à l’aise,Obligatoire
+Auto-évaluation,"Raisonner sur la complexité (O, Ω, Θ)",Échelle 1–5,1=pas du tout;5=très à l’aise,Obligatoire
+Préférences d’apprentissage,Je préfère,Cases à cocher,mini-cours magistral; exercices guidés; travail en binôme; quiz rapides; projets courts; explications par le code,Facultatif
+Préférences d’apprentissage,Rythme souhaité,Boutons radio,plus lent; correct; plus rapide,Facultatif
+Préférences d’apprentissage,Disponibilités hors cours (soutien/mentorat),Paragraphe,,Facultatif
+Préférences d’apprentissage,Autorisez-vous un contact e-mail pour du soutien ?,Boutons radio,Oui; Non,Obligatoire
+Contrat pédagogique (facultatif),Je m’engage à,Cases à cocher,respecter le cadre; participer régulièrement; demander de l’aide; donner un feedback honnête,Facultatif

@@ -1,0 +1,532 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "077a010c",
+   "metadata": {},
+   "source": [
+    "Devoir – Ensembles, Fonctions et Dénombrement\n",
+    "\n",
+    "Nom :Jasmin Sir Stephane  \n",
+    "Université : UNIQ  \n",
+    "Professeur :Mr Laguerre  \n",
+    "Date : 22 octobre 2025\n",
+    "\n",
+    "Ce devoir vise à appliquer les notions de théorie des ensembles, d'applications (fonctions) et de dénombrement, en combinant raisonnement mathématique et implémentation Python dans un environnement Jupyter. Les exercices demandent d'effectuer des calculs exacts, de visualiser des relations et d'interpréter les résultats.  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0afe234f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importations et fonctions utilitaires\n",
+    "from itertools import product, combinations, permutations\n",
+    "from collections import Counter\n",
+    "import math\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "def cartesian(A, B):\n",
+    "    return {(a, b) for a in A for b in B}\n",
+    "\n",
+    "def powerset(s):\n",
+    "    s = list(s)\n",
+    "    P = []\n",
+    "    n = len(s)\n",
+    "    for mask in range(1 << n):\n",
+    "        subset = frozenset(s[i] for i in range(n) if (mask >> i) & 1)\n",
+    "        P.append(subset)\n",
+    "    return P\n",
+    "\n",
+    "def image_map(f_dict, A):\n",
+    "    return {f_dict[x] for x in A if x in f_dict}\n",
+    "\n",
+    "def preimage_map(f_dict, B):\n",
+    "    return {x for x, y in f_dict.items() if y in B}\n",
+    "\n",
+    "def is_application(E, F, rel, *, total=True):\n",
+    "    E = set(E); F = set(F)\n",
+    "    if isinstance(rel, dict): pairs = list(rel.items())\n",
+    "    else: pairs = list(rel)\n",
+    "    # check domain and codomain membership\n",
+    "    for (x, y) in pairs:\n",
+    "        if x not in E or y not in F:\n",
+    "            return False\n",
+    "    # uniqueness\n",
+    "    seen = {}\n",
+    "    for (x, y) in pairs:\n",
+    "        if x in seen and seen[x] != y:\n",
+    "            return False\n",
+    "        seen[x] = y\n",
+    "    if total and E - set(seen.keys()):\n",
+    "        return False\n",
+    "    return True\n",
+    "\n",
+    "def is_injective(f, E=None, F=None):\n",
+    "    if E is not None and set(f.keys()) != set(E): return False\n",
+    "    vals = list(f.values())\n",
+    "    return len(vals) == len(set(vals))\n",
+    "\n",
+    "def is_surjective(f, E, F):\n",
+    "    return set(f[x] for x in E if x in f) == set(F)\n",
+    "\n",
+    "def is_bijective(f, E, F):\n",
+    "    return is_injective(f, E, F) and is_surjective(f, E, F)\n",
+    "\n",
+    "def compose(g, f):\n",
+    "    return {x: g[f[x]] for x in f if f[x] in g}\n",
+    "\n",
+    "def stirling_second(n, k, memo=None):\n",
+    "    if n < 0 or k < 0: return 0\n",
+    "    if memo is None: memo = {}\n",
+    "    key = (n, k)\n",
+    "    if key in memo: return memo[key]\n",
+    "    if n == 0 and k == 0: memo[key] = 1\n",
+    "    elif n == 0 or k == 0 or k > n: memo[key] = 0\n",
+    "    else:\n",
+    "        memo[key] = k*stirling_second(n-1, k, memo) + stirling_second(n-1, k-1, memo)\n",
+    "    return memo[key]\n",
+    "\n",
+    "def surjections_count(m, n):\n",
+    "    if m < n: return 0\n",
+    "    return math.factorial(n)*stirling_second(m,n)\n",
+    "\n",
+    "def all_functions_count(m, n):\n",
+    "    return n**m\n",
+    "\n",
+    "def injections_count(m, n):\n",
+    "    if m > n: return 0\n",
+    "    prod = 1\n",
+    "    for i in range(m):\n",
+    "        prod *= (n-i)\n",
+    "    return prod\n",
+    "\n",
+    "print(\"Fonctions utilitaires chargées.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5beb08fd",
+   "metadata": {},
+   "source": [
+    "## Partie A – Ensembles (30 pts)\n",
+    "\n",
+    "### Q1 – Opérations de base"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "050e714e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Q1 - Définitions\n",
+    "A = {1,2,3,4,5}\n",
+    "B = {3,4,6,7}\n",
+    "U = set(range(1,11))\n",
+    "\n",
+    "A_union_B = A | B\n",
+    "A_inter_B = A & B\n",
+    "A_minus_B = A - B\n",
+    "B_minus_A = B - A\n",
+    "A_comp = U - A\n",
+    "\n",
+    "lhs = U - (A | B)\n",
+    "rhs = (U - A) & (U - B)\n",
+    "de_morgan_ok = (lhs == rhs)\n",
+    "\n",
+    "# Affichage organisé\n",
+    "print(\"A ∪ B =\", A_union_B)\n",
+    "print(\"A ∩ B =\", A_inter_B)\n",
+    "print(\"A \\ B =\", A_minus_B)\n",
+    "print(\"B \\ A =\", B_minus_A)\n",
+    "print(\"Complémentaire de A dans U =\", A_comp)\n",
+    "print(\"De Morgan vérifiée :\", de_morgan_ok)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d983926d",
+   "metadata": {},
+   "source": [
+    "Exemple supplémentaire\n",
+    "- Si on prend A' = {2,4,9} et B' = {1,2,4}, avec U' = {1,..,10} :\n",
+    "  - A' ∪ B' = {1,2,4,9}\n",
+    "  - A' ∩ B' = {2,4}\n",
+    "  - A' \\ B' = {9}\n",
+    "  - U' \\ (A' ∪ B') = {3,5,6,7,8,10} \n",
+    "Les opérations sont directes : l'union regroupe tous les éléments, l'intersection conserve ceux qui sont communs, la différence retire, et le complément dans U enlève tous les éléments appartenant à A. De Morgan exprime la complémentation d'une union comme l'intersection des complémentaires."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7e9a16b9",
+   "metadata": {},
+   "source": [
+    "Q2–Ensemble des parties & produit cartésien"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "dd606962",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Q2 - Power set et produit cartésien\n",
+    "P = powerset({'a','b','c'})\n",
+    "card_P = len(P)\n",
+    "\n",
+    "AxB = cartesian({0,1},{1,2,3})\n",
+    "card_AxB = len(AxB)\n",
+    "\n",
+    "print(\"Ensemble des parties de {'a','b','c'} (cardinal) =\", card_P)\n",
+    "print(\"Exemples d'éléments de P :\", list(P)[:6])\n",
+    "print(\"A × B (cardinal) =\", card_AxB)\n",
+    "print(\"Exemples d'éléments de A×B :\", list(AxB)[:6])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f39e3951",
+   "metadata": {},
+   "source": [
+    "Exemple en plus\n",
+    "- Pour S = {x,y}, powerset(S) = {∅, {x}, {y}, {x,y}} → 4 éléments = 2².\n",
+    "Justification :  \n",
+    "Chaque élément peut être soit présent soit absent dans un sous-ensemble, d'où 2 choix indépendants par élément → 2^n sous-ensembles."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ce5eaced",
+   "metadata": {},
+   "source": [
+    "Q3– Visualisation qualitative"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6edaeeb3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Q3 - Propriétés injective/surjective\n",
+    "E = {1,2,3}\n",
+    "F = {'a','b','c'}\n",
+    "f = {1:'a', 2:'b', 3:'b'}\n",
+    "\n",
+    "print(\"Injective ?\", is_injective(f,E,F))\n",
+    "print(\"Surjective ?\", is_surjective(f,E,F))\n",
+    "\n",
+    "# Exemple visuel simple (texte)\n",
+    "print(\"\\nInterprétation :\")\n",
+    "print(\" - 2 et 3 ont la même image 'b' → pas injective\")\n",
+    "print(\" - 'c' n'est atteint par aucun élément → pas surjective\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ab0691c6",
+   "metadata": {},
+   "source": [
+    "Exemple supplémentaire (Q3)\n",
+    "- Exemple injectif : f1 = {1:'a', 2:'b', 3:'c'} → injective et surjective (bijection) si F = {'a','b','c'}.  \n",
+    "- Exemple non surjectif : f2 = {1:'a',2:'a'} avec F = {'a','b','c'} → 'c' n'est pas atteint.\n",
+    "\n",
+    "Justification :  \n",
+    "Injectivité ⇔ images distinctes pour éléments distincts. Surjectivité ⇔ toutes les valeurs de F ont au moins un antécédent."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d28fd4e",
+   "metadata": {},
+   "source": [
+    "Partie B – Applications / Fonctions (40 pts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ef60d74e",
+   "metadata": {},
+   "source": [
+    "Q4 – Vérifier si une relation est une fonction"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7b2f9cf3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "E = {1,2,3}\n",
+    "F = {'a','b','c'}\n",
+    "\n",
+    "rel1 = {1:'a', 2:'b', 3:'c'}\n",
+    "rel2 = [(1,'a'), (1,'b')]\n",
+    "\n",
+    "print(\"rel1 est une application totale ? \", is_application(E,F,rel1))\n",
+    "print(\"rel2 est une application totale ? \", is_application(E,F,rel2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0df81f08",
+   "metadata": {},
+   "source": [
+    "Exemple supplémentaire\n",
+    "- rel3 = {1:'a', 2:'b'} avec E' = {1,2,3} et total=False → rel3 est une application partielle (pas totale) si total=False.\n",
+    "\n",
+    "Justification :  \n",
+    "Une relation est une application totale si chaque élément de E a exactement une image. Si un élément est absent, ce n'est pas une application totale."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "445e276d",
+   "metadata": {},
+   "source": [
+    "Q5 – Vérifier injectivité / surjectivité / bijectivité"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7d66322c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f = {1:'a', 2:'b', 3:'c'}\n",
+    "print(\"injective :\", is_injective(f,E,F))\n",
+    "print(\"surjective :\", is_surjective(f,E,F))\n",
+    "print(\"bijective :\", is_bijective(f,E,F))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ce160e3",
+   "metadata": {},
+   "source": [
+    "Exemple\n",
+    "- f = {1:'a',2:'a',3:'b'} sur E={1,2,3}, F={'a','b'} → non injective (1 et 2 ont même image), mais surjective (a et b atteints).\n",
+    "Justification :  \n",
+    "Cela montre que injectivité et surjectivité sont indépendantes : une fonction peut être surjective sans être injective et vice versa."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3f560ac8",
+   "metadata": {},
+   "source": [
+    "Q6– Composition de fonctions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6d250bbc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f = {1:'a', 2:'b'}\n",
+    "g = {'a':10, 'b':20}\n",
+    "print(\"g∘f =\", compose(g,f))\n",
+    "\n",
+    "# Exemple où une image n'est pas dans le domaine de g\n",
+    "f2 = {1:'x',2:'y',3:'z'}\n",
+    "g2 = {'x':0,'y':1}\n",
+    "print(\"compose g2∘f2 =\", compose(g2,f2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6b008b56",
+   "metadata": {},
+   "source": [
+    "Exemple supplémentaire \n",
+    "- f = {1:'x',2:'y',3:'z'}, g = {'x':0,'y':1} → compose(g,f) = {1:0,2:1} ; 3 absent car 'z' n'est pas dans g.\n",
+    "La composition n'est définie que si l'image par f appartient au domaine de g. Sinon on perd cet antécédent lors d'une composition stricte."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "21f67609",
+   "metadata": {},
+   "source": [
+    "Q7– Image et préimage"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b24516e8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f = {1:'a', 2:'b', 3:'b', 4:'c'}\n",
+    "A = {1,2,3}\n",
+    "B = {'b','c'}\n",
+    "\n",
+    "print(\"Image de A :\", image_map(f,A))\n",
+    "print(\"Préimage de B :\", preimage_map(f,B))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "968a0e67",
+   "metadata": {},
+   "source": [
+    "Image regroupe les valeurs atteintes; préimage collecte tous les éléments envoyés sur un sous-ensemble donné."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a030d16a",
+   "metadata": {},
+   "source": [
+    "Partie C – Dénombrement (50 pts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4a520411",
+   "metadata": {},
+   "source": [
+    "Q8 – Nombre total d'applications"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4ede7c4e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Nombre total d'applications |F|^{|E|} pour |E|=3, |F|=2 :\", all_functions_count(3,2))\n",
+    "\n",
+    "# Exemple supplémentaire\n",
+    "print(\"Exemple : |E|=2, |F|=3 ->\", all_functions_count(2,3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c9f4ba0",
+   "metadata": {},
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "72068b59",
+   "metadata": {},
+   "source": [
+    "Q9 – Nombre d'injections et de surjections"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f7409704",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Injections 3->5 :\", injections_count(3,5))\n",
+    "print(\"Surjections 3->3 :\", surjections_count(3,3))\n",
+    "print(\"Surjections 3->2 :\", surjections_count(3,2))\n",
+    "\n",
+    "# Exemples supplémentaires\n",
+    "print(\"Injections 2->3 :\", injections_count(2,3))\n",
+    "print(\"Surjections 2->2 :\", surjections_count(2,2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b8f65d5b",
+   "metadata": {},
+   "source": [
+    "Justification : \n",
+    "Injections : permutations partielles (arrangements) ; surjections : formule factorielle × nombres de Stirling pour répartir les éléments en classes non vides."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "53794f30",
+   "metadata": {},
+   "source": [
+    " Q10 – Étude graphique"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7484c4ad",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "m_values = range(1,7)\n",
+    "n = 3\n",
+    "counts_all = [all_functions_count(m,n) for m in m_values]\n",
+    "counts_inj = [injections_count(m,n) for m in m_values]\n",
+    "counts_surj = [surjections_count(m,n) for m in m_values]\n",
+    "\n",
+    "plt.figure(figsize=(8,4))\n",
+    "plt.plot(m_values, counts_all, label='Toutes', marker='o')\n",
+    "plt.plot(m_values, counts_inj, label='Injections', marker='o')\n",
+    "plt.plot(m_values, counts_surj, label='Surjections', marker='o')\n",
+    "plt.xlabel('|E|')\n",
+    "plt.ylabel('Nombre d’applications')\n",
+    "plt.legend()\n",
+    "plt.title('Comparaison des nombres d’applications (n=3)')\n",
+    "plt.grid(True)\n",
+    "plt.show()\n",
+    "\n",
+    "# Exemple chiffré\n",
+    "print(\"Pour n=3 et |E|=6 => 3^6 =\", all_functions_count(6,3), \"et injections =\", injections_count(6,3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a56eea8a",
+   "metadata": {},
+   "source": [
+    "Exemple supplémentaire10\n",
+    "- Observation chiffrée : pour n=3 et |E|=6, |F|^{|E|} = 3^6 = 729 applications, tandis que les injections (si |F|=3 et |E|=6) valent 0 car |E|>|F|.\n",
+    "Cela illustre la croissance exponentielle des fonctions totales et le fait que l'injectivité exige |E| ≤ |F|."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "86194ef5",
+   "metadata": {},
+   "source": [
+    "Conclusion:Ce devoir m'a beaucoup appris comment manipuler ou exercer les expressions mathematiques en python c'etait difficile mais je parvient a la resolution.merci MR LAGUERRE"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

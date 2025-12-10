@@ -1,0 +1,110 @@
+$CATEGORY: $course$/S1 Logique
+::Q: Implication — équivalence:: L’implication p→q est équivalente à… {
+~p∨q
+=¬p ∨ q
+~p ∧ q
+~¬(p ∧ ¬q)
+}}
+
+::Q: Cas faux de l’implication:: Dans quel cas p→q est FAUX ? {
+~p=1, q=1
+=p=1, q=0
+~p=0, q=1
+~p=0, q=0
+}}
+
+::Q: Contraposée:: La contraposée de p→q est : {
+~¬p→¬q
+~q→p
+=¬q→¬p
+~p↔q
+}}
+
+::Q: De Morgan (1):: Compléter De Morgan : ¬(p∧q) ≡ … {
+=¬p ∨ ¬q
+~¬p ∧ ¬q
+~¬p ∨ q
+~p ∧ q
+}}
+
+::Q: Évaluer une expression:: Pour p=0, q=1, la formule (¬p ∨ q) ∧ (p ∨ ¬q) est : {
+~Vraie
+=Fausse
+}}
+
+::Q: Tautologie ou contradiction:: Sélectionner la tautologie : {
+~p ∧ ¬p
+=p ∨ ¬p
+~p ∧ q
+~¬p ∧ ¬q
+}}
+
+::Q: XOR — cas vrais:: Pour XOR (p ⊕ q), quels cas rendent la formule vraie ? (plusieurs) {
+~%-50.0%p=1, q=1
+=%50.0%p=1, q=0
+=%50.0%p=0, q=1
+~%-50.0%p=0, q=0
+}}
+
+::Q: Négation d’un universel:: La négation de ∀x P(x) est : {
+~∀x ¬P(x)
+=∃x ¬P(x)
+~¬(∃x P(x))
+~Aucune
+}}
+
+::Q: Négation d’un existentiel:: La négation de ∃x P(x) est : {
+=∀x ¬P(x)
+~∃x ¬P(x)
+}}
+
+::Q: Ordre des quantificateurs:: En général : {
+~∀x ∃y P(x,y) ≡ ∃y ∀x P(x,y)
+=∀x ∃y P(x,y) n’est PAS équivalent à ∃y ∀x P(x,y)
+}}
+
+::Q: Biconditionnel — forme:: Forme équivalente de p↔q : {
+=(p∧q)∨(¬p∧¬q)
+~(p∨q)∧(¬p∨¬q)
+~p∧q
+}}
+
+::Q: Méthode adaptée:: Pour prouver « si n² est pair alors n est pair », la méthode naturelle est : {
+=Contraposée
+~Contre-exemple
+~Absurde uniquement
+}}
+
+::Q: Simplification:: Simplifier : ¬(¬p ∨ q) ≡ {
+=p ∧ ¬q
+~¬p ∧ q
+~p ∨ ¬q
+}}
+
+::Q: Valeur de l’implication:: Quelle est la valeur de p→q pour p=0, q=1 ? {
+=Vrai
+~Faux
+}}
+
+::Q: De Morgan + distributivité:: Simplifier ¬(p ∨ (q ∧ r)) : {
+=¬p ∧ (¬q ∨ ¬r)
+~¬p ∨ (¬q ∧ ¬r)
+~¬p ∧ ¬q ∧ ¬r
+}}
+
+::Q: Définition de XOR:: Une forme équivalente de p ⊕ q est : {
+=(p ∨ q) ∧ ¬(p ∧ q)
+~(p ∧ q) ∨ ¬(p ∧ q)
+~p∨q
+}}
+
+::Q: Implication réciproque:: Compléter : (p→q) ∧ (q→p) ≡ {
+=p↔q
+~p∧q
+}}
+
+::Q: Lecture correcte:: « Si P alors Q » est équivalent à : {
+=¬P ∨ Q
+~P ∧ Q
+~P ∨ Q
+}}

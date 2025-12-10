@@ -1,0 +1,13 @@
+Semaine,Thème,Objectifs ciblés,Évaluation / Devoir
+S1,Logique & conditions,"Connecteurs, tables ; traduire des règles en tests booléens",Quiz diagnostic (non noté)
+S2,Équivalences & tables,"De Morgan, implication↔disjonction ; correction de if/while",Mini‑quiz 1
+S3,Ensembles,"Opérations, diagrammes, `set` en Python, doublons",TP1 (mise en place)
+S4,Fonctions & relations,"Injection/surjection (intuition), relations d’équivalence/ordre",—
+S5,Entiers & modulo,"Division euclidienne, PGCD (intuition), congruences ; parité",Mini‑quiz 2
+S6,Combinatoire I,"Principe multiplicatif, permutations/arrangements",TP1 (rendu)
+S7,Combinatoire II,"Combinaisons, binôme de Newton (cas simples), tiroirs",—
+S8,Probabilités I,"Espaces finis, événements, indépendance (cas elementaires)",Mini‑quiz 3
+S9,Probabilités II,"Bernoulli, Binomiale, espérance (exemples info)",—
+S10,Induction & invariants,"Induction douce, invariant/variant sur boucles simples",TP2 (mise en place)
+S11,Graphes (notions),"Terminologie, petits exemples ; lien avec cours d’algo",Mini‑quiz 4
+S12,Complexité & révision,Notations O/Ω/Θ (intuition) ; révision intégrée,TP2 (rendu)

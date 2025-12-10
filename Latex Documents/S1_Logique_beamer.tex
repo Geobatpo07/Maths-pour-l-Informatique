@@ -1,0 +1,262 @@
+
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% --- Beamer setup ---
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usepackage{appendixnumberbeamer}
+
+% --- Language & math ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\graphicspath{{./}{/mnt/data/}}
+
+% --- Title data ---
+\title{Séance 1 — Logique}
+\subtitle{Mathématiques pour l’informatique (Bac+2)}
+\author{Geovany Batista Polo LAGUERRE}
+\institute{FSGA \& Université Quisqueya}
+\date{Version du 11/09/2025}
+
+% --- Logos ---
+\titlegraphic{%
+  \includegraphics[height=1.1cm]{logo.png}\hspace{1.2cm}%
+  \includegraphics[height=1.1cm]{logo2.png}%
+}
+\logo{%
+  \includegraphics[height=0.7cm]{logo.png}\hspace{0.4cm}%
+  \includegraphics[height=0.7cm]{logo2.png}%
+}
+
+% --- Accent color ---
+\definecolor{fsgaBlue}{RGB}{0,91,171}
+\setbeamercolor{structure}{fg=fsgaBlue}
+
+% --- Section pages ---
+\AtBeginSection[]{
+  \begin{frame}
+    \centering
+    \vfill
+    {\LARGE \insertsectionhead\par}
+    \vfill
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% =====================================================================
+\begin{frame}{Objectifs de la séance}
+\begin{itemize}
+  \item Comprendre la notion d'\textbf{assertion} (vrai/faux) et les \textbf{connecteurs logiques}.
+  \item Construire et lire des \textbf{tables de vérité}.
+  \item Utiliser quelques \textbf{équivalences clés} (De Morgan, contraposée, $p\Rightarrow q \;\Leftrightarrow\; \neg p \vee q$).
+  \item Découvrir les \textbf{quantificateurs} $\forall$ et $\exists$ et négations associées.
+  \item Pratiquer des \textbf{méthodes de raisonnement} : direct, cas par cas, contraposée, absurde, contre-exemple, aperçu récurrence.
+\end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Motivation \& bases}
+
+\begin{frame}{Pourquoi la logique ?}
+\begin{itemize}
+  \item Lever les \textbf{ambiguïtés} du langage naturel ; formaliser conditions et validations.
+  \item Langage commun pour \textbf{raisonner}, prouver, \textbf{déboguer} des conditions en code.
+  \item Exemples : « fromage \textbf{ou} dessert » (XOR) vs « as \textbf{ou} coeur » (OU inclusif).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Assertions (propositions)}
+\begin{itemize}
+  \item Une \textbf{assertion} est une phrase vraie \emph{ou} fausse (pas les deux).
+  \item Ex. « Il pleut. » ; « $2+2=4$ » ; « $\forall x\in\mathbb R,\, x^2\ge 0$ ».
+  \item À partir de $P$ et $Q$, on construit de nouvelles assertions via des \textbf{connecteurs}.
+\end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Connecteurs \& tables de vérité}
+
+\begin{frame}{Connecteurs de base}
+\begin{itemize}
+  \item \textbf{NON} $\neg P$ : vrai si $P$ est faux.
+  \item \textbf{ET} $P\wedge Q$ : vrai si $P$ et $Q$ sont vrais.
+  \item \textbf{OU} $P\vee Q$ : vrai si \emph{au moins} l’un des deux est vrai (OU inclusif).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Table de vérité — ET}
+\centering
+\begin{tabular}{c c | c}
+$P$ & $Q$ & $P\wedge Q$ \\ \hline
+1 & 1 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Table de vérité — OU (inclusif)}
+\centering
+\begin{tabular}{c c | c}
+$P$ & $Q$ & $P\vee Q$ \\ \hline
+1 & 1 & 1 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 0 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Table de vérité — NON}
+\centering
+\begin{tabular}{c | c}
+$P$ & $\neg P$ \\ \hline
+1 & 0 \\
+0 & 1 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{OU exclusif (XOR)}
+\begin{itemize}
+  \item « L’un \emph{ou} l’autre, \emph{pas les deux} ». Utile pour certaines règles métiers.
+\end{itemize}
+\centering
+\begin{tabular}{c c | c}
+$P$ & $Q$ & $P \oplus Q$ \\ \hline
+1 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 0 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Implication $P\Rightarrow Q$}
+\begin{itemize}
+  \item \textbf{Définition} : $P\Rightarrow Q \;\Leftrightarrow\; \neg P \vee Q$.
+  \item \textbf{Fausse seulement} quand $P=1$ et $Q=0$.
+  \item Lecture « si $P$ alors $Q$ » ; attention aux idées reçues.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Table — Implication et Biconditionnel}
+\centering
+\begin{tabular}{c c | c c}
+$P$ & $Q$ & $P\Rightarrow Q$ & $P\Leftrightarrow Q$ \\ \hline
+1 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 1 \\
+\end{tabular}
+\end{frame}
+
+% =====================================================================
+\section{Équivalences classiques}
+
+\begin{frame}{Équivalences incontournables}
+\begin{itemize}
+  \item \textbf{Double négation} : $P \Leftrightarrow \neg\neg P$.
+  \item \textbf{De Morgan} : $\neg(P\wedge Q)\Leftrightarrow (\neg P)\vee(\neg Q)$ ; $\neg(P\vee Q)\Leftrightarrow (\neg P)\wedge(\neg Q)$.
+  \item \textbf{Distributivité} : $P\wedge(Q\vee R)\Leftrightarrow (P\wedge Q)\vee(P\wedge R)$ ; etc.
+  \item \textbf{Contraposée} : $(P\Rightarrow Q)\Leftrightarrow (\neg Q \Rightarrow \neg P)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Atelier — vérifier des équivalences}
+\begin{itemize}
+  \item Montrer $(P\Rightarrow Q)\Leftrightarrow (\neg P \vee Q)$ par table.
+  \item Tester les deux lois de De Morgan.
+  \item Écrire deux variantes logiquement équivalentes d’une même condition (plus lisible).
+\end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Quantificateurs}
+
+\begin{frame}{Quantificateurs $\forall$ et $\exists$}
+\begin{itemize}
+  \item $\forall x\in E\, P(x)$ : vrai si $P(x)$ est vrai pour \textbf{tous} les $x$ de $E$.
+  \item $\exists x\in E\, P(x)$ : vrai s’il \textbf{existe} au moins un $x$ dans $E$ tel que $P(x)$.
+  \item \textbf{Négations} : $\neg(\forall x\, P)\Leftrightarrow \exists x\, \neg P$ ; $\neg(\exists x\, P)\Leftrightarrow \forall x\, \neg P$.
+  \item \textbf{Attention à l’ordre} : $\forall x\, \exists y\, P(x,y)$ $\ne$ $\exists y\, \forall x\, P(x,y)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercices — traductions et négations}
+\begin{itemize}
+  \item Traduire : « Tout réel a un carré $\ge 0$ » ; « Il existe un entier pair $>1000$ ».
+  \item Négations : « Tous les étudiants sont à l’heure » ; « Il existe un graphe connexe ... ».
+  \item Comparer $\forall x\, \exists y\, P(x,y)$ et $\exists y\, \forall x\, P(x,y)$ sur un exemple concret.
+\end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Méthodes de raisonnement}
+
+\begin{frame}{Panorama des méthodes}
+\begin{itemize}
+  \item \textbf{Direct} : enchaîner des implications vraies $P \Rightarrow \cdots \Rightarrow Q$.
+  \item \textbf{Cas par cas} : partitionner l’univers (ex. $x\ge 1$ / $x<1$).
+  \item \textbf{Contraposée} : prouver $\neg Q \Rightarrow \neg P$.
+  \item \textbf{Par l’absurde} : supposer $P$ et $\neg Q$ et conclure à une contradiction.
+  \item \textbf{Contre-exemple} : réfuter un universel $\forall x\, P(x)$.
+  \item \textbf{Récurrence} : initialisation + hérédité $\Rightarrow$ conclusion.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemples rapides I}
+\begin{itemize}
+  \item \textbf{Direct} : si $a,b\in\mathbb Q$ alors $a+b\in\mathbb Q$ (écrire $a=p/q$, $b=p'/q'$).
+  \item \textbf{Cas par cas} : $|x-1|\le x^2-x+1$ selon $x\ge 1$ ou $x< 1$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemples rapides II}
+\begin{itemize}
+  \item \textbf{Contraposée} : si $n^2$ est pair alors $n$ est pair $\;\Leftrightarrow\;$ si $n^2$ est impair alors $n$ est impair.
+  \item \textbf{Absurde} : $a/(1+b)=b/(1+a)$ avec $a,b>0 \Rightarrow a=b$ (sinon contradiction).
+  \item \textbf{Contre-exemple} : pour « $\forall x\, P(x)$ », exhiber un $x$ qui viole $P$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Principe de récurrence (aperçu)}
+\begin{itemize}
+  \item \textbf{Initialisation} : montrer $P(n_0)$ vrai.
+  \item \textbf{Hérédité} : $P(n)\Rightarrow P(n+1)$.
+  \item \textbf{Conclusion} : tous les $n\ge n_0$ vérifient $P(n)$.
+  \item Exemples : $2^n>n$ ($n\ge 0$) ; $\sum_{k=1}^n k = \frac{n(n+1)}{2}$.
+\end{itemize}
+\end{frame}
+
+% =====================================================================
+\section{Mini-quiz \& synthèse}
+
+\begin{frame}{Mini-quiz (rapide)}
+\begin{enumerate}
+  \item V/F — $P\Rightarrow Q \;\Leftrightarrow\; \neg P \vee Q$.
+  \item Contraposée de « si $p$ alors $q$ » ?
+  \item Simplifier $\neg(\neg p \vee q)$.
+  \item Donner un exemple où XOR est pertinent.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Wrap-up}
+\begin{itemize}
+  \item Connecteurs, tables, équivalences (De Morgan, contraposée, $\neg P \vee Q$) 
+  \item Quantificateurs \& négations 
+  \item Méthodes de raisonnement (direct, cas, contraposée, absurde, contre-ex.) 
+  \item \textbf{Suite} : Ensembles, relations \& fonctions ; puis combinatoire / probas discrètes.
+\end{itemize}
+\end{frame}
+
+\end{document}

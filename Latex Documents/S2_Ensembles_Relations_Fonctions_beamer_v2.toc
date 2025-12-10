@@ -1,0 +1,17 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {1}{Objectifs}{2}{0}{1}
+\beamer@sectionintoc {2}{Motivation}{4}{0}{2}
+\beamer@sectionintoc {3}{Définir un ensemble}{6}{0}{3}
+\beamer@sectionintoc {4}{Opérations}{8}{0}{4}
+\beamer@sectionintoc {5}{Produit cartésien}{10}{0}{5}
+\beamer@sectionintoc {6}{Applications}{12}{0}{6}
+\beamer@sectionintoc {7}{Injection/Surjection/Bijection}{14}{0}{7}
+\beamer@sectionintoc {8}{Théorème bijection-inverse}{16}{0}{8}
+\beamer@sectionintoc {9}{Cardinaux, tiroirs}{18}{0}{9}
+\beamer@sectionintoc {10}{Dénombrements utiles}{20}{0}{10}
+\beamer@sectionintoc {11}{Binôme de Newton}{22}{0}{11}
+\beamer@sectionintoc {12}{Relations d'équivalence}{24}{0}{12}
+\beamer@sectionintoc {13}{EXERCICES corrigés}{26}{0}{13}
+\beamer@sectionintoc {14}{Mini-quiz}{37}{0}{14}
+\beamer@sectionintoc {15}{Bonus optionnel}{40}{0}{15}
+\beamer@sectionintoc {16}{Wrap-up}{42}{0}{16}

@@ -1,0 +1,301 @@
+\documentclass[aspectratio=169]{beamer}
+
+% --------- Thème & langue ----------
+\usetheme{Madrid}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usefonttheme{professionalfonts}
+\usepackage{lmodern}
+\usepackage{mathrsfs,amsmath,amssymb,amsfonts,mathtools}
+\usepackage{xcolor,graphicx}
+\usepackage{tikz}
+\usepackage{booktabs}
+%\usepackage{enumitem}
+
+% --------- Couleurs / styles ----------
+\definecolor{fsgaBlue}{RGB}{0,91,171}
+\setbeamercolor{structure}{fg=fsgaBlue}
+\setbeamercolor{title}{fg=white,bg=fsgaBlue}
+\setbeamercolor{frametitle}{fg=fsgaBlue}
+\setbeamercolor{block title}{bg=fsgaBlue!10,fg=fsgaBlue}
+\setbeamercolor{block body}{bg=fsgaBlue!3}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% --------- Raccourcis ----------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\DeclareMathOperator{\Card}{Card}
+
+% --------- Logos (placer logo.png / logo2.png à côté du .tex) ----------
+\title[Ensembles, relations \& fonctions]{Ensembles, relations \& fonctions}
+\subtitle{Mathématiques pour Informaticiens}
+\author[Geovany B. P. Laguerre]{Geovany Batista Polo LAGUERRE \textbar{} Data Scientist}
+\institute[FSGA \& UniQ]{FSGA - Université Quisqueya}
+\date{\today}
+
+\titlegraphic{%
+  \vspace{-0.8cm}\hspace{0.5cm}%
+  \includegraphics[height=1.1cm]{logo.png}\hfill
+  \includegraphics[height=1.1cm]{logo2.png}\hspace{0.5cm}
+}
+
+% --------- Environnements ----------
+\newtheorem{theoreme}{Théorème}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollaire}{Corollaire}
+\theoremstyle{definition}
+\newtheorem{definitionenv}{Définition}
+\newtheorem{exemple}{Exemple}
+\newtheorem{exercice}{Exercice}
+
+\begin{document}
+
+% ===== Page de titre =====
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\AtBeginSection[]{
+  \begin{frame}{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% ===== Objectifs =====
+\section{Objectifs}
+\begin{frame}{Objectifs de la séance}
+\begin{itemize}
+  \item Maîtriser les notions d'\textbf{ensemble} et d'\textbf{opérations} (union, intersection, complémentaire) ;
+  \item Manipuler le \textbf{produit cartésien} et les \textbf{applications} (composition, image, image réciproque) ;
+  \item Caractériser \textbf{injection, surjection, bijection} et l'\textbf{inverse} d'une bijection ;
+  \item Introduire les \textbf{cardinaux}, le \textbf{principe des tiroirs} et quelques dénombrements utiles ;
+  \item Définir une \textbf{relation d'équivalence} et les \textbf{classes}, aperçu des \textit{partitions}.
+\end{itemize}
+\end{frame}
+
+% ===== Motivation =====
+\section{Motivation}
+\begin{frame}{Motivation - un clin d'œil à Russell}
+\begin{block}{Idée}
+Le langage naïf des ensembles mène à des paradoxes (ex.: « ensemble de tous les ensembles qui ne se contiennent pas eux-mêmes »).
+Objectif du cours: manipuler des \textbf{définitions précises} et des \textbf{preuves rigoureuses}, sans entrer dans l'axiomatique profonde.
+\end{block}
+\end{frame}
+
+% ===== Définir un ensemble =====
+\section{Définir un ensemble}
+\begin{frame}{Définir un ensemble}
+\begin{definitionenv}
+Un \textbf{ensemble} est une collection d'objets (éléments) distincts. On note $x\in E$ si $x$ appartient à $E$.
+Deux ensembles sont égaux s'ils ont les \textbf{mêmes éléments}.
+\end{definitionenv}
+\medskip
+\textbf{Inclusion} : $A\subseteq B \iff (\forall x)\,[x\in A\Rightarrow x\in B]$.
+\end{frame}
+
+% ===== Opérations =====
+\section{Opérations}
+\begin{frame}{Opérations ensemblistes}
+\begin{columns}[T]
+\column{0.55\textwidth}
+\begin{itemize}
+  \item $A\cup B=\{x: x\in A\text{ ou }x\in B\}$ ;
+  \item $A\cap B=\{x: x\in A\text{ et }x\in B\}$ ;
+  \item $A\setminus B=\{x: x\in A\text{ et }x\notin B\}$ ;
+  \item $A^{c}$ : complémentaire (dans un univers $U$ fixé).
+\end{itemize}
+\column{0.45\textwidth}
+\begin{block}{De Morgan}
+$(A\cup B)^{c}=A^{c}\cap B^{c}$,\quad
+$(A\cap B)^{c}=A^{c}\cup B^{c}$.
+\end{block}
+\end{columns}
+\end{frame}
+
+% ===== Produit cartésien =====
+\section{Produit cartésien}
+\begin{frame}{Produit cartésien}
+\begin{definitionenv}
+$E\times F=\{(x,y):x\in E,y\in F\}$.
+\end{definitionenv}
+\begin{exemple}
+Si $E=\{a,b\}$ et $F=\{1,2,3\}$ alors $E\times F=\{(a,1),(a,2),(a,3),(b,1),(b,2),(b,3)\}$.
+\end{exemple}
+\end{frame}
+
+% ===== Applications =====
+\section{Applications}
+\begin{frame}{Applications (fonctions)}
+\begin{definitionenv}
+Une \textbf{application} $f:E\to F$ associe à chaque $x\in E$ un unique $f(x)\in F$.
+\end{definitionenv}
+\begin{itemize}
+  \item \textbf{Composition} : $(g\circ f)(x)=g(f(x))$ ;
+  \item \textbf{Image directe} : $f(A)=\{f(x):x\in A\}$ ;
+  \item \textbf{Image réciproque} : $f^{-1}(B)=\{x\in E:f(x)\in B\}$ (toujours définie).
+\end{itemize}
+\end{frame}
+
+% ===== Injection/Surjection/Bijection =====
+\section{Injection/Surjection/Bijection}
+\begin{frame}{Injection, Surjection, Bijection}
+\begin{columns}[T]
+\column{0.58\textwidth}
+\begin{description}
+  \setlength\itemsep{3pt}
+  \item[Injection] $f(x)=f(y)\Rightarrow x=y$.
+  \item[Surjection] $\forall y\in F,\ \exists x\in E: f(x)=y$.
+  \item[Bijection] $f$ est injective et surjective.
+\end{description}
+
+\column{0.42\textwidth}
+\begin{block}{Inverse}
+$f$ bijective $\iff$ il existe $f^{-1}:F\to E$ avec
+$f^{-1}\!\circ\! f=\mathrm{id}_E$ et $f\!\circ\! f^{-1}=\mathrm{id}_F$.
+\end{block}
+\end{columns}
+\end{frame}
+
+% ===== Théorème bijection-inverse =====
+\section{Théorème bijection-inverse}
+\begin{frame}{Théorème - Bijection $\Longleftrightarrow$ existence d'un inverse}
+\begin{theoreme}
+Une application $f:E\to F$ est bijective \underline{ssi} il existe $g:F\to E$ telle que $g\circ f=\mathrm{id}_E$ et $f\circ g=\mathrm{id}_F$.
+\end{theoreme}
+\begin{proof}[Idée de preuve]
+($\Rightarrow$) Si $f$ bijective, définir $g(y)$ comme l'unique antécédent de $y$: $g=f^{-1}$.  
+($\Leftarrow$) Si $g$ existe, alors $f$ est injective (car $f(x)=f(x')\Rightarrow g(f(x))=g(f(x'))\Rightarrow x=x'$) et surjective (pour tout $y$, $f(g(y))=y$).
+\end{proof}
+\end{frame}
+
+% ===== Cardinaux, tiroirs =====
+\section{Cardinaux, tiroirs}
+\begin{frame}{Ensembles finis - cardinaux et tiroirs}
+\begin{definitionenv}
+Si $E$ fini, son \textbf{cardinal} $\Card(E)$ est le nombre d'éléments.
+\end{definitionenv}
+\begin{theoreme}[Principe des tiroirs]
+Si $\Card(E)>\Card(F)$, toute application $E\to F$ \emph{n'est pas injective}.
+\end{theoreme}
+\begin{proof}[Preuve éclair]
+Supposons injective : alors $|E|\le |F|$. Contradiction avec $|E|>|F|$.
+\end{proof}
+\end{frame}
+
+% ===== Dénombrements utiles =====
+\section{Dénombrements utiles}
+\begin{frame}{Dénombrements utiles}
+\begin{itemize}
+  \item Nombre d'applications $f:E\to F$ si $\Card(E)=m$ et $\Card(F)=n$ : $n^{m}$.
+  \item Nombre d'injections $E\hookrightarrow F$ ($m\le n$) : $n(n-1)\cdots(n-m+1)$.
+  \item Nombre de parties de un ensemble à $n$ éléments : $2^{n}$.
+\end{itemize}
+\end{frame}
+
+% ===== Binôme de Newton =====
+\section{Binôme de Newton}
+\begin{frame}{Coefficients binomiaux \& Binôme de Newton}
+\begin{definitionenv}
+$\displaystyle \binom{n}{k}=\frac{n!}{k!(n-k)!}$ pour $0\le k\le n$.
+\end{definitionenv}
+\begin{theoreme}[Binôme de Newton]
+$\displaystyle (x+y)^{n}=\sum_{k=0}^{n}\binom{n}{k}x^{n-k}y^{k}$.
+\end{theoreme}
+\begin{proof}[Preuve combinatoire]
+Développer $(x+y)^n$ revient à choisir, pour chaque facteur, $x$ ou $y$.  
+Le terme $x^{n-k}y^{k}$ apparaît pour chaque choix de $k$ positions où l'on prend $y$ : il y en a $\binom{n}{k}$.
+\end{proof}
+\end{frame}
+
+% ===== Relations d'équivalence =====
+\section{Relations d'équivalence}
+\begin{frame}{Relations et équivalences}
+\begin{definitionenv}
+Une relation $\sim$ sur $E$ est une \textbf{équivalence} si elle est \textbf{réflexive}, \textbf{symétrique} et \textbf{transitive}.
+\end{definitionenv}
+\begin{proposition}
+Les classes d'équivalence forment une \textbf{partition} de $E$ ; réciproquement, toute partition définit une équivalence.
+\end{proposition}
+\end{frame}
+
+% ===== EXERCICES corrigés =====
+\section{EXERCICES corrigés}
+\begin{frame}{Exercice 1 - Injection/Surjection/Bijection}
+Soit $f:\R\to\R,\ f(x)=ax+b$ avec $a,b\in\R$.
+\begin{enumerate}
+  \item Pour quelles valeurs de $a$ la fonction est-elle injective ? surjective ? bijective ?
+\end{enumerate}
+\pause
+\textbf{Solution.} Si $a=0$, $f$ est constante $\Rightarrow$ ni injective ni surjective.  
+Si $a\ne 0$, $f$ est strictement monotone et affine $\Rightarrow$ bijective (donc injective et surjective).  
+\end{frame}
+
+\begin{frame}{Exercice 2 - Composition et image réciproque}
+Soit $f:\R\to\R,\ f(x)=x^2$ et $g:\R\to\R,\ g(x)=x+1$. Soit $B=[1,4]$.
+\begin{enumerate}
+  \item Calculer $(f\circ g)(x)$ ; \quad
+  \item $f^{-1}(B)$.
+\end{enumerate}
+\pause
+\textbf{Solution.} $(f\circ g)(x)=(x+1)^2=x^2+2x+1$.  
+$f^{-1}([1,4])=\{x\in\R:1\le x^2\le 4\}=(-\infty,-1]\cup[1,2]\cup[-2,-1]$ ; en simplifiant: $[-2,-1]\cup[1,2]$.
+\end{frame}
+
+\begin{frame}{Exercice 3 - Tiroirs}
+On place $13$ objets dans $12$ tiroirs. Montrer qu'au moins un tiroir contient $\ge 2$ objets.
+\pause
+
+\textbf{Solution.} Si chaque tiroir contenait 0 ou 1 objet, on ne placerait au plus que 12 objets. Contradiction.  
+Donc un tiroir contient au moins 2 objets.
+\end{frame}
+
+\begin{frame}{Exercice 4 - Dénombrement de fonctions}
+Combien d'applications $f:\{1,2,3\}\to\{a,b,c,d\}$ sont surjectives ?
+\pause
+
+\textbf{Solution.} Surjection impossible car $|\mathrm{dom}|=3<4=|\mathrm{codom}|$ ; il faut au moins autant d'éléments dans le domaine que dans le codomaine pour « couvrir » toutes les valeurs.
+\end{frame}
+
+\begin{frame}{Exercice 5 - Équivalences et classes}
+Dans $E=\Z$, définir $x\sim y \iff x-y$ est pair. Montrer que $\sim$ est une équivalence et décrire les classes.
+\pause
+
+\textbf{Solution.} Réflexive ($x-x=0$ pair), symétrique (si $x-y$ pair, $y-x=-(x-y)$ pair), transitive (somme de pairs).  
+Classes: $[\overline{0}]=\{\text{entiers pairs}\}$ et $[\overline{1}]=\{\text{entiers impairs}\}$ (partition en deux classes).
+\end{frame}
+
+% ===== Mini-quiz (interactif en présentiel) =====
+\section{Mini-quiz}
+\begin{frame}{Mini-quiz (flash)}
+\begin{enumerate}
+  \item Vrai/Faux : l'image réciproque préserve les inclusions : $A\subseteq B \Rightarrow f^{-1}(A)\subseteq f^{-1}(B)$.
+  \item Pour $|E|=m,|F|=n$, le nombre de fonctions $E\to F$ est $n^m$ (V/F ?).
+  \item Si $f$ est bijective, $f^{-1}$ est-elle bijective ? (Oui/Non)
+\end{enumerate}
+\pause
+\textbf{Réponses.} (1) Vrai ; (2) Vrai ; (3) Oui.
+\end{frame}
+
+% ===== Bonus optionnel : congruences (si tu le souhaites) =====
+\section{Bonus optionnel}
+\begin{frame}{Bonus (optionnel) - Congruence et classes}
+Pour $n\ge 2$, la relation $a\equiv b\,[n] \iff n\mid(a-b)$ est une équivalence sur $\Z$.  
+Les classes sont $[0],[1],\dots,[n-1]$ ; l'ensemble quotient $\Z/n\Z$ regroupe les résidus.
+\end{frame}
+
+% ===== Wrap-up =====
+\section{Wrap-up}
+\begin{frame}{Wrap-up \& transition}
+\begin{itemize}
+  \item Savoirs : ensembles/ops., applications, bijection \& inverse, cardinaux, tiroirs, équivalences/partitions.
+  \item Savoirs-faire : \textit{raisonnements} (direct, par cas), preuves courtes (tiroirs, Newton).
+\end{itemize}
+\textbf{À suivre :} Relations d'ordre, relations de préférence, et premières structures combinatoires.
+\end{frame}
+
+\end{document}

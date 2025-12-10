@@ -1,0 +1,258 @@
+\
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% --- Beamer setup ---
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usepackage{appendixnumberbeamer}
+
+% --- Language & math ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\graphicspath{{./}{/mnt/data/}}
+
+% --- Title data ---
+\title{Séance — Ensembles, relations \& fonctions}
+\subtitle{Mathématiques pour l’informatique (Bac+2)}
+\author{Geovany Batista Polo LAGUERRE}
+\institute{FSGA \& Université Quisqueya}
+\date{Version du 11/09/2025}
+
+% --- Logos ---
+\titlegraphic{%
+  \includegraphics[height=1.1cm]{logo.png}\hspace{1.2cm}%
+  \includegraphics[height=1.1cm]{logo2.png}%
+}
+\logo{%
+  \includegraphics[height=0.7cm]{logo.png}\hspace{0.4cm}%
+  \includegraphics[height=0.7cm]{logo2.png}%
+}
+
+% --- Niceties ---
+\definecolor{fsgaBlue}{RGB}{0,91,171}
+\setbeamercolor{structure}{fg=fsgaBlue}
+
+% --- Section page ---
+\AtBeginSection[]{
+  \begin{frame}
+    \centering
+    \vfill
+    {\LARGE \insertsectionhead\par}
+    \vfill
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% =====================================================================================
+\begin{frame}{Objectifs de la séance}
+\begin{itemize}
+  \item Manipuler $\subset$, $\cup$, $\cap$, $\setminus$, complémentaire (par rapport à un univers $U$), produit cartésien $E\times F$.
+  \item Travailler avec les \textbf{applications} : image directe $f(A)$, image réciproque $f^{-1}(B)$, \textbf{composition}, \textbf{restriction}.
+  \item Distinguer \textbf{injection / surjection / bijection} et construire l'inverse si bijective.
+  \item Dénombrer : $|\mathcal P(E)|=2^n$, nombre de fonctions ($p^n$), d'injections, de bijections ($n!$).
+  \item Relations : \textbf{réflexive / symétrique / transitive}, \textbf{équivalences} et \textbf{classes} (ex. modulo $n$).
+\end{itemize}
+\end{frame}
+
+% =====================================================================================
+\section{Ensembles}
+
+\begin{frame}{Motivation — Paradoxe de Russell (intuition)}
+\begin{itemize}
+  \item L'« ensemble de tous les ensembles » mène à une contradiction.
+  \item Construire $F = \{E \mid E \notin E\}$ et se demander « $F\in F$ ? » $\Rightarrow$ contradiction.
+  \item On travaille avec des définitions sûres et des ensembles concrets.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Définir un ensemble}
+\begin{itemize}
+  \item \textbf{Énumération} : $\{0,1\}$, $\{\text{rouge}, \text{noir}\}$
+  \item \textbf{Compréhension} : $\{x\in\mathbb R \mid |x-2| < 1\}$
+  \item Ensemble vide $\varnothing$ ; appartenance $x\in E$ / $x\notin E$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inclusion \& égalité}
+\begin{itemize}
+  \item $E \subset F \iff \forall x\in E,\; x\in F$.
+  \item $E=F \iff (E\subset F \text{ et } F\subset E)$.
+  \item Parties de $E$ : $\mathcal P(E)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Union, intersection, complémentaire}
+\begin{itemize}
+  \item $A\cup B = \{x \mid x\in A \text{ ou } x\in B\}$ (OU inclusif).
+  \item $A\cap B = \{x \mid x\in A \text{ et } x\in B\}$.
+  \item Complémentaire (dans $U$) : $U\setminus A = \{x\in U \mid x\notin A\}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Règles de calcul (rappels de logique)}
+\begin{itemize}
+  \item Commutativité, associativité, idempotence.
+  \item \textbf{Distributivité} : $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$ ; $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$.
+  \item \textbf{De Morgan} : $U\setminus(A\cap B)=(U\setminus A)\cup(U\setminus B)$ ; idem pour $\cup/\cap$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Produit cartésien $E\times F$}
+\begin{itemize}
+  \item $E\times F = \{(x,y)\mid x\in E,\, y\in F\}$.
+  \item Exemples : $\mathbb R^2=\mathbb R\times\mathbb R$ ; $[0,1]\times\mathbb R$ ; $[0,1]^3$.
+\end{itemize}
+\end{frame}
+
+% =====================================================================================
+\section{Applications (fonctions)}
+
+\begin{frame}{Applications (fonctions)}
+\begin{itemize}
+  \item $f:E\to F$ associe à $x\in E$ un \textbf{unique} $f(x)\in F$.
+  \item Égalité : $f=g \iff \forall x,\; f(x)=g(x)$.
+  \item Graphe $\Gamma_f = \{(x,f(x)) \mid x\in E\} \subset E\times F$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Composition \& restriction}
+\begin{itemize}
+  \item $(g\circ f)(x)=g(f(x))$.
+  \item $f|_A : A\to F$ (restriction).
+  \item Ex. $f(x)=1/x$ (sur son domaine), $g(x)=\frac{x-1}{x+1}$ $\Rightarrow$ $(g\circ f)(x)=-g(x)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Image directe \& image réciproque}
+\begin{itemize}
+  \item $f(A)=\{f(x)\mid x\in A\}\subset F$.
+  \item $f^{-1}(B)=\{x\in E\mid f(x)\in B\}\subset E$ (existe toujours).
+  \item $f(\{x\})$ est un singleton ; $f^{-1}(\{y\})$ peut être $\varnothing$, singleton, multiple, voire $E$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Injection, surjection, bijection}
+\begin{itemize}
+  \item \textbf{Injective} : $f(x)=f(x') \Rightarrow x=x'$ (au plus un antécédent).
+  \item \textbf{Surjective} : $\forall y\in F,\;\exists x\in E:\; f(x)=y$ (au moins un antécédent).
+  \item \textbf{Bijective} : injective \& surjective $\Rightarrow$ inverse $f^{-1}:F\to E$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bijection et inverse}
+\begin{itemize}
+  \item $f$ bijective $\iff$ $\exists g:F\to E$ telle que $f\circ g = \mathrm{id}_F$ et $g\circ f = \mathrm{id}_E$.
+  \item Unicité de l'inverse ; $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$.
+  \item Ex. $\exp:\mathbb R\to]0,+\infty[$ ; inverse $\ln$.
+\end{itemize}
+\end{frame}
+
+% =====================================================================================
+\section{Dénombrement}
+
+\begin{frame}{Ensembles finis — cardinal}
+\begin{itemize}
+  \item $E$ fini $\iff$ bijection $E\leftrightarrow\{1,\dots,n\}$ ; $|E|=n$.
+  \item Si $f:E\to F$ injective $\Rightarrow |E|\le|F|$ ; surjective $\Rightarrow |E|\ge|F|$.
+  \item (Finis, même cardinal) Injective $\Leftrightarrow$ Surjective $\Leftrightarrow$ Bijective.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Principe des tiroirs (pigeonhole)}
+\begin{itemize}
+  \item Si $n>k$ objets dans $k$ tiroirs $\Rightarrow$ au moins un tiroir contient $\ge2$ objets.
+  \item Ex. 400 étudiants $\Rightarrow$ deux ont le même \emph{jour} de naissance.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dénombrement d'applications}
+Soient $|E|=n$ et $|F|=p$.
+\begin{itemize}
+  \item \textbf{Fonctions} $E\to F$ : $p^n$.
+  \item \textbf{Injections} $E\hookrightarrow F$ ($p\ge n$) : $p\cdot(p-1)\cdots(p-n+1)$.
+  \item \textbf{Bijections} $E\to E$ : $n!$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Parties \& coefficients binomiaux}
+\begin{itemize}
+  \item $|\mathcal P(E)|=2^n$ (nombre de sous-ensembles).
+  \item $\\displaystyle \binom{n}{k}=\frac{n!}{k!(n-k)!}$ ; $\sum_k \binom{n}{k}=2^n$ ; $\binom{n}{k}=\binom{n}{n-k}$.
+  \item Récurrence (triangle de Pascal) : $\binom{n}{k}=\binom{n-1}{k}+\binom{n-1}{k-1}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Binôme de Newton}
+\[
+(a+b)^n = \sum_{k=0}^n \binom{n}{k}\, a^{\,n-k}\, b^{\,k}.
+\]
+\begin{itemize}
+  \item Ex. $(a+b)^2 = a^2+2ab+b^2$ ; $(a+b)^3 = a^3+3a^2b+3ab^2+b^3$.
+\end{itemize}
+\end{frame}
+
+% =====================================================================================
+\section{Relations}
+
+\begin{frame}{Relations \& équivalences}
+\begin{itemize}
+  \item Une relation sur $E$ : vrai/faux pour chaque $(x,y)\in E\times E$.
+  \item \textbf{Équivalence} : réflexive ; symétrique ; transitive.
+  \item \textbf{Classes d'équivalence} $\mathrm{cl}(x)=\{y\in E\mid y\sim x\}$ ; forment une partition de $E$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemples}
+\begin{itemize}
+  \item Équivalences : « être parallèle » (droites) ; « être du même âge ».
+  \item Contre-exemples : « être perpendiculaire » ; « $\le$ » (pas symétrique).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\mathbb Q$ via classes d'équivalence}
+Sur $\mathbb Z\times\mathbb N^\*$ : $(p,q)\sim(p',q') \iff pq' = p'q$.
+\begin{itemize}
+  \item Chaque rationnel est une \emph{classe} ; ex. $2/3 = 4/6$ (même classe).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Congruence modulo $n$ et $\mathbb Z/n\mathbb Z$}
+\begin{itemize}
+  \item $a \equiv b \pmod n \iff n\mid(a-b)$.
+  \item Classes : $0,1,\dots,n-1$ ; ex. $10\equiv 3\ (\mathrm{mod}\ 7)$, $-1\equiv 20\ (\mathrm{mod}\ 7)$.
+  \item Addition et multiplication bien définies sur les classes.
+\end{itemize}
+\end{frame}
+
+% =====================================================================================
+\begin{frame}{Mini-exercices (oral / binôme)}
+\begin{itemize}
+  \item Prouver $U\setminus(A\cup B)=(U\setminus A)\cap(U\setminus B)$ par la logique.
+  \item Lister $\{1,2,3\}\times\{1,2,3,4\}$.
+  \item Pour $f(x)=x^2$ : calculer $f([0,1[)$, $f(]-1,2[)$, $f^{-1}([1,2[)$, $f^{-1}(\{3\})$.
+  \item Injection/surjection pour $f:[0,+\infty[\to[0,+\infty[$, $x\mapsto x^2$ ?
+  \item Combien de listes de $k$ éléments distincts choisis parmi $n$ ?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wrap-up \& suite}
+\begin{itemize}
+  \item Ensembles \& lois ; fonctions ; dénombrement ; équivalences.
+  \item \textbf{À faire} : mini-quiz sur Moodle pour consolider (5–8 items).
+  \item \textbf{Prochaine séance} : combinatoire / probabilités discrètes (ou approfondissements selon planning).
+\end{itemize}
+\end{frame}
+
+\end{document}

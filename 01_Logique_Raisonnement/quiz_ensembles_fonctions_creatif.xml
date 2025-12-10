@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/Ensembles & Fonctions — Edition Créative</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name><text>Sous-ensemble — définition (avec rappel)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<div style="background:#f5faff;border:1px solid #cfe8ff;padding:10px;border-radius:8px;">
+  <div style="font-weight:600;color:#0b63b6;">🧩 Challenge</div>
+  <div style="font-size:90%;">Rappel : dire que A ⊆ B signifie que <em>tout</em> élément de A est aussi dans B.</div>
+</div>
+<p>La bonne formalisation est&nbsp;:</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[$$A \subseteq B \iff \forall x\,(x\in A \Rightarrow x\in B).$$]]></text>
+      <feedback><text><![CDATA[✅ Inclusion = implication élément par élément.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$$A \subset B \iff \forall x\,(x\in B \Rightarrow x\in A).$$]]></text>
+      <feedback><text><![CDATA[❌ Sens d'implication inversé.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$$A \subseteq B \iff \exists x\,(x\in A \Rightarrow x\in B).$$]]></text>
+      <feedback><text><![CDATA[❌ « Il existe » n'exprime pas « pour tout ».]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$$A \subseteq B \iff \Card(A)\le \Card(B).$$]]></text>
+      <feedback><text><![CDATA[ℹ️ Cardinalité seule ne suffit pas.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>De Morgan — visuel mental</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<div style="background:#f5faff;border:1px solid #cfe8ff;padding:10px;border-radius:8px;">
+  <div style="font-weight:600;color:#0b63b6;">🧩 Challenge</div>
+  <div style="font-size:90%;">Pense en termes de zones coloriées dans l'univers U.</div>
+</div>
+<p>Quelle égalité est correcte&nbsp;?</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[$$(A\cup B)^c = A^c \cap B^c$$]]></text>
+      <feedback><text><![CDATA[✅ Complémentaire de l'union = intersection des complémentaires.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$$(A\cap B)^c = A^c \cap B^c$$]]></text>
+      <feedback><text><![CDATA[❌ Manque l'union.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$$(A\cup B)^c = A^c \cup B^c$$]]></text>
+      <feedback><text><![CDATA[❌ C'est l'autre De&nbsp;Morgan.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$$(A\cap B)^c = A \cup B$$]]></text>
+      <feedback><text><![CDATA[❌ Pas général.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Puissance d’un ensemble — cardinal</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Si |E| = n (n ∈ ℕ), combien d’éléments dans ℘(E)&nbsp;?</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[$n$]]></text>
+      <feedback><text><![CDATA[❌ C'est le cas spécial n=1.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$n!$]]></text>
+      <feedback><text><![CDATA[❌ Ce serait des permutations.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[$2^n$]]></text>
+      <feedback><text><![CDATA[✅ Chaque élément est pris/omis indépendamment → 2 choix à la puissance n.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$n^2$]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Produit cartésien — cardinal</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Si |A| = m et |B| = n (finis), alors |A×B| = ?</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[$m+n$]]></text>
+      <feedback><text><![CDATA[❌ Addition au lieu de produit.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[$mn$]]></text>
+      <feedback><text><![CDATA[✅ Couples (a,b) : m choix pour a, n pour b.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$m^n$]]></text>
+      <feedback><text><![CDATA[❌ Inversé.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$n^m$]]></text>
+      <feedback><text><![CDATA[❌ Inversé.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Application — définition (unicité)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Laquelle décrit correctement une application f : E → F&nbsp;?</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[À chaque x ∈ E, on associe un <b>unique</b> f(x) ∈ F.]]></text>
+      <feedback><text><![CDATA[✅ Unicité de l'image.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Pour tout y ∈ F, il existe au moins un x ∈ E tel que f(x)=y.]]></text>
+      <feedback><text><![CDATA[ℹ️ C'est la surjectivité.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Il existe un x ∈ E tel que f(x) a deux valeurs dans F.]]></text>
+      <feedback><text><![CDATA[❌ Fonction mal définie.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Pour tout x ∈ F, il existe un y ∈ E tel que f(y)=x.]]></text>
+      <feedback><text><![CDATA[❌ Échange E/F.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Images et images réciproques — propriétés</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<div style="background:#f5faff;border:1px solid #cfe8ff;padding:10px;border-radius:8px;">
+  <div style="font-weight:600;color:#0b63b6;">🧩 Challenge</div>
+  <div style="font-size:90%;">Astuce : f distribue l’union, mais pas toujours l’intersection. f^{-1} distribue les deux.</div>
+</div>
+<p>Cochez TOUTES les affirmations correctes (f : E→F, A,B⊆E, C,D⊆F).</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[$f(A\cup B) = f(A)\cup f(B)$]]></text>
+      <feedback><text><![CDATA[✅ Oui.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$f(A\cap B) = f(A)\cap f(B)$]]></text>
+      <feedback><text><![CDATA[❌ En général, seulement ⊆.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[$f^{-1}(C\cup D) = f^{-1}(C)\cup f^{-1}(D)$]]></text>
+      <feedback><text><![CDATA[✅ Oui.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[$f^{-1}(C\cap D) = f^{-1}(C)\cap f^{-1}(D)$]]></text>
+      <feedback><text><![CDATA[✅ Oui.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Injectivité — caractérisation</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quel énoncé caractérise l’injectivité de f : E→F&nbsp;?</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[$f(x)=f(y) \Rightarrow x=y$]]></text>
+      <feedback><text><![CDATA[✅ Définition usuelle.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$\forall y\in F,\, \exists x\in E:\ f(x)=y$]]></text>
+      <feedback><text><![CDATA[ℹ️ Surjectivité.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$\exists g:F\to E:\ g\circ f=\mathrm{id}_E$]]></text>
+      <feedback><text><![CDATA[ℹ️ Implique injectivité mais formulation indirecte.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$\exists g:F\to E:\ f\circ g=\mathrm{id}_F$]]></text>
+      <feedback><text><![CDATA[ℹ️ Surjectivité.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Bijection — inverse</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Si f : E→F est bijective, alors…</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[il existe $f^{-1}:F\to E$ tel que $f^{-1}\circ f=\mathrm{id}_E$ et $f\circ f^{-1}=\mathrm{id}_F$.]]></text>
+      <feedback><text><![CDATA[✅ Caractérisation de la bijection.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$f^{-1}$ n'est pas forcément une application.]]></text>
+      <feedback><text><![CDATA[❌ Faux.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[f est injective mais pas surjective.]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[f est surjective mais pas injective.]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Composition — sens correct</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soient f:E→F et g:F→G. La composition (g∘f) est…</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[E → G définie par (g∘f)(x) = g(f(x)).]]></text>
+      <feedback><text><![CDATA[✅ Sens correct.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[F → E définie par (g∘f)(y) = f(g(y)).]]></text>
+      <feedback><text><![CDATA[❌ Sens inversé.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[G → E définie par (g∘f)(z) = f(g(z)).]]></text>
+      <feedback><text><![CDATA[❌ Sens inversé.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[E → F définie par (g∘f)(x) = f(g(x)).]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Dénombrement — toutes les applications E→F</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Si |E| = m et |F| = n (finis), le nombre d’applications f:E→F est…</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[$n^{m}$]]></text>
+      <feedback><text><![CDATA[✅ Pour chaque élément de E, n choix indépendants dans F.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$m^{n}$]]></text>
+      <feedback><text><![CDATA[❌ Inversé.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$\binom{n}{m}$]]></text>
+      <feedback><text><![CDATA[❌ Sélections, pas fonctions.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$n!$]]></text>
+      <feedback><text><![CDATA[❌ Permutations, cas spécial E=F et bijections.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Surjection impossible (pigeonhole)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Si |E| = 3 et |F| = 4, existe-t-il une surjection f:E→F&nbsp;?</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Non, impossible (le domaine est trop petit).]]></text>
+      <feedback><text><![CDATA[✅ Principe des tiroirs : |E| ≥ |F| requis.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Oui, car 4^3 fonctions existent.]]></text>
+      <feedback><text><![CDATA[❌ Quantité ≠ surjectivité.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Oui, si f est injective.]]></text>
+      <feedback><text><![CDATA[❌ L'injectivité ne crée pas de valeurs manquantes.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Oui, par composition avec une bijection.]]></text>
+      <feedback><text><![CDATA[❌ Pas avec |E|<|F|.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Image réciproque — toujours définie</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pour f:E→F et B⊆F, l’image réciproque f^{-1}(B)…</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[est toujours définie, même si f n’est pas injective/surjective.]]></text>
+      <feedback><text><![CDATA[✅ Définition ensembliste : un sous-ensemble d’E.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[n’existe que si f est bijective.]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[n’existe que si f est surjective.]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[n’existe que si f est injective.]]></text>
+      <feedback><text><![CDATA[❌ Non.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Monotonie de f^{-1}</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pour C⊆D⊆F, on a…</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[$f^{-1}(C)\subseteq f^{-1}(D)$]]></text>
+      <feedback><text><![CDATA[✅ Monotonie de f^{-1}.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$f^{-1}(C)= f^{-1}(D)$]]></text>
+      <feedback><text><![CDATA[❌ Pas en général.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$f^{-1}(C)\supseteq f^{-1}(D)$]]></text>
+      <feedback><text><![CDATA[❌ Sens inversé.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[$f^{-1}(C)\cap f^{-1}(D)=\varnothing$]]></text>
+      <feedback><text><![CDATA[❌ Pas nécessairement.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name><text>Composition — injectivité/surjectivité (implications)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soient f:E→F et g:F→G. Cochez TOUTES les affirmations correctes :</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[Si g∘f est injective, alors f est injective.]]></text>
+      <feedback><text><![CDATA[✅ Oui (sinon deux antécédents distincts s'identifieraient).]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Si g∘f est injective, alors g est injective.]]></text>
+      <feedback><text><![CDATA[❌ g peut « écraser » puis être rattrapée par f.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[Si g∘f est surjective, alors g est surjective.]]></text>
+      <feedback><text><![CDATA[✅ Oui (l'image couvre G).]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Si g∘f est surjective, alors f est surjective.]]></text>
+      <feedback><text><![CDATA[❌ f peut manquer des valeurs de F, compensées par g.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="truefalse">
+    <name><text>Image et inclusion</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Vrai/Faux : si A⊆B alors f(A)⊆f(B) pour toute application f:E→F.</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <answer fraction="100">
+      <text>true</text>
+      <feedback><text><![CDATA[✅ Image directe préserve les inclusions.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>false</text>
+      <feedback><text><![CDATA[❌ f(A)⊆f(B) est toujours vrai.]]></text></feedback>
+    </answer>
+  </question>
+  <question type="matching">
+    <name><text>Associer concepts — définitions rapides</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Associez chaque concept à sa définition.</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion>
+      <text><![CDATA[Injection]]></text>
+      <answer><text><![CDATA[f(x)=f(y) ⇒ x=y]]></text></answer>
+    </subquestion>
+    <subquestion>
+      <text><![CDATA[Surjection]]></text>
+      <answer><text><![CDATA[∀y∈F, ∃x∈E : f(x)=y]]></text></answer>
+    </subquestion>
+    <subquestion>
+      <text><![CDATA[Bijection]]></text>
+      <answer><text><![CDATA[Injection et surjection]]></text></answer>
+    </subquestion>
+    <subquestion>
+      <text><![CDATA[Image réciproque]]></text>
+      <answer><text><![CDATA[f^{-1}(B)={x∈E : f(x)∈B}]]></text></answer>
+    </subquestion>
+  </question>
+  <question type="matching">
+    <name><text>Associer opérations ensemblistes — symbole ↔ description</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Associez l'opération au bon rendu.</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <shuffleanswers>true</shuffleanswers>
+    <subquestion>
+      <text><![CDATA[A∪B]]></text>
+      <answer><text><![CDATA[éléments dans A ou B (ou les deux)]]></text></answer>
+    </subquestion>
+    <subquestion>
+      <text><![CDATA[A∩B]]></text>
+      <answer><text><![CDATA[éléments dans A et B]]></text></answer>
+    </subquestion>
+    <subquestion>
+      <text><![CDATA[A\B]]></text>
+      <answer><text><![CDATA[éléments de A qui ne sont pas dans B]]></text></answer>
+    </subquestion>
+    <subquestion>
+      <text><![CDATA[A^c]]></text>
+      <answer><text><![CDATA[complémentaire par rapport à l'univers U]]></text></answer>
+    </subquestion>
+  </question>
+  <question type="shortanswer">
+    <name><text>Domaines &amp; codomaines — rappel</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Soit f:E→F. Complétez : E est le <em>…</em> et F est le <em>…</em> (répondre: domaine; codomaine).</p>]]></text>
+    </questiontext>
+    <generalfeedback><text></text></generalfeedback>
+    <defaultgrade>1.000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <usecase>0</usecase>
+    <answer fraction="100">
+      <text>domaine; codomaine</text>
+      <feedback><text><![CDATA[✅ Parfait.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text>domaine ; codomaine</text>
+      <feedback><text><![CDATA[✅ OK (espace)]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text>domaine, codomaine</text>
+      <feedback><text><![CDATA[✅ OK (virgule)]]></text></feedback>
+    </answer>
+  </question>
+</quiz>

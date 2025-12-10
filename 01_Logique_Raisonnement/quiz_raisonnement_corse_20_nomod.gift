@@ -1,0 +1,160 @@
+$CATEGORY: $course$/Raisonnement (corse)
+
+// 1 Contraposée (formulation correcte)
+::Contraposée - continuité/dérivabilité::Quelle est la contraposée correcte de l'implication
+« Si \(f\) est dérivable en \(a\) alors \(f\) est continue en \(a\) » ? {
+= Si \(f\) n'est pas continue en \(a\) alors \(f\) n'est pas dérivable en \(a\).
+~ Si \(f\) est continue en \(a\) alors \(f\) est dérivable en \(a\).
+~ Si \(f\) n'est pas dérivable en \(a\) alors \(f\) n'est pas continue en \(a\).
+~ Si \(f\) n'est pas dérivable en \(a\) alors \(f\) est continue en \(a\).
+}
+
+// 2 Induction - repérer l'erreur (chevaux)
+::Induction - repérer l'erreur::Le « faux théorème » des chevaux « Tous les chevaux ont la même couleur »
+échoue parce que… {
+= au passage de \(n=1\) à \(n=2\), les ensembles ne se recouvrent pas et l'hérédité invoquée est invalide.
+~ la base \(n=1\) est fausse.
+~ la conclusion est vraie mais la preuve est circulaire.
+~ on utilise la contraposée au lieu de l'induction.
+}
+
+// 3 Contre-exemple (valeur absolue)
+::Contre-exemple - valeur absolue::<html>Choisissez <b>tous</b> les contre-exemples pour l'énoncé faux : 
+« pour tous réels \(x,y\), \(|x+y|=|x|+|y|\) ».</html> {
+~ x=0 ; y=0
+=%50% x=1 ; y=-1
+=%50% x=-1 ; y=1
+~ x=1 ; y=1
+}
+
+// 4 Absurde (√2 irrationnel) - hypothèse initiale
+::Absurde - racine de 2::Pour une preuve par l’absurde de « \(\sqrt{2}\) est irrationnel », on commence par supposer… {
+= \(\sqrt{2}=\frac{p}{q}\) sous forme irréductible avec \(p,q\in\mathbb{Z}\setminus\{0\}\).
+~ \(\sqrt{2}\) est rationnel et \(p,q\) sont tous deux pairs.
+~ \(\sqrt{2}\) n'est pas un nombre réel.
+~ \(\sqrt{2}=\frac{p}{q}\) avec \(p,q\) quelconques, pas nécessairement irréductibles.
+}
+
+// 5 Variante/terminaison (bon ordre vs variant)
+::Terminaison - choisir l'outil::On veut prouver la terminaison de :
+« tant que \(n>0\) faire \(n\leftarrow n-3\) si \(n\ge 3\) sinon \(n\leftarrow n-1\) ».
+Quel énoncé justifie le mieux la terminaison ? {
+= La fonction variante \(n\) décroît strictement dans \(\mathbb{N}\) et est minorée par 0.
+~ Le principe d'invariance garantit que \(n\) reste pair.
+~ La contraposée assure que \(n=0\) finit.
+~ La preuve par l’absurde suffit sans autre justification.
+}
+
+// 6 Tautologie classique (chaînage d'implications)
+::Tautologie - transitivité::La formule \(((p\Rightarrow q)\land(q\Rightarrow r))\Rightarrow(p\Rightarrow r)\) est… {
+= une tautologie.
+~ une contradiction.
+~ seulement satisfaisable mais réfutable.
+}
+
+// 7 Contradiction classique
+::Contradiction - équivalences::La formule \((p\Leftrightarrow q)\land(p\Leftrightarrow \neg q)\) est… {
+~ une tautologie.
+= une contradiction.
+~ satisfaisable mais non tautologie.
+}
+
+// 8 Négation avec quantificateurs
+::Négation - quantificateurs::La négation correcte de « \(\forall x\in\mathbb{R}, \exists y\in\mathbb{R},\ y>x\) » est… {
+= \(\exists x\in\mathbb{R},\ \forall y\in\mathbb{R},\ y\le x\).
+~ \(\forall x\in\mathbb{R},\ \forall y\in\mathbb{R},\ y\le x\).
+~ \(\exists y\in\mathbb{R},\ \forall x\in\mathbb{R},\ y>x\).
+~ \(\forall y\in\mathbb{R},\ \exists x\in\mathbb{R},\ y\le x\).
+}
+
+// 9 Parité — méthode adaptée (sans modulo)
+::Raisonnement par cas - parité::Pour montrer « pour tout entier \(n\), \(n^2\) est de la forme \(4k\) ou \(4k+1\) », la méthode la plus naturelle est… {
+= un raisonnement par cas sur la parité de \(n\).
+~ une preuve par l’absurde.
+~ une preuve par contraposée.
+~ une récurrence forte.
+}
+
+// 10 Induction forte - structure
+::Induction forte - structure::Dans une preuve par \emph{induction forte}, l’hypothèse d’induction s’écrit… {
+= « Si \(P(k)\) est vraie pour tous \(k\le n\), alors \(P(n{+}1)\) ».
+~ « Si \(P(n)\) est vraie, alors \(P(n{+}1)\) » (c’est l’induction simple).
+~ « \(P(n)\) est vraie pour une infinité de \(n\) ».
+}
+
+// 11 Plus petit contre-exemple - principe
+::Plus petit contre-exemple - principe::La méthode du plus petit contre-exemple consiste à… {
+= supposer l'existence d’un contre-exemple et choisir le plus petit (pour une relation d'ordre bien fondée).
+~ exhiber un exemple qui satisfait la propriété.
+~ remplacer l’induction par une preuve directe.
+}
+
+// 12 Invariant — jeu de jetons (R/B)
+::Invariant - jetons R/B::On remplace deux jetons par un : (RR)\(\to\)R, (BB)\(\to\)R, (RB)\(\to\)B.
+Quel invariant permet de déterminer la couleur finale ? {
+= La parité du nombre de jetons rouges.
+~ La somme du nombre de jetons.
+~ La parité du nombre de jetons bleus est constante.
+~ La différence (#R - #B) est constante.
+}
+
+// 13 Chaînage par contraposées
+::Contraposée - chaînage::Des implications \(A\Rightarrow B\) et \(B\Rightarrow C\) découle… {
+= \(\neg C \Rightarrow \neg A\).
+~ \(\neg A \Rightarrow \neg C\) est faux en général.
+~ \(C\Rightarrow A\) est toujours vrai.
+}
+
+// 14 Sophisme - affirmation du conséquent
+::Argument invalide - conséquent::« Tous les étudiants sont mortels. Pierre est mortel. Donc Pierre est étudiant. » Cet argument est… {
+= invalide (affirmation du conséquent).
+~ valide (modus ponens).
+~ valide (modus tollens).
+}
+
+// 15 RAA (réduction à l'absurde) pour une implication
+::Absurde - implication::Pour montrer \(P\Rightarrow Q\) par contradiction, on peut partir de… {
+= \(P\) et \(\neg Q\) pour dériver une contradiction.
+~ \(\neg P\) et \(Q\) pour dériver une contradiction.
+~ \(\neg P\) et \(\neg Q\) pour dériver une contradiction.
+}
+
+// 16 Choix de technique — factorisation première
+::Choix de technique - facteurs premiers::Pour prouver « tout entier \(n\ge 2\) a au moins un facteur premier », la technique la plus adaptée est… {
+= l’induction forte (ou bon ordre) sur \(n\).
+~ la contraposée.
+~ un simple contre-exemple.
+}
+
+// 17 Équivalences — bon ordre vs. induction
+::Équivalences - contre-exemples::Quel sens d’équivalence s’appuie classiquement sur l’ensemble des contre-exemples muni du bon ordre ? {
+= Bon ordre \(\Rightarrow\) Induction simple.
+~ Induction simple \(\Rightarrow\) Bon ordre.
+~ Induction forte \(\Rightarrow\) Induction simple.
+~ Induction simple \(\Rightarrow\) Contraposée.
+}
+
+// 18 Invariant - damier et dominos
+::Invariant - damier/dominos::On retire deux coins opposés d’un damier \(8\times 8\) (même couleur), puis on tente de le paver par des dominos \(1\times 2\).
+Pourquoi est-ce impossible ? {
+= Chaque domino couvre une case noire et une case blanche; le damier modifié a \(30\) cases d’une couleur et \(32\) de l’autre : l’invariant « \#noires-\#blanches=0 » est violé.
+~ L’aire restante est impaire.
+~ Le périmètre est trop petit.
+~ Il existe forcément un bloc \(2\times 2\) isolé.
+}
+
+// 19 Induction - seuil juste pour \(2^n < n!\)
+::Induction - seuil minimal::On veut prouver par induction que \(2^n < n!\). À partir de quelle base \(n_0\) l’énoncé est-il vrai (et l’induction fonctionne) ? {
+~ 1
+~ 2
+~ 3
+= 4
+}
+
+// 20 Contraposée — divisibilité (sans modulo)
+::Contraposée - divisibilité::Pour démontrer « si \(9\) divise \(a^2\) alors \(3\) divise \(a\) », la stratégie la plus directe est… {
+= utiliser la contraposée et le lemme d’Euclide : si \(3\nmid a\) alors aucun facteur \(3\) n'apparaît dans la décomposition en facteurs premiers de \(a\), donc pas dans \(a^2\).
+~ une récurrence sur \(a\).
+~ un invariant sur la somme des chiffres de \(a\).
+~ l’absurde avec \(a=\frac{p}{q}\).
+}
