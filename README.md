@@ -6,7 +6,7 @@ Ce dépôt contient l'ensemble des ressources pédagogiques, cours, exercices et
 
 Le syllabus complet du cours (objectifs, organisation hebdomadaire, évaluations et ressources) est disponible ici :
 
-📄 [Voir le syllabus du cours](SYLLABUS.md)
+[Voir le syllabus du cours](SYLLABUS.md)
 
 ## Contenu du Cours
 
