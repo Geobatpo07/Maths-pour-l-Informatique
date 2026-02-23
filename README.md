@@ -1,6 +1,12 @@
-# Mathématiques pour l'Informatique
+# Mathématiques pour Informaticien
 
-Ce dépôt contient l'ensemble des ressources pédagogiques, cours, exercices et projets pour le cours de **Mathématiques pour l'Informatique**.
+Ce dépôt contient l'ensemble des ressources pédagogiques, cours, exercices et projets pour le cours de **Mathématiques pour Informaticien**.
+
+## Syllabus
+
+Le syllabus complet du cours (objectifs, organisation hebdomadaire, évaluations et ressources) est disponible ici :
+
+📄 [Voir le syllabus du cours](SYLLABUS.md)
 
 ## Contenu du Cours
 
@@ -45,6 +51,19 @@ Le matériel est organisé autour des thématiques fondamentales suivantes :
     pip install pandas numpy matplotlib seaborn statsmodels
     ```
 3.  Ouvrez les notebooks Jupyter pour explorer les concepts mathématiques appliqués.
+
+## Public Cible
+
+Ce cours est destiné aux étudiants :
+
+* en informatique
+* en science des données
+* en ingénierie logicielle
+* ou toute personne souhaitant renforcer ses fondements mathématiques pour la programmation et l’IA.
+
+## Contributions
+
+Les contributions sont les bienvenues pour améliorer les supports pédagogiques, corriger des erreurs ou ajouter des exercices.
 
 ## Licence
 
