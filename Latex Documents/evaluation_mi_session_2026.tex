@@ -1,0 +1,190 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+% ================= LOGOS =================
+\begin{center}
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\linewidth]{logo.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\linewidth]{logo2.png}
+\end{minipage}
+\end{center}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.5cm}
+
+% ================= TITRE =================
+\begin{center}
+    \textbf{\Large ÉVALUATION DE MI-SESSION} \\[0.3cm]
+    \textbf{Mathématiques pour Informaticien} \\[0.2cm]
+    \textbf{Semestre : Printemps 2026} \\[0.2cm]
+    \textbf{Modalité : Travail à domicile} \\[0.2cm]
+    \textbf{Date limite : 17 mars 2026 à 18h (soumission Moodle)}
+\end{center}
+
+\vspace{0.5cm}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.3cm}
+
+\begin{center}
+\emph{« Ce que l’on conçoit bien s’énonce clairement,
+et les mots pour le dire arrivent aisément. »} \\
+\small{Nicolas Boileau}
+\end{center}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.5cm}
+
+\textbf{Consignes :}
+\begin{itemize}
+    \item Toutes les réponses doivent être rigoureusement justifiées.
+    \item Toute réponse non justifiée ne sera pas prise en compte.
+    \item La qualité de la rédaction est fortement valorisée.
+    \item Travail individuel.
+\end{itemize}
+
+\vspace{0.5cm}
+
+% ================= EXERCICE 1 =================
+\section*{Exercice 1 : Probabilités discrètes}
+
+On jette deux dés équilibrés. On définit les événements :
+\begin{enumerate}
+    \item \(A = \{\text{la somme vaut 7}\}\)
+    \item \(B = \{\text{le premier dé vaut 4}\}\)
+    \item \(C = \{\text{le second dé vaut 3}\}.\)
+\end{enumerate}
+Calculer :
+\[
+P(A \cap B), \quad P(A \cap C), \quad P(B \cap C), \quad P((A \cup B) \cap C)
+\]
+
+% ================= EXERCICE 2 =================
+\section*{Exercice 2 : Processus probabiliste}
+
+Une urne contient initialement 7 boules noires et 3 boules blanches.
+
+On effectue 3 tirages successifs selon la règle suivante :
+\begin{itemize}
+    \item Si une boule noire est tirée, elle est retirée définitivement.
+    \item Si une boule blanche est tirée, elle est retirée et remplacée par une boule noire.
+\end{itemize}
+
+Quelle est la probabilité de tirer 3 boules blanches successivement ?
+
+% ================= EXERCICE 3 =================
+\section*{Exercice 3 : Logique et quantificateurs}
+
+Exprimer à l’aide de quantificateurs les propositions suivantes définies sur $\mathbb{N}$ :
+
+\begin{enumerate}
+    \item Tout entier est le carré d’un entier.
+    \item Tout entier a pour carré la somme des carrés de deux entiers.
+    \item Certains entiers ont pour carré la somme des carrés de deux entiers.
+    \item Aucun entier n’est plus grand que tous les autres.
+    \item L’entier $n$ est impair.
+\end{enumerate}
+
+Exprimer ensuite la négation de chacune de ces propositions.
+
+% ================= EXERCICE 4 =================
+\section*{Exercice 4 : Raisonnement mathématique}
+
+Soit $n \in \mathbb{N}$.
+
+\begin{enumerate}
+    \item Montrer par l’absurde que si $n^2$ est pair alors $n$ est pair.
+    \item Faire la démonstration par contraposée.
+\end{enumerate}
+
+% ================= EXERCICE 5 =================
+\section*{Exercice 5 : Combinatoire}
+
+\begin{enumerate}
+    \item Que donne la formule du binôme de Newton pour $a = -1$ et $b = 1$ ?
+    \item En déduire que, dans un ensemble à $n$ éléments, il y a autant de parties de cardinal pair que de cardinal impair.
+\end{enumerate}
+
+% ================= EXERCICE 6 =================
+
+\section*{Exercice 6 : Principe des tiroirs (Informatique)}
+
+Dans un système informatique, on utilise une fonction de hachage qui associe à chaque utilisateur un identifiant compris entre 0 et 999 (soit 1000 valeurs possibles).
+
+\begin{enumerate}
+    \item Montrer que si 2001 utilisateurs sont enregistrés, alors il existe au moins 3 utilisateurs partageant le même identifiant. Donner une proposition pour rendre unique l’identifiant de chaque utilisateur.
+
+    \item Montrer que si $n$ utilisateurs sont répartis dans $k$ identifiants, alors il existe au moins un identifiant attribué à au moins
+    \[
+    \left\lceil \frac{n}{k} \right\rceil
+    \]
+    utilisateurs.
+\end{enumerate}
+On note $\lceil x \rceil$ le plus petit entier supérieur ou égal à $x$. Par exemple, $\lceil 3.2 \rceil = 4$ et $\lceil 5 \rceil = 5$.
+
+% ================= EXERCICE 7 =================
+\section*{Exercice 7 : Fonctions}
+
+Soit la fonction $f : ]1,+\infty[ \to ]0,+\infty[$ définie par :
+\[
+f(x) = \frac{1}{x-1}
+\]
+
+\begin{enumerate}
+    \item Montrer que $f$ est bijective.
+    \item Déterminer sa fonction réciproque.
+    \item Calculer $f(2)$, $f(10)$, $f^{-1}(2)$ et $f^{-1}(10)$ (en discutant le domaine).
+\end{enumerate}
+
+% ================= EXERCICE 8 =================
+\section*{Exercice 8 : Compréhension et créativité}
+
+Albert Einstein a dit : \textit{“
+If you can't explain it simply, you don't understand it well enough.
+”} qui se traduit par : \textit{“Si vous ne pouvez pas l'expliquer simplement, c'est que vous ne le comprenez pas suffisamment bien.”}.
+
+\vspace{0.3cm}
+
+Sur ce, rédigez un texte narratif (10 à 15 lignes) dans lequel vous expliquez les notions de combinatoire et de probabilités de base à une personne non initiée.
+
+\vspace{0.3cm}
+
+Vous pouvez utiliser une histoire, des analogies ou des exemples concrets.
+
+\vspace{0.3cm}
+
+\textbf{Critères d’évaluation :}
+\begin{itemize}
+    \item Clarté et pédagogie
+    \item Justesse des concepts
+    \item Créativité
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{Bon travail}
+\end{center}
+
+\end{document}
