@@ -1,0 +1,618 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+
+\geometry{margin=2.5cm}
+
+\newenvironment{pedago}
+{\par\smallskip\noindent\textbf{Commentaire pédagogique. }\itshape}
+{\par\smallskip}
+
+\newenvironment{methode}
+{\par\smallskip\noindent\textbf{Méthode. }}
+{\par\smallskip}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Corrigé détaillé -- Évaluation de mi-session}}\\[0.2cm]
+    {\large Mathématiques pour Informaticien}\\[0.1cm]
+    Semestre : Printemps 2026
+\end{center}
+
+\vspace{0.4cm}
+
+\noindent\textbf{Remarque générale.}
+Le présent corrigé est volontairement détaillé. Il ne s'agit pas seulement d'indiquer le résultat final, mais aussi de mettre en évidence le raisonnement attendu, les outils mobilisés et les erreurs classiques à éviter.
+
+\bigskip
+
+\section*{Exercice 1 -- Probabilités discrètes}
+
+On jette deux dés équilibrés. L'univers est
+\[
+\Omega=\{(i,j)\mid i\in\{1,\dots,6\},\ j\in\{1,\dots,6\}\},
+\]
+où $i$ désigne le résultat du premier dé et $j$ celui du second dé.
+
+Comme les deux dés sont équilibrés et indépendants, les $36$ issues de $\Omega$ sont équiprobables. Ainsi, pour tout événement $E\subset \Omega$,
+\[
+P(E)=\frac{|E|}{36}.
+\]
+
+On considère
+\[
+A=\{(i,j)\in\Omega\mid i+j=7\},\qquad
+B=\{(i,j)\in\Omega\mid i=4\},\qquad
+C=\{(i,j)\in\Omega\mid j=3\}.
+\]
+
+\subsection*{1) Calcul de $P(A\cap B)$}
+
+Décrivons d'abord les ensembles :
+\[
+A=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\},
+\]
+donc $|A|=6$, et
+\[
+B=\{(4,1),(4,2),(4,3),(4,4),(4,5),(4,6)\}.
+\]
+
+L'intersection $A\cap B$ regroupe les issues pour lesquelles \emph{à la fois} la somme vaut $7$ et le premier dé vaut $4$. La seule possibilité est
+\[
+A\cap B=\{(4,3)\}.
+\]
+Par conséquent,
+\[
+P(A\cap B)=\frac{1}{36}.
+\]
+
+\subsection*{2) Calcul de $P(A\cap C)$}
+
+De même,
+\[
+C=\{(1,3),(2,3),(3,3),(4,3),(5,3),(6,3)\}.
+\]
+
+L'intersection $A\cap C$ correspond aux issues pour lesquelles la somme vaut $7$ et le second dé vaut $3$. La seule possibilité est encore
+\[
+A\cap C=\{(4,3)\}.
+\]
+Donc
+\[
+P(A\cap C)=\frac{1}{36}.
+\]
+
+\subsection*{3) Calcul de $P(B\cap C)$}
+
+L'événement $B\cap C$ signifie : le premier dé vaut $4$ et le second vaut $3$. Il y a donc exactement une issue :
+\[
+B\cap C=\{(4,3)\}.
+\]
+Ainsi,
+\[
+P(B\cap C)=\frac{1}{36}.
+\]
+
+\subsection*{4) Calcul de $P((A\cup B)\cap C)$}
+
+On cherche les issues qui sont dans $C$ et qui appartiennent soit à $A$, soit à $B$.
+
+Or, si une issue est dans $C$, alors elle est de la forme $(i,3)$. Pour qu'elle soit aussi dans $A$, il faut que $i+3=7$, soit $i=4$. Pour qu'elle soit dans $B$, il faut également que $i=4$.
+
+Dans les deux cas, on obtient la même issue :
+\[
+(A\cup B)\cap C=\{(4,3)\}.
+\]
+Donc
+\[
+P((A\cup B)\cap C)=\frac{1}{36}.
+\]
+
+\begin{pedago}
+L'erreur la plus fréquente consiste à confondre union et intersection, ou à oublier que l'on travaille dans un univers d'issues ordonnées. Ici, $(4,3)$ et $(3,4)$ sont deux résultats différents.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 2 -- Processus probabiliste}
+
+L'urne contient initialement $7$ boules noires et $3$ boules blanches, soit $10$ boules au total.
+
+La règle est la suivante :
+\begin{itemize}[leftmargin=1.2cm]
+    \item si on tire une boule noire, on la retire définitivement ;
+    \item si on tire une boule blanche, on la retire et on ajoute une boule noire à la place.
+\end{itemize}
+
+On demande la probabilité de tirer \emph{trois boules blanches successivement}.
+
+\subsection*{Étape 1}
+
+Au départ, il y a $3$ boules blanches sur $10$ boules. Donc
+\[
+P(\text{1re blanche})=\frac{3}{10}.
+\]
+
+Après ce tirage, la boule blanche retirée est remplacée par une noire. La nouvelle composition est donc :
+\[
+8\ \text{noires},\quad 2\ \text{blanches}.
+\]
+
+\subsection*{Étape 2}
+
+Conditionnellement au fait que la première boule soit blanche, la probabilité que la deuxième soit blanche vaut
+\[
+P(\text{2e blanche}\mid \text{1re blanche})=\frac{2}{10}.
+\]
+
+Après ce deuxième tirage blanc, on remplace encore la blanche tirée par une noire. La composition devient
+\[
+9\ \text{noires},\quad 1\ \text{blanche}.
+\]
+
+\subsection*{Étape 3}
+
+Conditionnellement au fait que les deux premières boules soient blanches,
+\[
+P(\text{3e blanche}\mid \text{1re et 2e blanches})=\frac{1}{10}.
+\]
+
+\subsection*{Conclusion}
+
+Par multiplication des probabilités conditionnelles :
+\[
+P(\text{3 blanches successivement})
+=
+\frac{3}{10}\times \frac{2}{10}\times \frac{1}{10}
+=
+\frac{6}{1000}
+=
+\frac{3}{500}.
+\]
+
+\[
+\boxed{P(\text{3 blanches successivement})=\frac{3}{500}}
+\]
+
+\begin{pedago}
+Cet exercice vérifie si l'étudiant sait suivre l'évolution d'un système aléatoire au cours du temps. Il faut bien mettre à jour la composition de l'urne après chaque tirage.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 3 -- Logique et quantificateurs}
+
+On travaille sur $\mathbb N$.
+
+\subsection*{1) ``Tout entier est le carré d'un entier''}
+
+La proposition s'écrit :
+\[
+\forall n\in\mathbb N,\ \exists k\in\mathbb N,\ n=k^2.
+\]
+
+Sa négation s'obtient en remplaçant $\forall$ par $\exists$, puis $\exists$ par $\forall$, et en niant l'égalité :
+\[
+\exists n\in\mathbb N,\ \forall k\in\mathbb N,\ n\neq k^2.
+\]
+
+\subsection*{2) ``Tout entier a pour carré la somme des carrés de deux entiers''}
+
+La proposition s'écrit :
+\[
+\forall n\in\mathbb N,\ \exists a\in\mathbb N,\ \exists b\in\mathbb N,\ n^2=a^2+b^2.
+\]
+
+Sa négation est :
+\[
+\exists n\in\mathbb N,\ \forall a\in\mathbb N,\ \forall b\in\mathbb N,\ n^2\neq a^2+b^2.
+\]
+
+\subsection*{3) ``Certains entiers ont pour carré la somme des carrés de deux entiers''}
+
+La proposition s'écrit :
+\[
+\exists n\in\mathbb N,\ \exists a\in\mathbb N,\ \exists b\in\mathbb N,\ n^2=a^2+b^2.
+\]
+
+Sa négation est :
+\[
+\forall n\in\mathbb N,\ \forall a\in\mathbb N,\ \forall b\in\mathbb N,\ n^2\neq a^2+b^2.
+\]
+
+\subsection*{4) ``Aucun entier n'est plus grand que tous les autres''}
+
+Cette phrase signifie qu'il n'existe pas de plus grand entier naturel. Une formulation correcte est :
+\[
+\forall n\in\mathbb N,\ \exists m\in\mathbb N,\ m>n.
+\]
+
+Sa négation est :
+\[
+\exists n\in\mathbb N,\ \forall m\in\mathbb N,\ m\le n.
+\]
+
+\subsection*{5) ``L'entier $n$ est impair''}
+
+Ici, $n$ est considéré comme fixé. Dire que $n$ est impair revient à écrire :
+\[
+\exists k\in\mathbb N,\ n=2k+1.
+\]
+
+Sa négation est :
+\[
+\forall k\in\mathbb N,\ n\neq 2k+1.
+\]
+
+\begin{pedago}
+Pour nier une proposition quantifiée, il faut toujours :
+\begin{itemize}[leftmargin=1.2cm]
+    \item inverser les quantificateurs ;
+    \item nier l'assertion finale.
+\end{itemize}
+C'est une compétence centrale en logique mathématique et en informatique théorique.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 4 -- Raisonnement mathématique}
+
+Soit $n\in\mathbb N$. On veut montrer que
+\[
+n^2 \text{ pair } \Longrightarrow n \text{ pair}.
+\]
+
+\subsection*{1) Démonstration par l'absurde}
+
+Supposons que $n^2$ soit pair et que, pourtant, $n$ soit impair.
+
+Comme $n$ est impair, il existe $k\in\mathbb N$ tel que
+\[
+n=2k+1.
+\]
+
+Alors
+\[
+n^2=(2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1.
+\]
+
+On obtient donc que $n^2$ est impair, ce qui contredit l'hypothèse ``$n^2$ est pair''.
+
+La supposition ``$n$ impair'' est donc impossible. Ainsi,
+\[
+\boxed{n^2\text{ pair } \Longrightarrow n\text{ pair}.}
+\]
+
+\subsection*{2) Démonstration par contraposée}
+
+La contraposée de
+\[
+n^2\text{ pair } \Longrightarrow n\text{ pair}
+\]
+est
+\[
+n\text{ impair } \Longrightarrow n^2\text{ impair}.
+\]
+
+Supposons donc $n$ impair. Il existe $k\in\mathbb N$ tel que
+\[
+n=2k+1.
+\]
+Alors
+\[
+n^2=(2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1,
+\]
+ce qui est impair.
+
+La contraposée est vraie, donc la proposition initiale est vraie :
+\[
+\boxed{n^2\text{ pair } \Longrightarrow n\text{ pair}.}
+\]
+
+\begin{pedago}
+La preuve par contraposée est souvent plus naturelle ici que la preuve par l'absurde. Les deux doivent néanmoins être maîtrisées, car elles interviennent fréquemment en mathématiques discrètes, en algorithmique et en théorie de la calculabilité.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 5 -- Combinatoire}
+
+\subsection*{1) Application de la formule du binôme de Newton}
+
+Pour tout entier $n\ge 0$, la formule du binôme de Newton donne
+\[
+(a+b)^n=\sum_{k=0}^n \binom{n}{k} a^{n-k}b^k.
+\]
+
+En prenant $a=-1$ et $b=1$, on obtient
+\[
+(-1+1)^n=\sum_{k=0}^n \binom{n}{k} (-1)^{\,n-k}1^k.
+\]
+
+Comme $-1+1=0$, on a
+\[
+0^n=\sum_{k=0}^n \binom{n}{k} (-1)^{\,n-k}.
+\]
+
+Pour $n\ge 1$, cela donne
+\[
+0=\sum_{k=0}^n \binom{n}{k} (-1)^{\,n-k}.
+\]
+
+Une écriture équivalente, plus classique, est
+\[
+0=\sum_{k=0}^n \binom{n}{k} (-1)^k.
+\]
+
+\subsection*{2) Interprétation combinatoire}
+
+Dans un ensemble à $n$ éléments, le nombre de parties à $k$ éléments vaut
+\[
+\binom{n}{k}.
+\]
+
+Le nombre total de parties de cardinal pair est donc
+\[
+\sum_{\substack{0\le k\le n\\ k\text{ pair}}} \binom{n}{k},
+\]
+et celui des parties de cardinal impair est
+\[
+\sum_{\substack{0\le k\le n\\ k\text{ impair}}} \binom{n}{k}.
+\]
+
+Or
+\[
+\sum_{k=0}^n \binom{n}{k} (-1)^k
+=
+\sum_{k\text{ pair}} \binom{n}{k}
+-
+\sum_{k\text{ impair}} \binom{n}{k}
+=
+0.
+\]
+
+Donc
+\[
+\sum_{k\text{ pair}} \binom{n}{k}
+=
+\sum_{k\text{ impair}} \binom{n}{k}.
+\]
+
+Ainsi, pour tout $n\ge 1$, dans un ensemble à $n$ éléments, il y a autant de parties de cardinal pair que de parties de cardinal impair.
+
+\[
+\boxed{\text{Nombre de parties paires}=\text{Nombre de parties impaires}}
+\]
+
+En fait, chacune de ces deux quantités vaut
+\[
+2^{n-1}.
+\]
+
+\begin{pedago}
+Le cas $n=0$ constitue une exception : l'ensemble vide possède une seule partie (lui-même), de cardinal pair, et aucune partie de cardinal impair. La conclusion d'égalité vaut donc pour $n\ge 1$.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 6 -- Principe des tiroirs (Informatique)}
+
+On dispose de $1000$ identifiants possibles, numérotés de $0$ à $999$.
+
+\subsection*{1) Cas de 2001 utilisateurs}
+
+On répartit $2001$ utilisateurs dans $1000$ identifiants possibles.
+
+Le principe des tiroirs affirme que si l'on place plus d'objets que de cases, alors au moins une case contient plusieurs objets. Ici, on veut établir un résultat plus précis : montrer qu'au moins un identifiant est partagé par au moins $3$ utilisateurs.
+
+Supposons par l'absurde que chaque identifiant soit attribué à au plus $2$ utilisateurs. Alors le nombre total d'utilisateurs serait au plus
+\[
+1000\times 2=2000.
+\]
+
+Mais on a en réalité $2001$ utilisateurs. Contradiction.
+
+Il existe donc au moins un identifiant attribué à au moins $3$ utilisateurs.
+
+\[
+\boxed{\text{Avec 2001 utilisateurs et 1000 identifiants, au moins 3 utilisateurs partagent un même identifiant.}}
+\]
+
+\paragraph{Proposition pour rendre unique l'identifiant de chaque utilisateur.}
+Plusieurs réponses sont acceptables, par exemple :
+\begin{itemize}[leftmargin=1.2cm]
+    \item utiliser un identifiant intrinsèquement unique (UUID) ;
+    \item concaténer la valeur de hachage avec un compteur ou avec un identifiant primaire unique ;
+    \item stocker les collisions dans une structure secondaire et attribuer un suffixe distinctif.
+\end{itemize}
+
+\subsection*{2) Généralisation à $n$ utilisateurs et $k$ identifiants}
+
+On veut montrer que si $n$ utilisateurs sont répartis dans $k$ identifiants, alors il existe au moins un identifiant attribué à au moins
+\[
+\left\lceil \frac{n}{k}\right\rceil
+\]
+utilisateurs.
+
+\begin{methode}
+On raisonne par contradiction. Supposons que chaque identifiant soit attribué à strictement moins de
+\[
+\left\lceil \frac{n}{k}\right\rceil
+\]
+utilisateurs. Alors chaque identifiant serait attribué à au plus
+\[
+\left\lceil \frac{n}{k}\right\rceil -1
+\]
+utilisateurs. Le nombre total d'utilisateurs serait alors au plus
+\[
+k\left(\left\lceil \frac{n}{k}\right\rceil -1\right).
+\]
+Or cette quantité est strictement inférieure à $n$, ce qui est impossible. Donc au moins un identifiant est attribué à
+\[
+\left\lceil \frac{n}{k}\right\rceil
+\]
+utilisateurs ou davantage.
+\end{methode}
+
+Ainsi,
+\[
+\boxed{\exists\ \text{un identifiant contenant au moins }\left\lceil \frac{n}{k}\right\rceil\ \text{utilisateurs}.}
+\]
+
+\begin{pedago}
+Cet exercice relie un résultat de mathématiques discrètes à une situation très concrète en informatique : les collisions dans les fonctions de hachage. C'est un excellent exemple d'application du principe des tiroirs à la science des données et aux structures de stockage.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 7 -- Fonctions}
+
+On considère
+\[
+f: ]1,+\infty[ \longrightarrow ]0,+\infty[, \qquad f(x)=\frac{1}{x-1}.
+\]
+
+\subsection*{1) Montrer que $f$ est bijective}
+
+\paragraph{Injectivité.}
+Soient $x_1,x_2\in ]1,+\infty[$ tels que
+\[
+f(x_1)=f(x_2).
+\]
+Alors
+\[
+\frac{1}{x_1-1}=\frac{1}{x_2-1}.
+\]
+Comme les dénominateurs sont non nuls, on peut inverser :
+\[
+x_1-1=x_2-1,
+\]
+d'où
+\[
+x_1=x_2.
+\]
+Donc $f$ est injective.
+
+\paragraph{Surjectivité.}
+Soit $y\in ]0,+\infty[$. On cherche $x\in ]1,+\infty[$ tel que
+\[
+\frac{1}{x-1}=y.
+\]
+Comme $y>0$, on peut écrire
+\[
+x-1=\frac{1}{y},
+\qquad \text{donc} \qquad
+x=1+\frac{1}{y}.
+\]
+Or $\frac{1}{y}>0$, donc $x>1$, c'est-à-dire $x\in ]1,+\infty[$.
+
+Ainsi, tout $y>0$ admet un antécédent par $f$. Donc $f$ est surjective.
+
+Comme $f$ est à la fois injective et surjective, elle est bijective.
+
+\[
+\boxed{f\text{ est bijective de } ]1,+\infty[ \text{ sur } ]0,+\infty[}
+\]
+
+\subsection*{2) Déterminer la fonction réciproque}
+
+On part de
+\[
+y=\frac{1}{x-1}.
+\]
+On résout en $x$ :
+\[
+x-1=\frac{1}{y}
+\qquad\Longrightarrow\qquad
+x=1+\frac{1}{y}.
+\]
+Ainsi,
+\[
+f^{-1}(y)=1+\frac{1}{y}.
+\]
+
+On peut donc écrire
+\[
+\boxed{f^{-1}(x)=1+\frac{1}{x}\quad \text{pour }x>0.}
+\]
+
+\subsection*{3) Calcul de quelques valeurs}
+
+\[
+f(2)=\frac{1}{2-1}=1.
+\]
+
+\[
+f(10)=\frac{1}{10-1}=\frac{1}{9}.
+\]
+
+\[
+f^{-1}(2)=1+\frac{1}{2}=\frac{3}{2}.
+\]
+
+\[
+f^{-1}(10)=1+\frac{1}{10}=\frac{11}{10}.
+\]
+
+Donc
+\[
+\boxed{f(2)=1,\quad f(10)=\frac{1}{9},\quad f^{-1}(2)=\frac{3}{2},\quad f^{-1}(10)=\frac{11}{10}.}
+\]
+
+\begin{pedago}
+Une autre manière élégante d'établir l'injectivité est d'observer que la fonction $x\mapsto \frac{1}{x-1}$ est strictement décroissante sur $]1,+\infty[$. Une fonction strictement monotone est injective.
+\end{pedago}
+
+\bigskip
+
+\section*{Exercice 8 -- Compréhension et créativité}
+
+Il s'agit ici d'une question d'expression mathématique. L'objectif n'est pas de réciter un cours, mais de montrer que l'on a compris les idées fondamentales de la combinatoire et des probabilités au point de pouvoir les expliquer simplement.
+
+\subsection*{Exemple de réponse possible}
+
+\begin{quote}
+Imaginons que je veuille organiser un petit jeu avec des cartes de couleurs différentes. La combinatoire m'aide à compter toutes les façons possibles de choisir ou de ranger ces cartes. Par exemple, si j'ai plusieurs cartes, je peux me demander combien d'équipes différentes je peux former ou dans combien d'ordres je peux les placer. Les probabilités, elles, me permettent de mesurer les chances qu'un événement se produise. Si je tire une carte au hasard, je peux calculer la probabilité d'obtenir une certaine couleur en comparant le nombre de cas favorables au nombre total de cas possibles. En réalité, la combinatoire sert souvent à compter ces cas possibles, et les probabilités utilisent ensuite ce comptage pour mesurer l'incertitude. Ainsi, les deux notions sont liées : l'une compte, l'autre évalue les chances.
+\end{quote}
+
+\subsection*{Ce que l'on attendait}
+
+Une bonne réponse devait :
+\begin{itemize}[leftmargin=1.2cm]
+    \item être compréhensible par une personne non spécialiste ;
+    \item distinguer clairement le rôle de la combinatoire et celui des probabilités ;
+    \item s'appuyer si possible sur un exemple concret ;
+    \item rester mathématiquement juste.
+\end{itemize}
+
+\begin{pedago}
+Cette question permet d'évaluer une compétence rarement mesurée par les exercices purement techniques : la capacité à reformuler un savoir, à l'organiser et à le rendre intelligible. C'est une compétence essentielle en informatique, notamment pour la documentation, la communication technique et l'enseignement.
+\end{pedago}
+
+\bigskip
+
+\section*{Conclusion}
+
+Ce sujet mobilise plusieurs compétences fondamentales en mathématiques pour l'informatique :
+\begin{itemize}[leftmargin=1.2cm]
+    \item raisonnement logique ;
+    \item manipulation des quantificateurs ;
+    \item calcul de probabilités ;
+    \item outils de combinatoire ;
+    \item preuve mathématique ;
+    \item compréhension conceptuelle et capacité d'explication.
+\end{itemize}
+
+\end{document}
