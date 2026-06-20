@@ -1,0 +1,311 @@
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlength{\headheight}{10pt}
+
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+%================ LOGOS ==================
+
+\begin{center}
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\linewidth]{logo}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\linewidth]{logo2}
+\end{minipage}
+\end{center}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.4cm}
+
+\begin{center}
+{\Large \textbf{ÉVALUATION FINALE}}\\[0.2cm]
+\textbf{Mathématiques pour Informaticien}\\
+Semestre : Printemps 2026\\
+Modalité : Travail à domicile\\
+Date limite : Vendredi 12 juin 2026 à 18h (soumission Moodle)
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{center}
+\emph{« Ce que l'on conçoit bien s'énonce clairement, et les mots pour le dire arrivent aisément. »}\\
+Nicolas Boileau
+\end{center}
+
+\vspace{0.3cm}
+\hrule
+\vspace{0.5cm}
+
+\textbf{Consignes :}
+
+\begin{itemize}
+\item Toutes les réponses doivent être rigoureusement justifiées.
+\item Toute réponse non justifiée ne sera pas prise en compte.
+\item La qualité de la rédaction sera prise en considération.
+\item Travail individuel.
+\end{itemize}
+
+%=================================================
+\section*{Exercice 1 : Logique, combinatoire et probabilités}
+
+\begin{enumerate}
+
+\item Exprimer à l'aide de quantificateurs les propositions suivantes définies sur $\mathbb N$ :
+
+\begin{enumerate}
+\item Tout entier a pour carré la somme des carrés de deux entiers.
+\item Aucun entier n'est plus grand que tous les autres.
+\end{enumerate}
+
+Exprimer ensuite la négation de chacune de ces propositions.
+
+\item Montrer par contraposée que :
+
+\[
+n^2 \text{ pair } \Longrightarrow n \text{ pair}.
+\]
+
+\item Que donne la formule du binôme de Newton pour
+
+\[
+a=-1,\qquad b=1 ?
+\]
+
+En déduire que dans un ensemble à $n$ éléments il y a autant de parties de cardinal pair que de cardinal impair.
+
+\item Dans un système informatique, une fonction de hachage associe à chaque utilisateur un identifiant compris entre 0 et 999.
+
+\begin{enumerate}
+\item Montrer que si 2001 utilisateurs sont enregistrés alors au moins trois utilisateurs partagent le même identifiant.
+\item Montrer que si $n$ utilisateurs sont répartis dans $k$ identifiants alors il existe au moins un identifiant attribué à
+\[
+\left\lceil \frac{n}{k}\right\rceil
+\]
+utilisateurs.
+\end{enumerate}
+
+\item Une urne contient initialement 7 boules noires et 3 boules blanches.
+
+On effectue trois tirages successifs selon la règle suivante :
+
+\begin{itemize}
+\item une boule noire tirée est retirée définitivement ;
+\item une boule blanche tirée est retirée puis remplacée par une boule noire.
+\end{itemize}
+
+Calculer la probabilité d'obtenir trois boules blanches successivement.
+
+\end{enumerate}
+
+%=================================================
+\section*{Exercice 2 : Statistiques descriptives et visualisation}
+
+La Direction Générale de l'Agriculture et de la Forêt fournit la répartition suivante des chefs d'exploitation agricole d'une région selon leur âge.
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+Tranche d'âge & Nombre d'exploitations\\
+\hline
+Moins de 25 ans & 580\\
+De 25 à 29 ans & 2162\\
+De 30 à 39 ans & 8063\\
+De 40 à 49 ans & 9569\\
+De 50 à 59 ans & 10660\\
+60 ans et plus & 15913\\
+\hline
+\end{tabular}
+\end{center}
+
+On retiendra 20 ans comme âge minimal et 70 ans comme âge maximal.
+
+\begin{enumerate}
+\item Définir la population étudiée, l'individu statistique, le caractère étudié et ses modalités.
+\item Compléter le tableau statistique en ajoutant :
+\begin{itemize}
+\item les fréquences ;
+\item les fréquences cumulées croissantes ;
+\item les fréquences cumulées décroissantes.
+\end{itemize}
+\item Déterminer la proportion des chefs d'exploitation :
+\begin{enumerate}
+\item ayant au moins 40 ans ;
+\item ayant moins de 30 ans ;
+\item ayant entre 25 et 60 ans.
+\end{enumerate}
+\item Déterminer par le calcul :
+\[
+Q_1,\quad M_e,\quad Q_3.
+\]
+
+%=================================================
+\section*{Exercice 3 : Visualisation et analyse de données}
+
+Une plateforme de streaming a enregistré le nombre de vues par genre de film durant le mois de janvier.
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Genre} & \textbf{Nombre de vues} \\
+\hline
+Action & 4500 \\
+Comédie & 3200 \\
+Drame & 2800 \\
+Science-fiction & 1500 \\
+Documentaire & 1000 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+\item Construire un diagramme en barres représentant ces données.
+\item Calculer le nombre total de vues.
+\item Déterminer la part (en pourcentage) de chaque genre.
+\item Quel genre est le plus populaire ? Quel genre est le moins populaire ?
+\item Construire un diagramme circulaire représentant la répartition des vues.
+\item Entre le diagramme en barres et le diagramme circulaire, lequel permet le mieux de comparer les genres ? Justifier votre réponse.
+\item La plateforme souhaite investir davantage dans les genres les plus populaires. À partir des données observées, quelles recommandations pourriez-vous formuler ?
+\item Proposer une autre visualisation pertinente pour représenter ces données et expliquer votre choix.
+\end{enumerate}
+
+
+%=================================================
+\section*{Exercice 4 : Régression linéaire et validation d'un modèle}
+
+Une entreprise souhaite étudier la relation entre le prix de vente $x$ (en euros) d'un produit et la demande $y$ correspondante.
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$x$ & 200 & 250 & 300 & 350 & 450 & 500\\
+\hline
+$y$ & 550 & 430 & 400 & 310 & 260 & 210\\
+\hline
+\end{tabular}
+\end{center}
+\begin{enumerate}
+\item Représenter graphiquement le nuage de points.
+
+\item Déterminer l'équation de la droite de régression de $y$ en fonction de $x$ par la méthode des moindres carrés.
+
+\item Calculer le coefficient de corrélation linéaire $r$.
+
+\item Calculer le coefficient de détermination $R^2$.
+
+\item Interpréter les valeurs obtenues pour $r$ et $R^2$.
+
+\item Estimer la demande lorsque le prix de vente est fixé à 400 euros.
+
+\item Calculer les résidus associés aux observations.
+
+\item Discuter la qualité du modèle obtenu.
+
+\item Peut-on utiliser ce modèle pour prédire la demande pour un prix de 800 euros ? Justifier.
+
+\end{enumerate}
+
+%=================================================
+\section*{Exercice 5 : Algèbre linéaire et traitement d'images}
+
+En traitement d'images, certaines transformations géométriques sont représentées par des matrices.
+
+On considère la matrice
+
+\[
+M=
+\begin{pmatrix}
+\cos(a-b) & \cos(b-c) & \cos(c-a)\\
+\cos(a+b) & \cos(b+c) & \cos(c+a)\\
+\sin(a+b) & \sin(b+c) & \sin(c+a)
+\end{pmatrix}
+\]
+
+et son déterminant
+
+\[
+\Delta = \det(M).
+\]
+
+On admet que
+
+\[
+\Delta =
+-2\sin(a-b)\sin(b-c)\sin(c-a).
+\]
+
+\begin{enumerate}
+
+\item Écrire la matrice transposée $M^T$.
+
+\item Rappeler la condition nécessaire et suffisante pour qu'une matrice carrée soit inversible.
+
+\item Déterminer les conditions sur $a$, $b$ et $c$ pour que la matrice $M$ soit inversible.
+
+\item Que se passe-t-il lorsque $a=b$ ?
+
+\item On considère le système
+
+\[
+MX=Y.
+\]
+
+Montrer que si $\Delta \neq 0$, alors le système admet une solution unique.
+
+\item En traitement d'images, supposons que la matrice $M$ représente une transformation appliquée à une image.
+
+\begin{enumerate}
+\item Expliquer le rôle du déterminant dans l'étude de cette transformation.
+\item Que signifie le cas $\Delta=0$ ?
+\item Pourquoi l'inversibilité de $M$ est-elle importante lorsqu'on souhaite reconstruire l'image originale ?
+\item Donner un exemple de perte d'information liée à une transformation non inversible.
+\end{enumerate}
+
+\end{enumerate}
+
+%=================================================
+\section*{Exercice 6 : Réflexion et argumentation}
+
+Galileo Galilei écrivait :
+
+\begin{center}
+\emph{« Le grand livre de la nature est écrit dans le langage des mathématiques. »}
+\end{center}
+
+Rédigez un texte argumentatif de 15 à 20 lignes destiné à un étudiant qui débute une formation en informatique.
+Votre objectif est de le convaincre de l'importance des mathématiques dans son parcours académique et professionnel.
+Vous illustrerez votre argumentation à l'aide d'exemples tirés d'au moins trois chapitres étudiés dans ce cours.
+
+\vspace{0.2cm}
+
+\textbf{Critères d'évaluation :}
+\begin{itemize}
+\item qualité de l'argumentation ;
+\item mobilisation des notions du cours ;
+\item clarté de la rédaction ;
+\item capacité à établir des liens avec l'informatique.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{Bon travail}
+\end{center}
+
+
+\end{document}

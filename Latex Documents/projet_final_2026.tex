@@ -1,0 +1,585 @@
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{setspace}
+\usepackage{graphicx}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlength{\headheight}{10pt}
+
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\begin{center}
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\linewidth]{logo}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\linewidth]{logo2}
+\end{minipage}
+\end{center}
+
+\begin{center}
+{\Large \textbf{Projet de Modélisation Mathématique Appliquée à l'Informatique}}\\[0.3cm]
+Mathématiques pour Informaticien\\
+Université Quisqueya (UNIQ)\\
+Faculté des Sciences, de Génie et d'Architecture (FSGA) \\
+Date limite : Mardi 16 juin 2026 à 18h (soumission Moodle)
+\end{center}
+
+\vspace{0.5cm}
+
+\section*{1. Introduction}
+
+La modélisation mathématique consiste à représenter un problème réel à l'aide d'outils mathématiques afin de mieux le comprendre, l'analyser et proposer des solutions.
+
+Dans le domaine de l'informatique, la modélisation intervient dans de nombreux contextes :
+
+\begin{itemize}
+\item réseaux sociaux ;
+\item moteurs de recherche ;
+\item cybersécurité ;
+\item traitement d'images ;
+\item intelligence artificielle ;
+\item systèmes de recommandation ;
+\item applications GPS ;
+\item analyse de données ;
+\item détection de fraude ;
+\item systèmes d'aide à la décision.
+\end{itemize}
+
+Ce projet constitue une application des notions étudiées dans le cours de Mathématiques pour Informaticien.
+
+\vspace{0.3cm}
+
+\section*{2. Objectif du projet}
+
+L'objectif du projet n'est pas de construire un modèle mathématique complexe ou de développer une application informatique complète.
+
+L'objectif est de montrer votre capacité à :
+
+\begin{itemize}
+\item comprendre un problème informatique ;
+\item identifier ses éléments essentiels ;
+\item choisir des outils mathématiques appropriés ;
+\item construire un modèle cohérent ;
+\item expliquer comment ce modèle pourrait être utilisé pour résoudre le problème étudié.
+\end{itemize}
+
+La qualité du raisonnement sera davantage valorisée que la complexité mathématique.
+
+\vspace{0.3cm}
+
+\section*{3. Portée du projet}
+
+Le projet doit rester adapté au niveau d'un étudiant de première année en informatique.
+
+Vous n'êtes pas tenus de :
+
+\begin{itemize}
+\item développer un programme informatique ;
+\item implémenter un algorithme dans un langage de programmation ;
+\item utiliser des bibliothèques spécialisées ;
+\item effectuer des simulations numériques avancées ;
+\item construire un modèle de niveau recherche ;
+\item utiliser des méthodes mathématiques non étudiées dans le cours.
+\end{itemize}
+
+Un modèle simple, cohérent et correctement justifié sera davantage valorisé qu'un modèle complexe mal maîtrisé.
+
+\vspace{0.3cm}
+
+\section*{4. Notions pouvant être utilisées}
+
+Selon le sujet choisi, vous pourrez mobiliser une ou plusieurs notions parmi les suivantes :
+
+\begin{itemize}
+\item logique mathématique ;
+\item ensembles ;
+\item relations ;
+\item fonctions ;
+\item probabilités ;
+\item statistiques descriptives ;
+\item visualisation de données ;
+\item régression linéaire ;
+\item calcul vectoriel ;
+\item calcul matriciel ;
+\item déterminants ;
+\item systèmes linéaires ;
+\item graphes ;
+\item optimisation élémentaire.
+\end{itemize}
+
+Vous n'êtes pas obligés d'utiliser toutes ces notions.
+
+\vspace{0.3cm}
+
+\section*{5. Structure attendue du rapport}
+
+Le rapport devra comporter les sections suivantes.
+
+\subsection*{5.1 Présentation du problème}
+
+Présenter le contexte du problème étudié.
+
+Exemples :
+
+\begin{itemize}
+\item recommandation d'amis dans un réseau social ;
+\item calcul d'itinéraire dans une application GPS ;
+\item détection de spam ;
+\item détection de fraude ;
+\item analyse d'un réseau informatique ;
+\item système de recommandation ;
+\item traitement d'images.
+\end{itemize}
+
+\subsection*{5.2 Identification des éléments du problème}
+
+Identifier clairement :
+
+\begin{itemize}
+\item les acteurs ;
+\item les variables ;
+\item les données ;
+\item les contraintes ;
+\item les objectifs.
+\end{itemize}
+
+\subsection*{5.3 Choix des outils mathématiques}
+
+Expliquer quelles notions du cours sont utilisées.
+
+Par exemple :
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Notion & Utilisation \\
+\hline
+Ensembles & Représentation des utilisateurs \\
+Graphes & Relations entre utilisateurs \\
+Matrices & Représentation des connexions \\
+Probabilités & Estimation d'un risque \\
+Statistiques & Analyse de données \\
+Fonctions & Modèle de décision \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{5.4 Construction du modèle}
+
+Construire une représentation mathématique du problème.
+
+Le modèle peut utiliser :
+
+\begin{itemize}
+\item des ensembles ;
+\item des relations ;
+\item des fonctions ;
+\item des probabilités ;
+\item des statistiques ;
+\item des matrices ;
+\item des graphes ;
+\item des systèmes linéaires ;
+\item ou une combinaison de plusieurs de ces outils.
+\end{itemize}
+
+Toutes les hypothèses retenues devront être clairement justifiées.
+
+\subsection*{5.5 Algorithme ou procédure d'étude}
+
+Présenter une démarche permettant d'utiliser le modèle construit.
+
+Cette démarche peut être présentée sous forme :
+
+\begin{itemize}
+\item d'algorithme ;
+\item de pseudo-code ;
+\item d'organigramme ;
+\item ou d'une description détaillée des étapes.
+\end{itemize}
+
+L'utilisation d'un langage de programmation n'est pas requise.
+
+L'objectif est de montrer comment le modèle pourrait être exploité pour résoudre le problème étudié.
+
+\subsection*{5.6 Analyse et interprétation}
+
+Expliquer :
+
+\begin{itemize}
+\item ce que le modèle permet d'obtenir ;
+\item quelles informations il fournit ;
+\item quelles décisions il permet de prendre ;
+\item quels avantages il apporte dans le contexte étudié.
+\end{itemize}
+
+\subsection*{5.7 Limites du modèle}
+
+Tout modèle constitue une simplification de la réalité.
+
+Identifier :
+
+\begin{itemize}
+\item les hypothèses réalisées ;
+\item les limites du modèle ;
+\item les situations où le modèle pourrait être inadapté ;
+\item les informations qui ne sont pas prises en compte.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\section*{6. Perspectives (facultatif)}
+
+Cette section n'est pas obligatoire.
+
+Elle permettra aux étudiants souhaitant aller plus loin de proposer :
+
+\begin{itemize}
+\item des améliorations du modèle ;
+\item des extensions possibles ;
+\item des liens avec l'intelligence artificielle ;
+\item des liens avec la science des données ;
+\item des approches plus avancées.
+\end{itemize}
+
+Aucune pénalité ne sera appliquée aux étudiants qui ne développent pas cette section.
+
+\vspace{0.3cm}
+
+\section*{7. Critères d'évaluation}
+
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+Critère & Points \\
+\hline
+Compréhension du problème & 4 \\
+Identification des variables et hypothèses & 3 \\
+Construction du modèle mathématique & 6 \\
+Algorithme ou procédure d'étude & 3 \\
+Analyse et interprétation & 2 \\
+Limites du modèle & 2 \\
+\hline
+Total & 20 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\section*{8. Remarque importante}
+
+La complexité du modèle ne constitue pas un critère d'évaluation.
+
+Un modèle simple, cohérent, bien justifié et correctement expliqué obtiendra une meilleure note qu'un modèle complexe mal maîtrisé.
+
+L'objectif principal du projet est de démontrer votre capacité à représenter un problème informatique à l'aide des outils mathématiques étudiés dans le cours.
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{Bon travail !}
+\end{center}
+
+\newpage
+
+\appendix
+
+\section*{Annexe A : Liste des études de cas proposées}
+
+Chaque étudiant réalisera son projet à partir de l'une des études de cas suivantes.
+
+Les notions mathématiques indiquées sont données à titre indicatif. Elles ne sont ni obligatoires ni exhaustives.
+
+\bigskip
+
+\subsection*{Projet 1 : Réseau social universitaire}
+
+Une université souhaite développer une plateforme permettant aux étudiants d'interagir entre eux.
+
+\textbf{Objectif :}
+Proposer un modèle permettant de représenter les relations entre étudiants et de suggérer de nouvelles connexions.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item ensembles ;
+\item relations ;
+\item graphes ;
+\item matrices d'adjacence ;
+\item statistiques descriptives.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 2 : Recommandation de contenus sur une plateforme vidéo}
+
+Une plateforme de streaming souhaite recommander des vidéos à ses utilisateurs.
+
+\textbf{Objectif :}
+Modéliser un mécanisme simple de recommandation.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item fonctions ;
+\item matrices ;
+\item statistiques ;
+\item probabilités.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 3 : Détection de spam}
+
+Une entreprise souhaite filtrer automatiquement les courriels indésirables.
+
+\textbf{Objectif :}
+Construire un modèle permettant d'estimer si un message est un spam.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item probabilités ;
+\item statistiques ;
+\item fonctions de décision ;
+\item matrices de classification.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 4 : Application GPS}
+
+Une application mobile souhaite proposer le meilleur itinéraire entre deux points.
+
+\textbf{Objectif :}
+Modéliser le réseau routier et la recherche de trajets.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item graphes ;
+\item matrices ;
+\item optimisation ;
+\item statistiques.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 5 : Analyse d'un réseau informatique}
+
+Une entreprise souhaite analyser les connexions entre ses ordinateurs.
+
+\textbf{Objectif :}
+Identifier les points critiques du réseau.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item graphes ;
+\item matrices ;
+\item statistiques ;
+\item logique.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 6 : Gestion d'une bibliothèque numérique}
+
+Une université met à disposition une bibliothèque numérique.
+
+\textbf{Objectif :}
+Modéliser l'organisation et la recherche de documents.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item ensembles ;
+\item relations ;
+\item fonctions ;
+\item statistiques.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 7 : Analyse du trafic réseau}
+
+Un administrateur souhaite étudier les flux de données d'un réseau.
+
+\textbf{Objectif :}
+Construire un modèle permettant d'analyser le trafic.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item statistiques descriptives ;
+\item visualisation de données ;
+\item régression linéaire ;
+\item probabilités.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 8 : Détection de fraude bancaire}
+
+Une banque souhaite détecter automatiquement des transactions suspectes.
+
+\textbf{Objectif :}
+Construire un modèle de détection de risque.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item probabilités ;
+\item statistiques ;
+\item fonctions ;
+\item matrices.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 9 : Répartition des tâches dans un centre de données}
+
+Un centre de calcul doit distribuer ses tâches entre plusieurs serveurs.
+
+\textbf{Objectif :}
+Proposer un modèle de répartition.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item matrices ;
+\item systèmes linéaires ;
+\item optimisation ;
+\item statistiques.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 10 : Traitement d'images}
+
+Une application applique des transformations à des images numériques.
+
+\textbf{Objectif :}
+Modéliser une transformation et analyser ses propriétés.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item matrices ;
+\item déterminants ;
+\item systèmes linéaires ;
+\item fonctions.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 11 : Analyse des performances d'un algorithme}
+
+Une entreprise souhaite étudier le temps d'exécution d'un algorithme.
+
+\textbf{Objectif :}
+Modéliser la relation entre taille des données et temps d'exécution.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item fonctions ;
+\item statistiques ;
+\item régression linéaire ;
+\item visualisation.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 12 : Plateforme de commerce électronique}
+
+Une boutique en ligne souhaite analyser les comportements d'achat.
+
+\textbf{Objectif :}
+Construire un modèle simple d'analyse des clients.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item statistiques ;
+\item probabilités ;
+\item visualisation ;
+\item fonctions.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 13 : Système de triage médical assisté}
+
+Un hôpital souhaite prioriser les patients selon leur niveau d'urgence.
+
+\textbf{Objectif :}
+Construire un modèle d'aide à la décision.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item probabilités ;
+\item statistiques ;
+\item fonctions de score ;
+\item matrices.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 14 : Analyse de la fréquentation d'une plateforme éducative}
+
+Une université souhaite analyser l'activité de ses étudiants sur une plateforme numérique.
+
+\textbf{Objectif :}
+Identifier les tendances d'utilisation.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item statistiques descriptives ;
+\item visualisation ;
+\item régression ;
+\item probabilités.
+\end{itemize}
+
+\bigskip
+
+\subsection*{Projet 15 : Cybersécurité et authentification}
+
+Une entreprise souhaite renforcer son système d'authentification.
+
+\textbf{Objectif :}
+Modéliser le niveau de sécurité d'un mécanisme d'accès.
+
+\textbf{Notions possibles :}
+
+\begin{itemize}
+\item logique ;
+\item combinatoire ;
+\item probabilités ;
+\item statistiques.
+\end{itemize}
+
+\bigskip
+
+\section*{Remarque}
+
+Les étudiants sont libres de proposer d'autres approches mathématiques que celles suggérées dans cette annexe.
+
+L'important n'est pas la quantité de notions utilisées, mais la cohérence du modèle construit et la qualité de son analyse.
+
+\end{document}
